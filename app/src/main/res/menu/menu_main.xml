@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.hario.mycantnn_app.MainActivity">
+    <item
+        android:id="@+id/AddItemButton_main_menu"
+        android:icon="@mipmap/ic_playlist_add_white_24dp"
+        android:title="Add Item"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Settings"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/profile"
+        android:orderInCategory="100"
+        android:title="Profile"
+        app:showAsAction="never"></item>
+
+    <item
+        android:id="@+id/cart"
+        android:orderInCategory="101"
+        android:title="Goto Cart"
+        app:showAsAction="never"></item>
+
+
+    <item
+        android:id="@+id/order"
+        android:orderInCategory="102"
+        android:title="Order Status"
+        app:showAsAction="never"></item>
+
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="103"
+        android:title="Logout"
+        app:showAsAction="never"></item>
+    <item
+        android:icon="@drawable/search"
+        android:orderInCategory="104"
+        android:title="Search.."
+        app:showAsAction="always"></item>
+
+
+</menu>

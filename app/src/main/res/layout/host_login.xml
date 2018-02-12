@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hostLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hario.mycantnn_app.Host_login">
+
+
+    <EditText
+        android:id="@+id/HostEMail"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/HostPwd"
+        android:layout_alignStart="@+id/HostPwd"
+        android:layout_below="@+id/HostprogressBar"
+        android:layout_marginTop="186dp"
+        android:allowUndo="true"
+        android:ems="10"
+        android:hint="@string/EMail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.432"
+        tools:targetApi="m" />
+
+
+    <EditText
+        android:id="@+id/HostPwd"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/HostEMail"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/Pwd"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HostEMail"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <Button
+        android:id="@+id/HostButton"
+        android:layout_width="295dp"
+        android:layout_height="51dp"
+        android:layout_alignLeft="@+id/HostLogin_check"
+        android:layout_alignStart="@+id/HostLogin_check"
+        android:layout_below="@+id/HostLogin_check"
+        android:layout_marginTop="@dimen/margin_10"
+        android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HostPwd"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <TextView
+        android:id="@+id/HostSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_alignLeft="@+id/HostButton"
+        android:layout_alignStart="@+id/HostButton"
+        android:layout_below="@+id/HostButton"
+        android:layout_marginTop="12dp"
+        android:text="@string/request_to_new"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HostButton"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <TextView
+        android:id="@+id/HostForget"
+        android:layout_width="122dp"
+        android:layout_height="22dp"
+        android:layout_alignBottom="@+id/HostSignup"
+        android:layout_alignEnd="@+id/HostPwd"
+        android:layout_alignRight="@+id/HostPwd"
+        android:text="@string/forget_password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HostButton"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <CheckBox
+        android:id="@+id/HostLogin_check"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/HostPwd"
+        android:layout_alignStart="@+id/HostPwd"
+        android:layout_below="@+id/HostPwd"
+        android:layout_marginTop="8dp"
+        android:text="     Show PassWord" />
+
+    <ProgressBar
+        android:id="@+id/HostprogressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone" />
+
+</RelativeLayout>
+
+

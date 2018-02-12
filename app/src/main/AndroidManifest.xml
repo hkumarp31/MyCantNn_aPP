@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hario.mycantnn_app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Host_login"
+            android:label="Canteen_App"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".forgetpwd"
+            android:label="Forget PassWord"
+            android:parentActivityName=".Host_login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login_Form"
+            android:label="Welcome to the Login Page"
+            android:parentActivityName=".Host_login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client"
+            android:label="Select From Menu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Check.CheckOutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Modal.CartActivity"
+            android:label="My Cart"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Modal.OrderStatus"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BottomnaviActivity"
+            android:label="@string/title_activity_bottomnavi"
+            android:screenOrientation="portrait" />
+        <activity android:name=".profile_edit_page">
+
+        </activity>
+        <activity android:name=".Check.Card.OrderActivity"></activity>
+        <activity android:name=".Check.Card.finalstatus"></activity>
+        <activity android:name=".Check.Card.payment"></activity>
+        <activity
+            android:name=".Modal.AddItemActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".Modal.HostActivityMain"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Modal.GetOrderFromCustomerActivity"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+
+</manifest>

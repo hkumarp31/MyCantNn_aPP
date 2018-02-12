@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/CanteenItem_Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:entries="@array/CanteenItem_arrays"
+        android:popupBackground="@color/colorAccent"
+        android:textAlignment="center"
+        android:textDirection="firstStrong" />
+
+    <Button
+        android:id="@+id/Click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="Clicking"
+        android:text="Click Here" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
