@@ -22,7 +22,7 @@ public class forgetpwd extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgetpwd);
+        setContentView(R.layout.activity_fgetpwd);
 
 
         Button btnReset = findViewById(R.id.SubmitButton);
