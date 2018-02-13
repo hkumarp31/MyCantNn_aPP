@@ -100,6 +100,16 @@
         android:layout_marginTop="8dp"
         android:text="     Show PassWord" />
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/HostGoggleSign"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/HostSignup"
+        android:layout_alignStart="@+id/HostSignup"
+        android:layout_below="@+id/HostSignup"
+        android:layout_marginTop="@dimen/margin_10"></com.google.android.gms.common.SignInButton>
+
+
     <ProgressBar
         android:id="@+id/HostprogressBar"
         android:layout_width="30dp"
