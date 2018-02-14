@@ -1,8 +1,10 @@
 package com.example.hario.mycantnn_app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -15,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +43,7 @@ public class Host_login extends AppCompatActivity {
     private static final int RC_SIGN_IN = 9001;
     private EditText inputEmail;
     private EditText PassWord;
-    private FirebaseAuth auth;
+    private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private Button button;
     private CheckBox check1;
@@ -51,8 +54,10 @@ public class Host_login extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
     private TextView mDetailTextView;
-
+    private ProgressDialog mProgressDialog;
     // private CallbackManager callbackManager;
+
+    private RelativeLayout HostProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,13 +69,13 @@ public class Host_login extends AppCompatActivity {
 
         setContentView(R.layout.host_login);
 
-        auth = FirebaseAuth.getInstance();
+        // mAuth = FirebaseAuth.getInstance();
 
         button = findViewById(R.id.HostButton);
         inputEmail = findViewById(R.id.HostEMail);
         progressBar = findViewById(R.id.HostprogressBar);
         Googlebtn = findViewById(R.id.HostGoggleSign);
-
+        HostProfile = findViewById(R.id.Host_ProfileLayour);
         check1 = findViewById(R.id.HostLogin_check);
         PassWord = findViewById(R.id.HostPwd);
         signup = findViewById(R.id.HostSignup);
@@ -99,36 +104,21 @@ public class Host_login extends AppCompatActivity {
                         Toast.makeText(Host_login.this,"Authification failed", Toast.LENGTH_LONG).show();
                         // App code
                     }
-                });
+                });*/
 
-
-
-
-*/
-
-
+        // [START config_signin]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
-
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(Host_login.this, Host_login.class));
-            finish();
-        }
+        // [END config_signin]
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-
-        Googlebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
-
+        // [START initialize_auth]
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
 
 
         // Listening to register new account link
@@ -191,7 +181,7 @@ public class Host_login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 //authenticate user
-                auth.signInWithEmailAndPassword(email, password)
+                mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Host_login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -215,6 +205,15 @@ public class Host_login extends AppCompatActivity {
                         });
             }
         });
+
+        Googlebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+
+
     }
 
 
@@ -259,11 +258,12 @@ public class Host_login extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = auth.getCurrentUser();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
+    // [END on_start_check_user]
 
-
+    // [START onactivityresult]
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -284,33 +284,34 @@ public class Host_login extends AppCompatActivity {
             }
         }
     }
+    // [END onactivityresult]
 
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
-        //showProgressDialog();
+        showProgressDialog();
         // [END_EXCLUDE]
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        auth.signInWithCredential(credential)
+        mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = auth.getCurrentUser();
+                            FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            // Snackbar.make(findViewById(R.id.host), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
+                            Snackbar.make(findViewById(R.id.hostLayout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                             updateUI(null);
                         }
 
                         // [START_EXCLUDE]
-                        //hideProgressDialog();
+                        hideProgressDialog();
                         // [END_EXCLUDE]
                     }
                 });
@@ -321,14 +322,12 @@ public class Host_login extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-
-        // startActivity(new Intent(Host_login.this,profile.class));
     }
     // [END signin]
 
     private void signOut() {
         // Firebase sign out
-        auth.signOut();
+        mAuth.signOut();
 
         // Google sign out
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
@@ -342,7 +341,7 @@ public class Host_login extends AppCompatActivity {
 
     private void revokeAccess() {
         // Firebase sign out
-        auth.signOut();
+        mAuth.signOut();
 
         // Google revoke access
         mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,
@@ -355,19 +354,50 @@ public class Host_login extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-        // hideProgressDialog();
+        hideProgressDialog();
         if (user != null) {
-            //   mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
-            // mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+            //  mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
+            //mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.HostGoggleSign).setVisibility(View.GONE);
-            //  findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            startActivity(new Intent(Host_login.this, host_profile_details.class));
+            //findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
-            //   mStatusTextView.setText(R.string.signed_out);
-            // mDetailTextView.setText(null);
+            //mStatusTextView.setText(R.string.signed_out);
+            //mDetailTextView.setText(null);
 
-            //  findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            //findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+            findViewById(R.id.HostGoggleSign).setVisibility(View.VISIBLE);
+            // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+        }
+    }
+/*
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.sign_in_button) {
+            signIn();
+        } else if (i == R.id.sign_out_button) {
+            signOut();
+        } else if (i == R.id.disconnect_button) {
+            revokeAccess();
+        }
+    }*/
+
+
+    private void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setMessage("Loding");
+            mProgressDialog.setIndeterminate(true);
+        }
+
+        mProgressDialog.show();
+    }
+
+
+    private void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.hide();
         }
     }
 

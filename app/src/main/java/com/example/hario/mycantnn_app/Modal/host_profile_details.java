@@ -1,31 +1,22 @@
 package com.example.hario.mycantnn_app.Modal;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.hario.mycantnn_app.MainActivity;
 import com.example.hario.mycantnn_app.R;
-import com.example.hario.mycantnn_app.forgetpwd;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class host_profile_details extends AppCompatActivity {
-    private FirebaseAuth auth;
+//    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_profile_details);
 
-        auth = FirebaseAuth.getInstance();
+        // auth = FirebaseAuth.getInstance();
     }
 
-    @Override
+  /*  @Override
     public boolean onCreateOptionsMenu(Menu manu) {
         getMenuInflater().inflate(R.menu.menu_main, manu);
         return true;
@@ -73,7 +64,18 @@ public class host_profile_details extends AppCompatActivity {
 
         return false;
 
-    }
+    }*/
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

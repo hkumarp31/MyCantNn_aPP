@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -59,24 +58,20 @@
             android:name=".BottomnaviActivity"
             android:label="@string/title_activity_bottomnavi"
             android:screenOrientation="portrait" />
-        <activity android:name=".profile_edit_page">
-
-        </activity>
-        <activity android:name=".Check.Card.OrderActivity"></activity>
-        <activity android:name=".Check.Card.finalstatus"></activity>
-        <activity android:name=".Check.Card.payment"></activity>
+        <activity android:name=".profile_edit_page"></activity>
+        <activity android:name=".Check.Card.OrderActivity" />
+        <activity android:name=".Check.Card.finalstatus" />
+        <activity android:name=".Check.Card.payment" />
         <activity
             android:name=".Modal.AddItemActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Modal.HostActivityMain"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.GetOrderFromCustomerActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".gitCheck"></activity>
     </application>
-
 
 </manifest>
