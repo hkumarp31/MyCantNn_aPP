@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         // startActivity(host);
         startActivity(new Intent(MainActivity.this, Host_login.class));
         finish();
+        //initial change
+        //second change
+
 
     }
 
