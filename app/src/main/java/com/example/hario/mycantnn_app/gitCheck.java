@@ -10,7 +10,6 @@ public class gitCheck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_git_check);
 
-        // aditya ne change kiya hai
-
+        // aditya ne change kiya hainmvhgvkhbk
     }
 }
