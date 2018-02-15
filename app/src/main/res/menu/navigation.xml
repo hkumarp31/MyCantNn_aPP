@@ -34,5 +34,12 @@
 
         android:title="@string/title_profile"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/ClientNotificationBottomNavigation"
+        android:icon="@mipmap/ic_system_update_alt_white_24dp"
+        android:title="Notification"
+
+        android:enabled="true"
+        app:showAsAction="always"/>
 
 </menu>
