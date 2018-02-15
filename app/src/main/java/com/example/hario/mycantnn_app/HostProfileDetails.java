@@ -1,18 +1,28 @@
 package com.example.hario.mycantnn_app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.Modal.HostActivityMain;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HostProfileDetails extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -22,6 +32,14 @@ public class HostProfileDetails extends AppCompatActivity {
     private TextView Email;
     private TextView Contact;
     private TextView Name;
+    private FirebaseUser user;
+    private String UiidId = "";
+    private ImageView img;
+
+    private ProgressDialog progressBar;
+
+    //  private FirebaseDatabase mdatabase;
+    private DatabaseReference currentuserDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +60,65 @@ public class HostProfileDetails extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
-
+        user = mAuth.getCurrentUser();
+        if (user != null) {
+            UiidId = user.getUid();
+        }
         btn = findViewById(R.id.hostbutton4);
         username = findViewById(R.id.Host_textView);
         Email = findViewById(R.id.hostProfileCardName4);
         Contact = findViewById(R.id.hostProfileCardName6);
         Name = findViewById(R.id.hostProfileCardName2);
+        progressBar = new ProgressDialog(this);
+        img = findViewById(R.id.Host_imageView2);
+        currentuserDatabase = FirebaseDatabase.getInstance().getReference().child("HostUser").child("User");
+        currentuserDatabase.keepSynced(true);
+        if (currentuserDatabase.orderByChild("uuid").equalTo(UiidId) == null) {
 
+        } else {
+            final DatabaseReference myDatabase = currentuserDatabase.child(UiidId);
+
+
+            progressBar.setMessage("Uploding...");
+            // Showing progressDialog.
+            progressBar.show();
+            myDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+
+
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String CANTTEN = (String) dataSnapshot.child("canteen").getValue();
+                    String EMAIL = (String) dataSnapshot.child("email").getValue();
+                    String CONTACT = (String) dataSnapshot.child("contact").getValue();
+                    String NAME = (String) dataSnapshot.child("name").getValue();
+                    String url = (String) dataSnapshot.child("image").getValue();
+                    Glide.with(getApplicationContext()).load(url).into(img);
+
+
+                    username.setText(CANTTEN);
+                    Email.setText(EMAIL);
+                    Contact.setText(CONTACT);
+                    Name.setText(NAME);
+
+                    progressBar.hide();
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HostProfileDetails.this, HostProfileEdit.class));
+            }
+        });
 
     }
 
@@ -100,6 +170,11 @@ public class HostProfileDetails extends AppCompatActivity {
                         updateUI(null);
                     }
                 });*/
+    }
+
+    private void AddDetails() {
+
+
     }
 
 }

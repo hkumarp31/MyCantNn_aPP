@@ -39,11 +39,6 @@
         android:orderInCategory="103"
         android:title="Logout"
         app:showAsAction="never"></item>
-    <item
-        android:icon="@drawable/search"
-        android:orderInCategory="104"
-        android:title="Search.."
-        app:showAsAction="always"></item>
 
 
 </menu>

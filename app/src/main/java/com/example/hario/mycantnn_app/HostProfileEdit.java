@@ -137,10 +137,10 @@ public class HostProfileEdit extends AppCompatActivity {
                                 UploadUserData imageUploadInfo = new UploadUserData(Name, Email, Contact, taskSnapshot.getDownloadUrl().toString(), uid, canteen);
 
                                 // Getting image upload ID.
-                                String ImageUploadId = databaseReference.push().getKey();
+                                // String ImageUploadId = databaseReference.push().getKey();
 
                                 // Adding image upload id s child element into databaseReference.
-                                databaseReference.child("User").child(ImageUploadId).setValue(imageUploadInfo);
+                                databaseReference.child("User").child(auth.getCurrentUser().getUid()).setValue(imageUploadInfo);
 
 
                                 startActivity(new Intent(HostProfileEdit.this, HostProfileDetails.class));
