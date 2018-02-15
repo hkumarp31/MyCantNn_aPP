@@ -66,6 +66,9 @@
             android:name=".Modal.AddItemActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Modal.ClientNotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Modal.HostActivityMain"
             android:screenOrientation="portrait" />
         <activity
