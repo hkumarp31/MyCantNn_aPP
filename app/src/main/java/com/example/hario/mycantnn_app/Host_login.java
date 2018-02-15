@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,8 +19,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hario.mycantnn_app.Modal.HostActivityMain;
-import com.example.hario.mycantnn_app.Modal.host_profile_details;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -128,7 +124,7 @@ public class Host_login extends AppCompatActivity {
 
                 Intent i = new Intent(getApplicationContext(), forgetpwd.class);
                 startActivity(i);
-                finish();
+
             }
         });
 
@@ -157,7 +153,7 @@ public class Host_login extends AppCompatActivity {
                 // Switching to Register screen
                 Intent i = new Intent(getApplicationContext(), Login_Form.class);
                 startActivity(i);
-                finish();
+                //finish();
             }
         });
 
@@ -197,7 +193,7 @@ public class Host_login extends AppCompatActivity {
                                         Toast.makeText(Host_login.this, "Authification failed Check Email And PassWord", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(Host_login.this, host_profile_details.class);
+                                    Intent intent = new Intent(Host_login.this, HostProfileDetails.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -217,40 +213,6 @@ public class Host_login extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu manu) {
-        getMenuInflater().inflate(R.menu.menu_main, manu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.profile) {
-            startActivity(new Intent(this, forgetpwd.class));
-            return true;
-        } else if (id == R.id.AddItemButton_main_menu) {
-            startActivity(new Intent(this, HostActivityMain.class));
-            finish();
-            return true;
-        } else if (id == R.id.cart)
-
-        {
-            return true;
-        } else if (id == R.id.order) {
-            return true;
-        } else if (id == R.id.logout) {
-            signOut();
-
-            Toast.makeText(Host_login.this, "LOGOUT Succefully", Toast.LENGTH_SHORT).show();
-
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-            return true;
-        } else
-            return false;
-
-    }
 
 
     // [START on_start_check_user]
@@ -360,7 +322,7 @@ public class Host_login extends AppCompatActivity {
             //mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.HostGoggleSign).setVisibility(View.GONE);
-            startActivity(new Intent(Host_login.this, host_profile_details.class));
+            //  startActivity(new Intent(Host_login.this, host_profile_details.class));
             //findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
             //mStatusTextView.setText(R.string.signed_out);
@@ -370,19 +332,6 @@ public class Host_login extends AppCompatActivity {
             // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
-/*
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.sign_in_button) {
-            signIn();
-        } else if (i == R.id.sign_out_button) {
-            signOut();
-        } else if (i == R.id.disconnect_button) {
-            revokeAccess();
-        }
-    }*/
-
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
@@ -398,6 +347,9 @@ public class Host_login extends AppCompatActivity {
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.hide();
+
+            startActivity(new Intent(Host_login.this, HostProfileDetails.class));
+            finish();
         }
     }
 

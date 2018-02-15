@@ -1,6 +1,7 @@
 package com.example.hario.mycantnn_app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -18,15 +19,15 @@ public class forgetpwd extends Activity {
     private EditText inputEmail;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
-
+    private Button btnReset;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgetpwd);
-
-
-        Button btnReset = findViewById(R.id.SubmitButton);
-
+        auth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.ForgetprogressBar);
+        btnReset = findViewById(R.id.SubmitButton);
+        inputEmail = findViewById(R.id.forgetEmail);
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,11 +46,15 @@ public class forgetpwd extends Activity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(forgetpwd.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+
                                 } else {
                                     Toast.makeText(forgetpwd.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);
+
+                                startActivity(new Intent(forgetpwd.this, MainActivity.class));
+                                finish();
                             }
                         });
             }

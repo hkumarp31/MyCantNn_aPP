@@ -58,20 +58,22 @@
             android:name=".BottomnaviActivity"
             android:label="@string/title_activity_bottomnavi"
             android:screenOrientation="portrait" />
-        <activity android:name=".profile_edit_page"></activity>
+        <activity android:name=".profile_edit_page" />
         <activity android:name=".Check.Card.OrderActivity" />
         <activity android:name=".Check.Card.finalstatus" />
         <activity android:name=".Check.Card.payment" />
         <activity
             android:name=".Modal.AddItemActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.HostActivityMain"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.GetOrderFromCustomerActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".gitCheck"></activity>
+        <activity android:name=".gitCheck" />
+        <activity android:name=".HostProfileDetails" />
+        <activity android:name=".HostProfileEdit"></activity>
     </application>
 
 </manifest>
