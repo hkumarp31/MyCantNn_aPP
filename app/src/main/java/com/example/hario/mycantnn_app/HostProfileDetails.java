@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.hario.mycantnn_app.Modal.HostActivityMain;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -125,7 +124,7 @@ public class HostProfileDetails extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu manu) {
-        getMenuInflater().inflate(R.menu.menu_main, manu);
+        getMenuInflater().inflate(R.menu.hostprofilemenu, manu);
         return true;
     }
 
@@ -134,18 +133,9 @@ public class HostProfileDetails extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.profile) {
             startActivity(new Intent(this, forgetpwd.class));
-            return true;
-        } else if (id == R.id.AddItemButton_main_menu) {
-            startActivity(new Intent(this, HostActivityMain.class));
-            finish();
-            return true;
-        } else if (id == R.id.cart)
 
-        {
             return true;
-        } else if (id == R.id.order) {
-            return true;
-        } else if (id == R.id.logout) {
+        } else if (id == R.id.ProfileLogout) {
             signOut();
 
             // Toast.makeText(HostProfileDetails.this, "LOGOUT Succefully", Toast.LENGTH_SHORT).show();

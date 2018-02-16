@@ -10,7 +10,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:title="Settings"
         app:showAsAction="never" />
 
@@ -23,16 +23,13 @@
 
     <item
         android:id="@+id/cart"
-        android:orderInCategory="101"
-        android:title="Goto Cart"
-        app:showAsAction="never"></item>
-
-
-    <item
-        android:id="@+id/order"
+        android:icon="@mipmap/ic_launcher"
         android:orderInCategory="102"
-        android:title="Order Status"
-        app:showAsAction="never"></item>
+
+        android:title="Notification"
+        app:showAsAction="always">
+
+    </item>
 
     <item
         android:id="@+id/logout"

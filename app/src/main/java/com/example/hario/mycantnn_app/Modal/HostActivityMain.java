@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.hario.mycantnn_app.HostProfileDetails;
 import com.example.hario.mycantnn_app.MainActivity;
 import com.example.hario.mycantnn_app.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -102,7 +103,8 @@ firebaseAuth = FirebaseAuth.getInstance();
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.profile) {
+            startActivity(new Intent(this, HostProfileDetails.class));
             return true;
         }
         if (id == R.id.AddItemButton_main_menu) {
