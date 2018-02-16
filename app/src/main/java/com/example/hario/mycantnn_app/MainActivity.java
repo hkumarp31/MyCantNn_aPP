@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.hario.mycantnn_app.Modal.HostActivityMain;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Host_login.class));
 
         } else
-            startActivity(new Intent(MainActivity.this, HostProfileDetails.class));
+            startActivity(new Intent(MainActivity.this, HostActivityMain.class));
     }
 
     public void main2(View view) {

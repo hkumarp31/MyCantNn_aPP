@@ -79,9 +79,9 @@ public class HostProfileEdit extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
                 ProfileUploding();
+                Toast.makeText(getApplicationContext(), "Your Details Updated Successfully", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -116,7 +116,7 @@ public class HostProfileEdit extends AppCompatActivity {
 
             if (imageUrl != null && !TextUtils.isEmpty(Email) && !TextUtils.isEmpty(Contact)) {
 
-                progressBar.setMessage("Uploding...");
+                progressBar.setMessage("Your Details Updating...");
                 // Showing progressDialog.
                 progressBar.show();
 
@@ -131,7 +131,7 @@ public class HostProfileEdit extends AppCompatActivity {
 
                                 //progressDialog.dismiss();
 
-                                Toast.makeText(getApplicationContext(), "Item Uploaded Successfully To Your Category ", Toast.LENGTH_LONG).show();
+                               // Toast.makeText(getApplicationContext(), "Item Uploaded Successfully To Your Category ", Toast.LENGTH_LONG).show();
 
                                 @SuppressWarnings("VisibleForTests")
                                 UploadUserData imageUploadInfo = new UploadUserData(Name, Email, Contact, taskSnapshot.getDownloadUrl().toString(), uid, canteen);
@@ -171,11 +171,11 @@ public class HostProfileEdit extends AppCompatActivity {
                         });
             } else {
 
-                Toast.makeText(HostProfileEdit.this, "Please Select All Fields Again From Selecting Category", Toast.LENGTH_LONG).show();
+                Toast.makeText(HostProfileEdit.this, "Please Fill All Details ", Toast.LENGTH_LONG).show();
 
             }
         } else {
-            Toast.makeText(HostProfileEdit.this, "Please login First to set details", Toast.LENGTH_LONG).show();
+            Toast.makeText(HostProfileEdit.this, "Please LOGIN First", Toast.LENGTH_LONG).show();
 
 
         }

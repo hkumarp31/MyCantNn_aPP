@@ -193,7 +193,7 @@ public class Host_login extends AppCompatActivity {
                                         Toast.makeText(Host_login.this, "Authification failed Check Email And PassWord", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(Host_login.this, HostProfileDetails.class);
+                                    Intent intent = new Intent(Host_login.this, HostProfileEdit.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -348,7 +348,7 @@ public class Host_login extends AppCompatActivity {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.hide();
 
-            startActivity(new Intent(Host_login.this, HostProfileDetails.class));
+            startActivity(new Intent(Host_login.this, HostProfileEdit.class));
             finish();
         }
     }

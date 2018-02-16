@@ -16,7 +16,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.hario.mycantnn_app.MainActivity;
 import com.example.hario.mycantnn_app.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
     private DatabaseReference databaseReference;
     private Context context;
     private Button ClickHere;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -51,7 +54,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
         ClickHere = findViewById(R.id.Click);
-
+firebaseAuth = FirebaseAuth.getInstance();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
         recyclerView = findViewById(R.id.recycler);
@@ -106,6 +109,12 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
             startActivity(new Intent(this, AddItemActivity.class));
         }
 
+        if(id==R.id.logout)
+        {
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -141,7 +150,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(HostActivityMain.this, "Database Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HostActivityMain.this, "LogOut Successful", Toast.LENGTH_SHORT).show();
 
             }
         });
