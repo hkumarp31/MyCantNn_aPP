@@ -36,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void main2(View view) {
+        if (user == null)
+            startActivity(new Intent(MainActivity.this, Host_login.class));
 
-        startActivity(new Intent(this, client.class));
-        finish();
+        else
+            startActivity(new Intent(this, client.class));
+
     }
 }

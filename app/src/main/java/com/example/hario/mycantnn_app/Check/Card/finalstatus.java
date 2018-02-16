@@ -21,50 +21,104 @@ public class finalstatus extends AppCompatActivity {
     private statusadapter myadapter;
     private ArrayList<statusinfo> aL;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalstatus);
 
+        // if (!FirebaseApp.getApps(this).isEmpty()) {
+        //      FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        //  }
         rv = findViewById(R.id.recyid);
         rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
         aL = new ArrayList<>();
 
-        for (int i = 0; i < CartActivity.selectedItem.size(); i++) {
-             String s = generateId();
-             aL.add(new statusinfo(CartActivity.selectedItem.get(i).getImage(),
-                     CartActivity.selectedItem.get(i).getName(),
-                     s, CartActivity.selectedItem.get(i).getTotal(),
-                     CartActivity.selectedItem.get(i).getCount(),
-                     CartActivity.selectedItem.get(i).getPrice()));
+        ArrayList<CartInfo> ci = CartActivity.selectedItem;
+
+        for (int i = 0; i < ci.size(); i++) {
+            CartInfo h = ci.get(i);
+
+            String s = generateId();
+            statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(), client.mailAddedItems.get(i).getCount(), h.getPrice());
+
+            aL.add(si);
+
+
         }
 
         addtofirebase(aL);
 
+
+
+            /*      final DatabaseReference Mred = FirebaseDatabase.getInstance().getReference().child("hemantobjects");
+
+            aL = new ArrayList<>();
+
+            Mred.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    int i=0;
+                    for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+
+                        CartInfo h = singleSnapshot.getValue(CartInfo.class);
+                        DatabaseReference Mredchild = FirebaseDatabase.getInstance().getReference().child("Orderids");
+                        String s = generateId();
+                        Mred.child(i+"").setValue(s);
+                        statusinfo si = new statusinfo(h.getImage(),h.getName(),s);
+                        aL.add(si) ;
+                        i++;
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                    Log.e("TAG", "onCancelled", databaseError.toException());
+
+
+                }
+            }); */
+
+
+
+        /*
+            data receiving end
+         */
+
         myadapter = new statusadapter(aL, this);
-        rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(myadapter);
+
 
     }
 
     public String generateId() {
         String id = UUID.randomUUID().toString();
         String s = id.substring(0, 8);
+
         return s;
 
     }
 
+
     public void addtofirebase(ArrayList<statusinfo> selecteditems) {
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mref = database.getReference();
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
-            mref.child("Customer").child("Orders").push().setValue(c);
+            mref.child("Userselecteditemstobemade").push().setValue(c);
         }
 
+
     }
+
 
 }

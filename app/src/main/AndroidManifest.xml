@@ -84,7 +84,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".gitCheck" />
         <activity android:name=".HostProfileDetails" />
-        <activity android:name=".HostProfileEdit"></activity>
+        <activity android:name=".HostProfileEdit" />
     </application>
 
 </manifest>

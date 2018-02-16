@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hario.mycantnn_app.Modal.HostActivityMain;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -191,7 +192,7 @@ public class Host_login extends AppCompatActivity {
                                         Toast.makeText(Host_login.this, "Authification failed Check Email And PassWord", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(Host_login.this, HostProfileEdit.class);
+                                    Intent intent = new Intent(Host_login.this, HostActivityMain.class);
                                     startActivity(intent);
                                     finish();
                                 }

@@ -11,14 +11,15 @@ public class UploadUserData {
     private String Image;
     private String Uuid;
     private String Canteen;
+    private String UserName;
 
-    public UploadUserData(String name, String email, String contact, String image) {
+    public UploadUserData(String name, String email, String contact, String image, String User) {
         Name = name;
         Email = email;
         Contact = contact;
         Image = image;
+        UserName = User;
     }
-
 
     public UploadUserData(String name, String email, String contact, String image, String uuid, String canteen) {
         Name = name;
@@ -29,7 +30,13 @@ public class UploadUserData {
         Canteen = canteen;
     }
 
+    public String getUserName() {
+        return UserName;
+    }
 
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
 
     public String getName() {
         return Name;

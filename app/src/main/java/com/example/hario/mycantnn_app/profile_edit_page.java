@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.hario.mycantnn_app.Modal.UploadUserData;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -39,14 +40,16 @@ public class profile_edit_page extends AppCompatActivity {
     private Uri imageUrl;
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
+    private FirebaseAuth auth;
+    private EditText username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit_page);
 
-        storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference().child("ClientUser");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("ClientUser");
 
 
         name = findViewById(R.id.ProfileEdittext);
@@ -54,7 +57,8 @@ public class profile_edit_page extends AppCompatActivity {
         contact = findViewById(R.id.ProfileEdittext2);
         save = findViewById(R.id.profile_edit_button);
         img = findViewById(R.id.ProfileimageView);
-
+        auth = FirebaseAuth.getInstance();
+        username = findViewById(R.id.profile_textView);
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +99,7 @@ public class profile_edit_page extends AppCompatActivity {
         final String Name = name.getText().toString().trim();
         final String Email = email.getText().toString();
         final String Contact = contact.getText().toString();
+        final String UserName = username.getText().toString().trim();
 
 /*
         String TotalCost = itemTotalPrice.getText().toString();
@@ -124,13 +129,13 @@ public class profile_edit_page extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Item Uploaded Successfully To Your Category ", Toast.LENGTH_LONG).show();
 
                             @SuppressWarnings("VisibleForTests")
-                            UploadUserData imageUploadInfo = new UploadUserData(Name, Email, Contact, taskSnapshot.getDownloadUrl().toString());
+                            UploadUserData imageUploadInfo = new UploadUserData(Name, Email, Contact, taskSnapshot.getDownloadUrl().toString(), UserName);
 
                             // Getting image upload ID.
-                            String ImageUploadId = databaseReference.push().getKey();
+                            // String ImageUploadId = databaseReference.push().getKey();
 
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child("User").child(ImageUploadId).setValue(imageUploadInfo);
+                            databaseReference.child("UserProfile").child(auth.getCurrentUser().getUid()).setValue(imageUploadInfo);
 
 
                             startActivity(new Intent(profile_edit_page.this, profile.class));
@@ -161,7 +166,7 @@ public class profile_edit_page extends AppCompatActivity {
                     });
         } else {
 
-            Toast.makeText(profile_edit_page.this, "Please Select All Fields Again From Selecting Category", Toast.LENGTH_LONG).show();
+            Toast.makeText(profile_edit_page.this, "Please Fill All Details", Toast.LENGTH_LONG).show();
 
         }
 

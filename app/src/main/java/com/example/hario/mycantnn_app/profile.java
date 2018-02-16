@@ -127,15 +127,15 @@ public class profile extends AppCompatActivity {
         progressBar = new ProgressDialog(this);
         img = findViewById(R.id.imageView2);
 
-        currentuserDatabase = FirebaseDatabase.getInstance().getReference().child("HostUser").child("User");
+        currentuserDatabase = FirebaseDatabase.getInstance().getReference().child("ClientUser").child("UserProfile");
         currentuserDatabase.keepSynced(true);
-        if (currentuserDatabase.orderByChild("uuid").equalTo(UiidId) == null) {
+        if (currentuserDatabase.child(mAuth.getCurrentUser().getUid()) == null) {
 
         } else {
             final DatabaseReference myDatabase = currentuserDatabase.child(UiidId);
 
 
-            progressBar.setMessage("Uploding...");
+            progressBar.setMessage("Wait...");
             // Showing progressDialog.
             progressBar.show();
             myDatabase.addValueEventListener(new ValueEventListener() {
@@ -143,7 +143,7 @@ public class profile extends AppCompatActivity {
 
 
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String CANTTEN = (String) dataSnapshot.child("canteen").getValue();
+                    String CANTTEN = (String) dataSnapshot.child("user").getValue();
                     String EMAIL = (String) dataSnapshot.child("email").getValue();
                     String CONTACT = (String) dataSnapshot.child("contact").getValue();
                     String NAME = (String) dataSnapshot.child("name").getValue();

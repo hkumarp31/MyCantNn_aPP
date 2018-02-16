@@ -13,7 +13,7 @@
 
         <ImageView
             android:id="@+id/ProfileimageView"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -21,10 +21,10 @@
 
             android:src="@drawable/common_google_signin_btn_icon_dark_normal_background" />
 
-        <TextView
+        <EditText
             android:id="@+id/profile_textView"
-            android:layout_width="250dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/ProfileimageView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
@@ -159,7 +159,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:hint="Email Id" />
+                        android:hint="Email Id"
+                        android:inputType="textEmailAddress" />
 
 
                 </LinearLayout>
@@ -208,7 +209,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:hint="Contact No" />
+                        android:hint="Contact No"
+                        android:inputType="number" />
 
 
                 </LinearLayout>

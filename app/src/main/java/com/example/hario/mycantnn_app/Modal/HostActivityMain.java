@@ -1,6 +1,5 @@
 package com.example.hario.mycantnn_app.Modal;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.hario.mycantnn_app.HostProfileDetails;
 import com.example.hario.mycantnn_app.MainActivity;
 import com.example.hario.mycantnn_app.R;
+import com.example.hario.mycantnn_app.profile_edit_page;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -102,7 +101,14 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.profile) {
-            startActivity(new Intent(this, HostProfileDetails.class));
+
+            DatabaseReference base = FirebaseDatabase.getInstance().getReference().child("HostUser").child("User");
+            if (base.child(firebaseAuth.getCurrentUser().getUid()) == null) {
+                startActivity(new Intent(this, profile_edit_page.class));
+
+            } else
+                startActivity(new Intent(this, HostProfileDetails.class));
+
             return true;
         }
         if (id == R.id.AddItemButton_main_menu) {
