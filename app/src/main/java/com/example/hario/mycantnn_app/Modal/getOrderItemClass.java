@@ -5,18 +5,31 @@ package com.example.hario.mycantnn_app.Modal;
  */
 
 public class getOrderItemClass {
+    private String Image;
     private String Data;
     private int Count;
-    private int Cost;
+    private int price;
     private int Total;
     private String OrderID;
 
-    public getOrderItemClass(String data, int count, int cost, int total, String orderID) {
-        Data = data;
-        Count = count;
-        Cost = cost;
-        Total = total;
-        OrderID = orderID;
+    public getOrderItemClass( int count,String data,String id, String image,int price, int totalCost) {
+        this.Count = count;
+        this.Data = data;
+        this.OrderID = id;
+        this.Image=image;
+        this.price = price;
+        this.Total = totalCost;
+
+
+    }
+    public getOrderItemClass(){}
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 
     public String getData() {
@@ -36,11 +49,11 @@ public class getOrderItemClass {
     }
 
     public int getCost() {
-        return Cost;
+        return price;
     }
 
     public void setCost(int cost) {
-        Cost = cost;
+        price = cost;
     }
 
     public int getTotal() {

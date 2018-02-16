@@ -58,9 +58,14 @@
             android:name=".BottomnaviActivity"
             android:label="@string/title_activity_bottomnavi"
             android:screenOrientation="portrait" />
-        <activity android:name=".profile_edit_page" />
+        <activity android:name=".profile_edit_page"
+            android:label="Edit Your Details"/>
         <activity android:name=".Check.Card.OrderActivity" />
-        <activity android:name=".Check.Card.finalstatus" />
+
+        <activity android:name=".Check.Card.finalstatus"
+            android:label="Your Order Status"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".Check.Card.payment" />
         <activity
             android:name=".Modal.AddItemActivity"

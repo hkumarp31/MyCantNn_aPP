@@ -38,6 +38,9 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
         //holder.itemImageCart.setImageResource(arrayList.get(position).getImage());
         holder.itemNameCart.setText(arrayList.get(position).getName());
         holder.itemTotalCart.setText("" + arrayList.get(position).getTotal());
+        holder.itemPriceCart.setText("" + arrayList.get(position).getPrice());
+        holder.itemCountCart.setText("" + arrayList.get(position).getCount());
+
     }
 
     @Override
@@ -47,14 +50,16 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView itemImageCart;
-        TextView itemNameCart, itemTotalCart;
+        TextView itemNameCart, itemTotalCart,itemPriceCart,itemCountCart;
 
         public ViewHolder(View itemView) {
             super(itemView);
             itemImageCart = itemView.findViewById(R.id.ItemImageCartID);
             itemNameCart = itemView.findViewById(R.id.ItemNameCartID);
             itemTotalCart = itemView.findViewById(R.id.ItemTotalPriceCartID);
+            itemPriceCart= itemView.findViewById(R.id.ItemPriceCartID);
+            itemCountCart= itemView.findViewById(R.id.ItemCountCartID);
 
-        }
+          }
     }
 }

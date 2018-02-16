@@ -35,7 +35,6 @@ public class CartActivity extends AppCompatActivity {
     private String itemName;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +53,11 @@ public class CartActivity extends AppCompatActivity {
         int itemTotalPrice = 0;
         for (int i = 0; i < client.mailAddedItems.size(); i++) {
             if (client.mailAddedItems.get(i).getCount() > 0) {
-                selectedItem.add(new CartInfo(client.mailAddedItems.get(i).getImage(), client.mailAddedItems.get(i).getData(), client.mailAddedItems.get(i).getTotalCost()));
+                selectedItem.add(new CartInfo(client.mailAddedItems.get(i).getImage(),
+                        client.mailAddedItems.get(i).getData(),
+                        client.mailAddedItems.get(i).getCount(),
+                        client.mailAddedItems.get(i).getCost(),
+                        client.mailAddedItems.get(i).getTotalCost()));
             }
             itemTotalPrice += client.mailAddedItems.get(i).getTotalCost();
         }

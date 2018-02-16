@@ -5,11 +5,31 @@ public class CartInfo {
     private String image;
     private String name;
     private int Total;
+    private int Count;
+    private int Price;
 
-    public CartInfo(String image, String name, int total) {
+    public CartInfo(String image, String name, int count, int price, int total) {
         this.image = image;
         this.name = name;
         this.Total = total;
+        this.Count = count;
+        this.Price = price;
+    }
+
+    public int getCount() {
+        return Count;
+    }
+
+    public void setCount(int count) {
+        Count = count;
+    }
+
+    public int getPrice() {
+        return Price;
+    }
+
+    public void setPrice(int price) {
+        Price = price;
     }
 
     public String getImage() {

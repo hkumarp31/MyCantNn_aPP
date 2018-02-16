@@ -38,11 +38,11 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         Glide.with(holder.itemimg.getContext()).load(arrayList.get(position).getImage()).into(holder.itemimg);
-        holder.itemname.setText(arrayList.get(position).getName());
-        holder.itemid.setText(arrayList.get(position).getId());
-        holder.itemid.setText(arrayList.get(position).getPrice());
-        holder.itemid.setText(arrayList.get(position).getQuantity());
-
+        holder.itemname.setText(arrayList.get(position).getData());
+        holder.itemid.setText("Order Id : "+arrayList.get(position).getId());
+        holder.itemprice.setText("Tota Cost Rs. "+arrayList.get(position).getTotalCost());
+        holder.itemquantity.setText("Quantity : "+arrayList.get(position).getCount());
+        holder.itemCount.setText(""+arrayList.get(position).getPrice());
 
     }
 
@@ -53,10 +53,7 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView itemimg;
-        TextView itemname;
-        TextView itemid;
-        TextView itemprice;
-        TextView itemquantity;
+        TextView itemname,itemid,itemprice, itemquantity,itemCount;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -65,6 +62,7 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
             itemid = itemView.findViewById(R.id.mtxt);
             itemprice = itemView.findViewById(R.id.btxtr);
             itemquantity = itemView.findViewById(R.id.btxtl);
+            itemCount = itemView.findViewById(R.id.Count);
 
         }
     }

@@ -5,35 +5,44 @@ package com.example.hario.mycantnn_app.Check.Card;
  */
 
 public class statusinfo {
-    private String image;
-    private String name;
+    private String Image;
+    private String Data;
     private String id;
-    private String price;
-    private String quantity;
+    private int TotalCost;
+    private int Count;
+    private int Price;
 
-    public statusinfo(String image, String name, String id, String price, String quantity) {
-
-        this.image = image;
-        this.name = name;
+    public statusinfo(String image, String data, String id, int totalcost, int count,int cost) {
+        this.Image = image;
+        this.Data = data;
         this.id = id;
-        this.price = price;
-        this.quantity = quantity;
+       this.TotalCost = totalcost;
+       this.Count = count;
+       this.Price= cost;
+    }
+
+    public int getPrice() {
+        return Price;
+    }
+
+    public void setPrice(int price) {
+        Price = price;
     }
 
     public String getImage() {
-        return image;
+        return Image;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        Image = image;
     }
 
-    public String getName() {
-        return name;
+    public String getData() {
+        return Data;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setData(String data) {
+        Data = data;
     }
 
     public String getId() {
@@ -44,19 +53,19 @@ public class statusinfo {
         this.id = id;
     }
 
-    public String getPrice() {
-        return price;
+    public int getTotalCost() {
+        return TotalCost;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setTotalCost(int totalCost) {
+        TotalCost = totalCost;
     }
 
-    public String getQuantity() {
-        return quantity;
+    public int getCount() {
+        return Count;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    public void setCount(int count) {
+        Count = count;
     }
 }
