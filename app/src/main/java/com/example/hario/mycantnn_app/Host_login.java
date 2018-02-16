@@ -137,7 +137,6 @@ public class Host_login extends AppCompatActivity {
                     // show password
                     PassWord.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
-
                 } else if (!isChecked) {
                     PassWord.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 }
@@ -146,8 +145,7 @@ public class Host_login extends AppCompatActivity {
 
         });
 
-
-        signup.setOnClickListener(new View.OnClickListener() {
+         signup.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // Switching to Register screen

@@ -14,28 +14,23 @@
         android:title="Settings"
         app:showAsAction="never" />
 
-
     <item
         android:id="@+id/profile"
         android:orderInCategory="100"
         android:title="Profile"
-        app:showAsAction="never"></item>
-
+        app:showAsAction="never">
+    </item>
     <item
-        android:id="@+id/cart"
-        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/ProductOrderNotify"
+        android:icon="@mipmap/ic_assignment_returned_white_24dp"
         android:orderInCategory="102"
-
         android:title="Notification"
         app:showAsAction="always">
-
     </item>
-
     <item
         android:id="@+id/logout"
         android:orderInCategory="103"
         android:title="Logout"
-        app:showAsAction="never"></item>
-
-
+        app:showAsAction="never">
+    </item>
 </menu>
