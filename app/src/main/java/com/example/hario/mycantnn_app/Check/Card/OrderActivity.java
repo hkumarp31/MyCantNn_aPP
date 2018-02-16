@@ -15,14 +15,13 @@ public class OrderActivity extends AppCompatActivity {
 
     private EditText ab;
     private String bc;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity__order);
 
         //android.support.v7.widget.Toolbar tb = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar3);
-        //setSupportActionBar(tb);
+        // setSupportActionBar(tb);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -63,17 +62,12 @@ public class OrderActivity extends AppCompatActivity {
 
     }
 
-    public void orderactivity(View view) {
+    public void tofinalstatus(View view) {
+        Intent j = new Intent(this, finalstatus.class);
 
-        startActivity(new Intent(this, finalstatus.class));
+        startActivity(j);
 
 
     }
 
-
-    public void Butoonfh(View view) {
-
-
-        startActivity(new Intent(this, finalstatus.class));
-    }
 }

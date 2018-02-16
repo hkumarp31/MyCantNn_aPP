@@ -11,18 +11,15 @@ import com.example.hario.mycantnn_app.Check.CheckOutActivity;
 import com.example.hario.mycantnn_app.R;
 
 public class payment extends AppCompatActivity {
-
     RadioGroup rg;
 
+    public payment() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // Toolbar tb = (Toolbar) findViewById(R.id.toolbar2);
-        //  setSupportActionBar(tb);
-
 
         rg = findViewById(R.id.radioGroup);
 
@@ -50,4 +47,6 @@ public class payment extends AppCompatActivity {
 
 
     }
+
+
 }

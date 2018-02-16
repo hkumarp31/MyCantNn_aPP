@@ -1,39 +1,23 @@
 package com.example.hario.mycantnn_app.Check.Card;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 /**
  * Created by hario on 1/30/2018.
  */
 
-public class statusinfo implements Parcelable {
-
-    public static final Creator<statusinfo> CREATOR = new Creator<statusinfo>() {
-        @Override
-        public statusinfo createFromParcel(Parcel in) {
-            return new statusinfo(in);
-        }
-
-        @Override
-        public statusinfo[] newArray(int size) {
-            return new statusinfo[size];
-        }
-    };
+public class statusinfo {
     private String image;
     private String name;
     private String id;
+    private String price;
+    private String quantity;
 
-    public statusinfo(String image, String name, String id) {
+    public statusinfo(String image, String name, String id, String price, String quantity) {
+
         this.image = image;
         this.name = name;
         this.id = id;
-    }
-
-    protected statusinfo(Parcel in) {
-        image = in.readString();
-        name = in.readString();
-        id = in.readString();
+        this.price = price;
+        this.quantity = quantity;
     }
 
     public String getImage() {
@@ -60,15 +44,19 @@ public class statusinfo implements Parcelable {
         this.id = id;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getPrice() {
+        return price;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(image);
-        parcel.writeString(name);
-        parcel.writeString(id);
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 }

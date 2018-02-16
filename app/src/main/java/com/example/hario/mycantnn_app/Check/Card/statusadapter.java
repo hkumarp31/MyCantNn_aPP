@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +18,6 @@ import java.util.ArrayList;
  */
 
 public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder> {
-
     private ArrayList<statusinfo> arrayList;
     private Context context;
 
@@ -31,17 +29,20 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
 
     @Override
     public statusadapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.statuslayout, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.status_layout, parent, false);
         final ViewHolder rootview = new ViewHolder(view);
         return rootview;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
         Glide.with(holder.itemimg.getContext()).load(arrayList.get(position).getImage()).into(holder.itemimg);
-        // holder.itemimg.setImageResource(arrayList.get(position).getImage());
         holder.itemname.setText(arrayList.get(position).getName());
         holder.itemid.setText(arrayList.get(position).getId());
+        holder.itemid.setText(arrayList.get(position).getPrice());
+        holder.itemid.setText(arrayList.get(position).getQuantity());
+
 
     }
 
@@ -53,14 +54,17 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView itemimg;
         TextView itemname;
-        EditText itemid;
+        TextView itemid;
+        TextView itemprice;
+        TextView itemquantity;
 
         public ViewHolder(View itemView) {
             super(itemView);
             itemimg = itemView.findViewById(R.id.myimg);
-            itemname = itemView.findViewById(R.id.mytxt);
-            itemid = itemView.findViewById(R.id.edtxt);
-
+            itemname = itemView.findViewById(R.id.utxt);
+            itemid = itemView.findViewById(R.id.mtxt);
+            itemprice = itemView.findViewById(R.id.btxtr);
+            itemquantity = itemView.findViewById(R.id.btxtl);
 
         }
     }

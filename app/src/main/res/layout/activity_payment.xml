@@ -7,11 +7,11 @@
     tools:context="com.example.hario.mycantnn_app.Check.Card.payment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/paymenttextView"
         android:layout_width="188dp"
         android:layout_height="18dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="32dp"
         android:text="CHOOSE PAYMENT METHOD"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/paymenttextView"
         tools:ignore="MissingConstraints">
 
         <RadioButton
@@ -87,7 +87,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/paymentbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -96,17 +96,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="384dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
 
 
 </android.support.constraint.ConstraintLayout>

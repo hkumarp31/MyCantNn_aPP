@@ -10,29 +10,30 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.hario.mycantnn_app.Check.Card.payment;
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
 import com.example.hario.mycantnn_app.profile;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 
 public class CartActivity extends AppCompatActivity {
 
+    public static ArrayList<CartInfo> selectedItem;
     private RecyclerView recyclerView;
     private CartRecyclerAdapter cartRecyclerAdapter;
     private CartInfo cartInfo;
     private ArrayList<RecyclerInfo> arrayList;
-    private ArrayList<CartInfo> selectedItem;
     private LinearLayoutManager linearLayoutManager;
     private TextView textView, PriceIs, ReadyGoCart, YourOrderText, YourTotalPriceArray;
     private Button SubmitOrdr;
     private String itemName;
+
 
 
     @Override
@@ -101,7 +102,6 @@ public class CartActivity extends AppCompatActivity {
             }
         });
     }
-
     /*   private ArrayList<CartInfo> Cartdetails(){
            ArrayList<CartInfo> arrayList = new ArrayList<>();
 
@@ -112,18 +112,12 @@ public class CartActivity extends AppCompatActivity {
 
        }
        */
-    public void addtofirebase(ArrayList<CartInfo> selecteditems) {
+    public void MYbutton(View view) {
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference mref = database.getReference();
+        Intent k = new Intent(this, payment.class);
 
-        for (int i = 0; i < selecteditems.size(); i++) {
-            CartInfo c = selecteditems.get(i);
-            String s = i + "";
-            mref.child("hemantobjects").child(s).setValue(c);
-        }
-
+        startActivity(k);
 
     }
 

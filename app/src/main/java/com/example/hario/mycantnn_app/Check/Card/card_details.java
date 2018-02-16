@@ -11,6 +11,7 @@ import com.example.hario.mycantnn_app.R;
 
 public class card_details extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,6 @@ public class card_details extends AppCompatActivity {
     private boolean isEmpty(EditText etText) {
         return etText.getText().toString().trim().length() <= 0;
     }
-
 }
 
 

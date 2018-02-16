@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
@@ -11,20 +11,20 @@
         android:id="@+id/YourCartIsReadyToGoID"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:text="Your Cart Is Ready To Go :)"
-        android:textSize="15dp"
-        android:textAlignment="center"
         android:gravity="center_vertical"
+        android:text="Your Cart Is Ready To Go :)"
+        android:textAlignment="center"
+        android:textSize="15dp"
         />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/CartRecyclerLayoutID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/LinearLayoutTotalPrice"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/YourCartIsReadyToGoID"
-        android:layout_above="@id/LinearLayoutTotalPrice"
-        android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="5dp"
         tools:ignore="RtlCompat">
 
@@ -34,9 +34,9 @@
         android:id="@+id/LinearLayoutTotalPrice"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
         android:layout_above="@id/SubmitOrder"
-        android:layout_marginHorizontal="10dp">
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/YourOrderPriceID"
@@ -44,8 +44,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:textSize="15dp"
-            android:text="Your Order Price is :" />
+            android:text="Your Order Price is :"
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/TotalOrderPriceID"
             android:layout_width="0dp"
@@ -63,11 +63,12 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_above="@+id/navigation"
+        android:layout_marginHorizontal="10dp"
         android:gravity="center"
+        android:onClick="MYbutton"
         android:text="Submit My Order"
         android:textAlignment="center"
         android:textStyle="bold"
-        android:layout_marginHorizontal="10dp"
         />
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
