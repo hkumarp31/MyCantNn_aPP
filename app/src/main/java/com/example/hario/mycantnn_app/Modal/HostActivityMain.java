@@ -38,8 +38,6 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
     private RecyclerAdapter recyclerAdapter;
     private ArrayList<RecyclerItemInfo> arrayList = new ArrayList<>();
     private DatabaseReference databaseReference;
-    private Context context;
-    private Button ClickHere;
     private FirebaseAuth firebaseAuth;
 
 
@@ -54,10 +52,10 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        ClickHere = findViewById(R.id.Click);
-firebaseAuth = FirebaseAuth.getInstance();
 
+        firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+
         recyclerView = findViewById(R.id.recycler);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -109,6 +107,9 @@ firebaseAuth = FirebaseAuth.getInstance();
         }
         if (id == R.id.AddItemButton_main_menu) {
             startActivity(new Intent(this, AddItemActivity.class));
+        }
+        if(id==R.id.ProductOrderNotify){
+            startActivity(new Intent(this, GetOrderFromCustomerActivity.class));
         }
 
         if(id==R.id.logout)
@@ -164,8 +165,4 @@ firebaseAuth = FirebaseAuth.getInstance();
 
     }
 
-    public void Clicking(View view) {
-        startActivity(new Intent(this, GetOrderFromCustomerActivity.class));
-
-    }
 }

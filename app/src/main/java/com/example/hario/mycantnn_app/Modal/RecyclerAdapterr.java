@@ -14,7 +14,6 @@ import com.example.hario.mycantnn_app.R;
 
 import java.util.ArrayList;
 
-
 public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.ViewHolder> {
 
     ArrayList<RecyclerInfo> arrayList;
@@ -24,7 +23,6 @@ public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.View
         this.arrayList = arrayList;
         tv = textView;
     }
-
 
     @Override
     public RecyclerAdapterr.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

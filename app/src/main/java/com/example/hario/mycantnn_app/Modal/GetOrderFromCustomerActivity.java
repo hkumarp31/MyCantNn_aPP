@@ -3,6 +3,7 @@ package com.example.hario.mycantnn_app.Modal;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * Created by Hemant Kumar on 2/8/2018.
  */
 
-public class GetOrderFromCustomerActivity extends Activity {
+public class GetOrderFromCustomerActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<getOrderItemClass> arrayList;

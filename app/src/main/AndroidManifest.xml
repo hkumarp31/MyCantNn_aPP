@@ -64,15 +64,18 @@
         <activity android:name=".Check.Card.payment" />
         <activity
             android:name=".Modal.AddItemActivity"
+            android:label="Add Items To Category"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.ClientNotificationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.HostActivityMain"
+            android:label="My Items"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.GetOrderFromCustomerActivity"
+            android:label="Order Received"
             android:screenOrientation="portrait" />
         <activity android:name=".gitCheck" />
         <activity android:name=".HostProfileDetails" />
