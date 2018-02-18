@@ -83,13 +83,16 @@ public class CartActivity extends AppCompatActivity {
 
                         Intent intent2 = new Intent(CartActivity.this, client.class);
                         startActivity(intent2);
-
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_OrderStatus12:
 
                         Intent intent1 = new Intent(CartActivity.this, OrderStatus.class);
                         startActivity(intent1);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_cart:
@@ -99,6 +102,14 @@ public class CartActivity extends AppCompatActivity {
                     case R.id.navigation_profile:
                         Intent intent4 = new Intent(CartActivity.this, profile.class);
                         startActivity(intent4);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        break;
+
+                    case R.id.ClientNotificationBottomNavigation:
+                        startActivity(new Intent(CartActivity.this, ClientNotificationActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
                 }
                 return false;

@@ -32,6 +32,8 @@ public class OrderStatus extends AppCompatActivity {
 
                         Intent intent = new Intent(OrderStatus.this, client.class);
                         startActivity(intent);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_OrderStatus12:
@@ -42,14 +44,22 @@ public class OrderStatus extends AppCompatActivity {
 
                         Intent intent1 = new Intent(OrderStatus.this, CartActivity.class);
                         startActivity(intent1);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_profile:
 
                         Intent intent2 = new Intent(OrderStatus.this, profile.class);
+                        finish();
                         startActivity(intent2);
+                        overridePendingTransition(0, 0);
+                        break;
 
-
+                    case R.id.ClientNotificationBottomNavigation:
+                        startActivity(new Intent(OrderStatus.this, ClientNotificationActivity.class));
+                        finish();
+                        overridePendingTransition(0, 0);
                         break;
                 }
                 return false;

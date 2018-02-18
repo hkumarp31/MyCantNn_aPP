@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toolbar;
 
 import com.example.hario.mycantnn_app.Modal.CartActivity;
+import com.example.hario.mycantnn_app.Modal.ClientNotificationActivity;
 import com.example.hario.mycantnn_app.Modal.Fivefragment;
 import com.example.hario.mycantnn_app.Modal.Fourfragment;
 import com.example.hario.mycantnn_app.Modal.OrderStatus;
@@ -64,18 +65,31 @@ public class client extends AppCompatActivity {
 
                         Intent intent1 = new Intent(client.this, OrderStatus.class);
                         startActivity(intent1);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_cart:
 
                         Intent intent2 = new Intent(client.this, CartActivity.class);
                         startActivity(intent2);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_profile:
                         Intent intent4 = new Intent(client.this, profile.class);
                         startActivity(intent4);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
+
+                    case R.id.ClientNotificationBottomNavigation:
+                        startActivity(new Intent(client.this, ClientNotificationActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
+                        break;
+
                 }
                 return false;
             }

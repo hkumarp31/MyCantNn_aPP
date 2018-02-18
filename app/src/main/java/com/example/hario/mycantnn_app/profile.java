@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.Modal.CartActivity;
+import com.example.hario.mycantnn_app.Modal.ClientNotificationActivity;
 import com.example.hario.mycantnn_app.Modal.OrderStatus;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -65,21 +66,32 @@ public class profile extends AppCompatActivity {
                     case R.id.navigation_shop:
                         Intent intent = new Intent(profile.this, client.class);
                         startActivity(intent);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_OrderStatus12:
                         Intent intent1 = new Intent(profile.this, OrderStatus.class);
-
                         startActivity(intent1);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_cart:
 
                         Intent intent2 = new Intent(profile.this, CartActivity.class);
                         startActivity(intent2);
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.navigation_profile:
+                        break;
+
+                    case R.id.ClientNotificationBottomNavigation:
+                        startActivity(new Intent(profile.this, ClientNotificationActivity.class));
+                        finish();
+                        overridePendingTransition(0, 0);
                         break;
                 }
                 return false;
