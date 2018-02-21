@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+    public static int flag;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     @Override
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        flag = 0;
         mAuth = FirebaseAuth.getInstance();
 
         user = mAuth.getCurrentUser();
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
         //Intent host = new Intent(this,Host_login.class);
         // startActivity(host);
 
-
+        flag = 0;
         if (user == null) {
+
             startActivity(new Intent(MainActivity.this, Host_login.class));
 
         } else
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void main2(View view) {
+        flag = 1;
         if (user == null)
             startActivity(new Intent(MainActivity.this, Host_login.class));
 

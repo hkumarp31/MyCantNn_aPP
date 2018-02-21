@@ -34,6 +34,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import static com.example.hario.mycantnn_app.MainActivity.flag;
 
 public class Host_login extends AppCompatActivity {
     private static final String TAG = "GoogleActivity";
@@ -52,6 +56,7 @@ public class Host_login extends AppCompatActivity {
     private TextView mStatusTextView;
     private TextView mDetailTextView;
     private ProgressDialog mProgressDialog;
+    private DatabaseReference databaseReference;
     // private CallbackManager callbackManager;
 
     private RelativeLayout HostProfile;
@@ -62,8 +67,6 @@ public class Host_login extends AppCompatActivity {
         //    FacebookSdk.sdkInitialize(getApplicationContext());
         //  AppEventsLogger.activateApp(this);
         // This MUST be placed after the above two lines.
-
-
         setContentView(R.layout.host_login);
 
         // mAuth = FirebaseAuth.getInstance();
@@ -77,8 +80,8 @@ public class Host_login extends AppCompatActivity {
         PassWord = findViewById(R.id.HostPwd);
         signup = findViewById(R.id.HostSignup);
         forgetPw = findViewById(R.id.HostForget);
-
-
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 /*        callbackManager = CallbackManager.Factory.create();
 
         LoginManager.getInstance().registerCallback(callbackManager,
@@ -103,6 +106,34 @@ public class Host_login extends AppCompatActivity {
                     }
                 });*/
 
+
+        if (mAuth.getCurrentUser() != null) {
+
+            FirebaseUser name = mAuth.getCurrentUser();
+            if (flag == 0) {
+                if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
+                    startActivity(new Intent(Host_login.this, HostProfileEdit.class));
+
+                else {
+                    startActivity(new Intent(Host_login.this, HostActivityMain.class));
+
+                }
+                finish();
+
+
+            } else {
+                if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
+                    startActivity(new Intent(Host_login.this, profile_edit_page.class));
+
+                else {
+                    startActivity(new Intent(Host_login.this, client.class));
+
+                }
+                finish();
+            }
+        }
+
+
         // [START config_signin]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -114,7 +145,7 @@ public class Host_login extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         // [START initialize_auth]
-        mAuth = FirebaseAuth.getInstance();
+
         // [END initialize_auth]
 
 
@@ -192,9 +223,29 @@ public class Host_login extends AppCompatActivity {
                                         Toast.makeText(Host_login.this, "Authification failed Check Email And PassWord", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(Host_login.this, HostActivityMain.class);
-                                    startActivity(intent);
-                                    finish();
+                                    FirebaseUser name = mAuth.getCurrentUser();
+                                    if (flag == 0) {
+                                        if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
+                                            startActivity(new Intent(Host_login.this, HostProfileEdit.class));
+
+                                        else {
+                                            startActivity(new Intent(Host_login.this, HostActivityMain.class));
+
+                                        }
+                                        finish();
+
+
+                                    } else {
+                                        if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
+                                            startActivity(new Intent(Host_login.this, profile_edit_page.class));
+
+                                        else {
+                                            startActivity(new Intent(Host_login.this, client.class));
+
+                                        }
+                                        finish();
+                                    }
+
                                 }
                             }
                         });
@@ -346,9 +397,32 @@ public class Host_login extends AppCompatActivity {
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.hide();
+            FirebaseUser name = mAuth.getCurrentUser();
+            if (flag == 0) {
+                if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
+                    startActivity(new Intent(Host_login.this, HostProfileEdit.class));
 
-            startActivity(new Intent(Host_login.this, HostProfileEdit.class));
-            finish();
+                else {
+                    startActivity(new Intent(Host_login.this, HostActivityMain.class));
+
+                }
+                finish();
+
+
+            } else {
+                if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
+                    startActivity(new Intent(Host_login.this, profile_edit_page.class));
+
+                else {
+                    startActivity(new Intent(Host_login.this, client.class));
+
+                }
+                finish();
+            }
+
+
+
+
         }
     }
 
