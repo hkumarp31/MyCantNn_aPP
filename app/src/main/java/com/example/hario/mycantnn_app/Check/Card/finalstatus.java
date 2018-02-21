@@ -110,11 +110,11 @@ public class finalstatus extends AppCompatActivity {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference mref = database.getReference();
+        DatabaseReference mref = database.getReference().child("Customer");
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
-            mref.child("Userselecteditemstobemade").push().setValue(c);
+            mref.child("Orders").push().setValue(c);
         }
 
 

@@ -101,8 +101,11 @@ public class AddItemActivity extends AppCompatActivity {
         AddItemToCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
+
                 UploadImageFileToFirebaseStorage(Choice);
+               // Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
+
+
             }
         });
 
@@ -140,14 +143,14 @@ public class AddItemActivity extends AppCompatActivity {
 
         // Checking whether FilePathUri Is empty or not.
         final String Data = itemName.getText().toString().trim();
-        String Cost = itemPrice.getText().toString();
-        final int cost = Integer.parseInt(Cost);
+        final String Cost = itemPrice.getText().toString();
+
         String TotalCost = itemTotalPrice.getText().toString();
         final int totalcost = Integer.parseInt(TotalCost);
         String Count = itemCount.getText().toString();
         final int count = Integer.parseInt(Count);
 
-        if (ImageUrl != null && !TextUtils.isEmpty(Cost) && !TextUtils.isEmpty(Data)) {
+        if (ImageUrl != null && !TextUtils.isEmpty(Cost) && !TextUtils.isEmpty(Data) && !TextUtils.isEmpty(Choice)) {
 
             // Setting progressDialog Title.
             // progressDialog.setTitle("Image is Uploading...");
@@ -167,7 +170,7 @@ public class AddItemActivity extends AppCompatActivity {
                             //progressDialog.dismiss();
 
                             Toast.makeText(getApplicationContext(), "Item Uploaded Successfully To Your Category ", Toast.LENGTH_LONG).show();
-
+                            final int cost = Integer.parseInt(Cost);
                             @SuppressWarnings("VisibleForTests")
                             ImageUploadInfo imageUploadInfo = new ImageUploadInfo(Data, count, cost, totalcost, taskSnapshot.getDownloadUrl().toString());
 
@@ -176,6 +179,7 @@ public class AddItemActivity extends AppCompatActivity {
 
                             // Adding image upload id s child element into databaseReference.
                             databaseReference.child("Customer").child(Choice).child(ImageUploadId).setValue(imageUploadInfo);
+                            Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
 
                             startActivity(new Intent(AddItemActivity.this, HostActivityMain.class));
                         }
@@ -189,7 +193,7 @@ public class AddItemActivity extends AppCompatActivity {
                             //  progressDialog.dismiss();
 
                             // Showing exception erro message.
-                            Toast.makeText(AddItemActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddItemActivity.this,"Something is going wrong", Toast.LENGTH_LONG).show();
                         }
                     })
 
