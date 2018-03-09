@@ -55,7 +55,7 @@
 
             android:textAlignment="viewEnd"
             android:textSize="14sp"
-            tools:ignore="RtlCompat" />
+            android:gravity="end" />
     </LinearLayout>
 
     <LinearLayout

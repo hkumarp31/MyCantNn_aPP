@@ -16,9 +16,10 @@ import android.widget.Toolbar;
 
 import com.example.hario.mycantnn_app.Modal.CartActivity;
 import com.example.hario.mycantnn_app.Modal.ClientNotificationActivity;
+import com.example.hario.mycantnn_app.Modal.CustomerMyOrderActivity;
 import com.example.hario.mycantnn_app.Modal.Fivefragment;
 import com.example.hario.mycantnn_app.Modal.Fourfragment;
-import com.example.hario.mycantnn_app.Modal.OrderStatus;
+
 import com.example.hario.mycantnn_app.Modal.RecyclerInfo;
 import com.example.hario.mycantnn_app.Modal.Sixfragment;
 import com.example.hario.mycantnn_app.Modal.Threefragment;
@@ -63,7 +64,7 @@ public class client extends AppCompatActivity {
 
                     case R.id.navigation_OrderStatus12:
 
-                        Intent intent1 = new Intent(client.this, OrderStatus.class);
+                        Intent intent1 = new Intent(client.this, CustomerMyOrderActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(0, 0);
                         finish();

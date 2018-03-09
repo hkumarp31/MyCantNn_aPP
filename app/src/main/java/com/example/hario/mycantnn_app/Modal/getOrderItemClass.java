@@ -12,7 +12,7 @@ public class getOrderItemClass {
     private int Total;
     private String OrderID;
 
-    public getOrderItemClass( int count,String data,String id, String image,int price, int totalCost) {
+    public getOrderItemClass( int count, String data, String id, String image ,int price , int totalCost) {
         this.Count = count;
         this.Data = data;
         this.OrderID = id;
@@ -40,9 +40,7 @@ public class getOrderItemClass {
         Data = data;
     }
 
-    public int getCount() {
-        return Count;
-    }
+    public int getCount() {  return Count;  }
 
     public void setCount(int count) {
         Count = count;

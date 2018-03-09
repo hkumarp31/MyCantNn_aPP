@@ -1,14 +1,21 @@
 package com.example.hario.mycantnn_app.Modal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.hario.mycantnn_app.R;
+import com.example.hario.mycantnn_app.client;
+import com.example.hario.mycantnn_app.profile;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,20 +30,22 @@ import static android.content.ContentValues.TAG;
  * Created by Hemant Kumar on 2/8/2018.
  */
 
-public class GetOrderFromCustomerActivity extends AppCompatActivity {
+public class CustomerMyOrderActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<getOrderItemClass> arrayList=new ArrayList<>();
-    private GetOrderRecyclerAdapter getOrderRecyclerAdapter;
+    private CustomerMyOrderAdapter customerMyOrderAdapter;
     private DatabaseReference databaseReference;
+
+    public CustomerMyOrderActivity(){}
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.getorder);
+        setContentView(R.layout.customer_my_order);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
 
-        recyclerView = findViewById(R.id.getOrderRecyclerView);
+        recyclerView = findViewById(R.id.customer_my_order_recyler);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -54,8 +63,8 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
                     Log.e(TAG, "TotalCost: " + item.getTotal());
                     Log.e(TAG, "ImageURL: " + item.getImage());
                 }
-                getOrderRecyclerAdapter = new GetOrderRecyclerAdapter(arrayList);
-                recyclerView.setAdapter(getOrderRecyclerAdapter);
+                customerMyOrderAdapter = new CustomerMyOrderAdapter(arrayList);
+                recyclerView.setAdapter(customerMyOrderAdapter);
 
             }
 
@@ -64,6 +73,8 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 /*
     private ArrayList<getOrderItemClass> fillProjectDetail2() {

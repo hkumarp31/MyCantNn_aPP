@@ -55,7 +55,7 @@ public class ClientNotificationActivity extends AppCompatActivity {
                         break;
 
                     case R.id.navigation_OrderStatus12:
-                        Intent intent1 = new Intent(ClientNotificationActivity.this, OrderStatus.class);
+                        Intent intent1 = new Intent(ClientNotificationActivity.this, CustomerMyOrderActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(0, 0);
                         finish();

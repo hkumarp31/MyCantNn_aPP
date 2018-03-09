@@ -89,7 +89,7 @@ public class CartActivity extends AppCompatActivity {
 
                     case R.id.navigation_OrderStatus12:
 
-                        Intent intent1 = new Intent(CartActivity.this, OrderStatus.class);
+                        Intent intent1 = new Intent(CartActivity.this, CustomerMyOrderActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(0, 0);
                         finish();

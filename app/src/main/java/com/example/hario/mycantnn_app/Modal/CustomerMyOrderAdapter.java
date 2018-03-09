@@ -13,23 +13,22 @@ import com.example.hario.mycantnn_app.R;
 
 import java.util.ArrayList;
 
-public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecyclerAdapter.ViewHolder> {
+public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrderAdapter.ViewHolder> {
 
     ArrayList<getOrderItemClass> arrayList;
 
-    public GetOrderRecyclerAdapter(ArrayList<getOrderItemClass> arrayList) {
+    public CustomerMyOrderAdapter(ArrayList<getOrderItemClass> arrayList) {
         this.arrayList = arrayList;
     }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.get_customer_order_main_layout, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_order_status, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
 
     }
 
-    @SuppressLint("SetTextI18n")
+    // @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Glide.with(holder.imageView.getContext()).load(arrayList.get(position).getImage()).into(holder.imageView);
@@ -52,13 +51,12 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
 
         public ViewHolder(View itemView) {
             super(itemView);
-            OrderName = itemView.findViewById(R.id.getProductName_TV);
-            OrderQuantity = itemView.findViewById(R.id.getProductQuantity_TV);
-            OrderPrice = itemView.findViewById(R.id.getProductSinglePrice_TV);
-            OrderTotal = itemView.findViewById(R.id.getProductTotalPrice_TV);
-            OrderID = itemView.findViewById(R.id.getProductOrderId_TV);
-            imageView=itemView.findViewById(R.id.CustomerOrderProductimage);
-
+            OrderName = itemView.findViewById(R.id.customer_my_order_Title);
+            OrderQuantity = itemView.findViewById(R.id.customer_my_order_Quantity);
+            OrderPrice = itemView.findViewById(R.id.customer_my_order_SinglePrice);
+            OrderTotal = itemView.findViewById(R.id.customer_my_order_TotalCost);
+            OrderID = itemView.findViewById(R.id.customer_my_order_OrderID);
+            imageView=itemView.findViewById(R.id.customer_my_order_Image);
         }
     }
 }
