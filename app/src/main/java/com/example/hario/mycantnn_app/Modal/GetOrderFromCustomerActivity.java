@@ -49,9 +49,9 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
                     arrayList.add(item);
                     Log.e(TAG, "Count: " + item.getCount());
                     Log.e(TAG, "Title/DAta: " + item.getData());
-                    Log.e(TAG, "Cost/Price: " + item.getCost());
-                    Log.e(TAG, "ID: " + item.getOrderID());
-                    Log.e(TAG, "TotalCost: " + item.getTotal());
+                    Log.e(TAG, "Cost/Price: " + item.getPrice());
+                    Log.e(TAG, "ID: " + item.getId());
+                    Log.e(TAG, "TotalCost: " + item.getTotalCost());
                     Log.e(TAG, "ImageURL: " + item.getImage());
                 }
                 getOrderRecyclerAdapter = new GetOrderRecyclerAdapter(arrayList);

@@ -5,68 +5,71 @@ package com.example.hario.mycantnn_app.Modal;
  */
 
 public class getOrderItemClass {
-    private String Image;
-    private String Data;
-    private int Count;
+    private String image;
+    private String data;
+    private int totalCost;
+    private int count;
     private int price;
-    private int Total;
-    private String OrderID;
+    private String id;
 
-    public getOrderItemClass( int count, String data, String id, String image ,int price , int totalCost) {
-        this.Count = count;
-        this.Data = data;
-        this.OrderID = id;
-        this.Image=image;
-        this.price = price;
-        this.Total = totalCost;
-
-
+    public getOrderItemClass() {
     }
-    public getOrderItemClass(){}
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
     public String getData() {
-        return Data;
+        return data;
     }
 
     public void setData(String data) {
-        Data = data;
+        this.data = data;
     }
 
-    public int getCount() {  return Count;  }
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public int getCount() {
+        return count;
+    }
 
     public void setCount(int count) {
-        Count = count;
+        this.count = count;
     }
 
-    public int getCost() {
+    public int getPrice() {
         return price;
     }
 
-    public void setCost(int cost) {
-        price = cost;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public int getTotal() {
-        return Total;
+    public String getId() {
+        return id;
     }
 
-    public void setTotal(int total) {
-        Total = total;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getOrderID() {
-        return OrderID;
-    }
+    public getOrderItemClass(String image, String data, int totalCost, int count, int price, String id) {
 
-    public void setOrderID(String orderID) {
-        OrderID = orderID;
+        this.image = image;
+        this.data = data;
+        this.totalCost = totalCost;
+        this.count = count;
+        this.price = price;
+        this.id = id;
     }
 }

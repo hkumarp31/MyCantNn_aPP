@@ -34,9 +34,9 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
         Glide.with(holder.imageView.getContext()).load(arrayList.get(position).getImage()).into(holder.imageView);
         holder.OrderName.setText(arrayList.get(position).getData());
         holder.OrderQuantity.setText("" +arrayList.get(position).getCount());
-        holder.OrderPrice.setText(""+arrayList.get(position).getCost());
-        holder.OrderTotal.setText(""+arrayList.get(position).getTotal());
-        holder.OrderID.setText(arrayList.get(position).getOrderID());
+        holder.OrderPrice.setText(""+arrayList.get(position).getPrice());
+        holder.OrderTotal.setText(""+arrayList.get(position).getTotalCost());
+        holder.OrderID.setText(arrayList.get(position).getId());
 
     }
 
