@@ -21,7 +21,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +51,7 @@ public class Host_login extends Activity {
     private EditText inputEmail;
     private EditText PassWord;
     private FirebaseAuth mAuth;
-    private ProgressBar progressBar;
+    private ProgressDialog progressBar;
     private Button button;
     private CheckBox check1;
     private TextView signup;
@@ -95,7 +94,7 @@ public class Host_login extends Activity {
 
         button = findViewById(R.id.HostButton);
         inputEmail = findViewById(R.id.HostEMail);
-        progressBar = findViewById(R.id.HostprogressBar);
+        progressBar = new ProgressDialog(this);
         Googlebtn = findViewById(R.id.HostGoggleSign);
         HostProfile = findViewById(R.id.Host_ProfileLayour);
         check1 = findViewById(R.id.HostLogin_check);
@@ -227,7 +226,8 @@ public class Host_login extends Activity {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                progressBar.setMessage("Login..");
+                progressBar.show();
 
                 //authenticate user
                 mAuth.signInWithEmailAndPassword(email, password)
@@ -237,7 +237,7 @@ public class Host_login extends Activity {
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
-                                progressBar.setVisibility(View.GONE);
+                                progressBar.hide();
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     if (password.length() < 6) {

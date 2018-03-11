@@ -1,5 +1,6 @@
 package com.example.hario.mycantnn_app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +27,7 @@ public class Login_Form extends AppCompatActivity {
     private TextView EMail;
     private TextView PassWord;
     private TextView Confirm_pwd;
-    private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,7 @@ public class Login_Form extends AppCompatActivity {
         Confirm_pwd = findViewById(R.id.formTExt5);
         CheckBox check = findViewById(R.id.checkBox1);
         Button button = findViewById(R.id.button3);
-        progressBar = findViewById(R.id.progressBar);
-
+        progressDialog = new ProgressDialog(this);
 // show PassWord using checkBox
         check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -86,21 +85,24 @@ public class Login_Form extends AppCompatActivity {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                progressDialog.setMessage("Please Wait..");
+                progressDialog.show();
                 //create user
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Login_Form.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Toast.makeText(Login_Form.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
+                                progressDialog.hide();
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(Login_Form.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+
+
                                     startActivity(new Intent(Login_Form.this, Host_login.class));
                                     finish();
 
@@ -117,7 +119,7 @@ public class Login_Form extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        progressBar.setVisibility(View.GONE);
+
     }
 
 
