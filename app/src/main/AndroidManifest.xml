@@ -26,6 +26,7 @@
             android:name=".Host_login"
             android:label="Canteen_App"
             android:launchMode="singleTop"
+
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -37,6 +38,7 @@
             android:name=".Login_Form"
             android:label="Welcome to the Login Page"
             android:parentActivityName=".Host_login"
+
             android:screenOrientation="portrait" />
         <activity
             android:name=".client"

@@ -11,10 +11,13 @@ import android.widget.EditText;
 
 import com.example.hario.mycantnn_app.R;
 
+import java.util.UUID;
+
 public class OrderActivity extends AppCompatActivity {
 
     private EditText ab;
     private String bc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,8 @@ public class OrderActivity extends AppCompatActivity {
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent y = new Intent(getBaseContext(),payment.class);
+                        startActivity(y);
 
                     }
                 })
@@ -69,5 +74,6 @@ public class OrderActivity extends AppCompatActivity {
 
 
     }
+
 
 }

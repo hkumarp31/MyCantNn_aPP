@@ -5,12 +5,15 @@
     android:id="@+id/hostLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hario.mycantnn_app.Host_login">
+    tools:context="com.example.hario.mycantnn_app.Host_login"
+    android:background="#133AAD"
+    >
 
 
     <EditText
         android:id="@+id/HostEMail"
         android:layout_width="285dp"
+        android:backgroundTint="#FFFFFF"
         android:layout_height="50dp"
         android:layout_alignLeft="@+id/HostPwd"
         android:layout_alignStart="@+id/HostPwd"
@@ -19,6 +22,8 @@
         android:allowUndo="true"
         android:ems="10"
         android:hint="@string/EMail"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +40,10 @@
         android:layout_below="@+id/HostEMail"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/Pwd"
+        android:textColor="#FFFFFF"
+        android:hint="@string/pass"
+        android:textColorHint="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +60,8 @@
         android:layout_below="@+id/HostLogin_check"
         android:layout_marginTop="@dimen/margin_10"
         android:text="@string/login"
+        android:textColor="#FFFFFF"
+        android:background="#FFCE00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
@@ -68,6 +78,7 @@
         android:layout_below="@+id/HostButton"
         android:layout_marginTop="12dp"
         android:text="@string/request_to_new"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.157"
@@ -83,6 +94,7 @@
         android:layout_alignEnd="@+id/HostPwd"
         android:layout_alignRight="@+id/HostPwd"
         android:text="@string/forget_password"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.833"
@@ -98,7 +110,9 @@
         android:layout_alignStart="@+id/HostPwd"
         android:layout_below="@+id/HostPwd"
         android:layout_marginTop="8dp"
-        android:text="     Show PassWord" />
+        android:text="  Show Password"
+        android:buttonTint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/HostGoggleSign"
@@ -107,6 +121,7 @@
         android:layout_alignLeft="@+id/HostSignup"
         android:layout_alignStart="@+id/HostSignup"
         android:layout_below="@+id/HostSignup"
+        android:background="#FFCE00"
         android:layout_marginTop="@dimen/margin_10"></com.google.android.gms.common.SignInButton>
 
 

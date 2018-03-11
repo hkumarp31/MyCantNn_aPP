@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hario.mycantnn_app.Check.Card.payment">
+    tools:context="com.example.hario.mycantnn_app.Check.Card.payment"
+    android:background="@color/bg2">
 
     <TextView
         android:id="@+id/paymenttextView"
         android:layout_width="188dp"
         android:layout_height="18dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:text="CHOOSE PAYMENT METHOD"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFFFFF"/>
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -22,12 +24,13 @@
         android:layout_height="324dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/paymenttextView"
         tools:ignore="MissingConstraints">
 
@@ -36,17 +39,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="@color/colorPrimary"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
-            android:text="CREDIT CARD" />
+            android:text="CREDIT CARD"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="@color/colorPrimary"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
+            android:textColor="#FFFFFF"
             android:text="DEBIT CARD" />
 
         <RadioButton
@@ -54,8 +59,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="@color/colorPrimary"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
+            android:textColor="#FFFFFF"
             android:text="CASH" />
 
         <RadioButton
@@ -63,8 +69,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="@color/colorPrimary"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
+            android:textColor="#FFFFFF"
             android:text="NETBANKING" />
 
         <RadioButton
@@ -72,8 +79,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="@color/colorPrimary"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
+            android:textColor="#FFFFFF"
             android:text="SAVED CARDS" />
 
         <RadioButton
@@ -81,8 +89,9 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="@color/colorPrimary"
+            android:buttonTint="#FFFFFF"
             android:checked="false"
+            android:textColor="#FFFFFF"
             android:text="ONLINE WALLET" />
     </RadioGroup>
 
@@ -90,12 +99,14 @@
         android:id="@+id/paymentbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:onClick="onclick"
         android:text="PAY"
+        android:textColor="#FFFFFF"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        android:background="@color/bg1"/>
 
 
 </android.support.constraint.ConstraintLayout>

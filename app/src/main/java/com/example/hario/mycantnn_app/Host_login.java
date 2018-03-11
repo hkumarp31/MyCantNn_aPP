@@ -1,15 +1,22 @@
 package com.example.hario.mycantnn_app;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -39,7 +46,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.hario.mycantnn_app.MainActivity.flag;
 
-public class Host_login extends AppCompatActivity {
+public class Host_login extends Activity {
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
     private EditText inputEmail;
@@ -60,6 +67,8 @@ public class Host_login extends AppCompatActivity {
     // private CallbackManager callbackManager;
 
     private RelativeLayout HostProfile;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +77,19 @@ public class Host_login extends AppCompatActivity {
         //  AppEventsLogger.activateApp(this);
         // This MUST be placed after the above two lines.
         setContentView(R.layout.host_login);
+        Window window = this.getWindow();
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
+        }
+
 
         // mAuth = FirebaseAuth.getInstance();
 
@@ -170,6 +192,7 @@ public class Host_login extends AppCompatActivity {
                     PassWord.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
                 } else if (!isChecked) {
+
                     PassWord.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 }
             }

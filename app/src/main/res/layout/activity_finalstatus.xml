@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hario.mycantnn_app.Check.Card.finalstatus">
+    tools:context="com.example.hario.mycantnn_app.Check.Card.finalstatus"
+    android:background="#0D58A6">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyid"

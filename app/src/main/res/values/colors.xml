@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="startColor">#09c6df</color>
 
-
+    <color name="statusbar">#1047A9</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
@@ -17,4 +17,6 @@
     <color name="CTA_text">#FFFFFF</color>
     <color name="CTA_bg">#32C25E</color>
     <color name="bgBottomNavigation">#fe485a</color>
+    <color name="bg1">#FFCE00</color>
+    <color name="bg2">#133AAD</color>
 </resources>

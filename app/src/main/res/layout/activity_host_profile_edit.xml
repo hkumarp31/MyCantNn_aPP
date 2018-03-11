@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hario.mycantnn_app.profile">
+    tools:context="com.example.hario.mycantnn_app.profile"
+    android:background="@color/bg2">
 
     <RelativeLayout
         android:id="@+id/hostprofilerelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="220dp">
+        android:layout_height="220dp"
+        android:background="@color/bg2">
 
         <ImageView
             android:id="@+id/hostprofileimageView"
@@ -20,20 +22,6 @@
             android:layout_marginTop="12dp"
 
             android:src="@drawable/common_google_signin_btn_icon_dark_normal_background" />
-
-        <EditText
-            android:id="@+id/hostprofile_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_below="@+id/hostprofileimageView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:hint="Canten Name"
-            android:paddingLeft="10dp"
-            android:paddingTop="2dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="25dp" />
 
     </RelativeLayout>
 
@@ -50,15 +38,14 @@
             android:id="@+id/hostprofile_textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="36dp"
-            android:layout_marginStart="36dp"
 
-            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toLeftOf="@+id/hostprofile_textView"
+            android:layout_toStartOf="@+id/hostprofile_textView"
             android:text="User Details"
-            android:textColor="#000000 "
+            android:textColor="#FFFFFF"
             android:textSize="15dp" />
 
 
@@ -82,7 +69,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:background="@color/bg2">
 
 
                     <TextView
@@ -97,7 +85,7 @@
                         android:paddingLeft="15dp"
 
                         android:text="Name"
-                        android:textColor="#000000"
+                        android:textColor="#FFFFFF"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +99,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:hint="Your Name" />
+                        android:hint="Your Name"
+                        android:textColorHint="#FFFFFF"
+                        android:backgroundTint="#FFFFFF"/>
 
                 </LinearLayout>
 
@@ -130,7 +120,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:background="@color/bg2">
 
 
                     <TextView
@@ -144,7 +135,7 @@
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
                         android:text="Email"
-                        android:textColor="#000000"
+                        android:textColor="#FFFFFF"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +149,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:hint="Email Id" />
+                        android:hint="Email Id"
+                        android:textColorHint="#FFFFFF"
+                        android:backgroundTint="#FFFFFF"/>
 
 
                 </LinearLayout>
@@ -179,7 +172,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:background="@color/bg2">
 
 
                     <TextView
@@ -193,7 +187,7 @@
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
                         android:text="Mobile"
-                        android:textColor="#000000"
+                        android:textColor="#FFFFFF"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +201,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:hint="Contact No" />
+                        android:hint="Contact No"
+                        android:textColorHint="#FFFFFF"
+                        android:backgroundTint="#FFFFFF"/>
 
 
                 </LinearLayout>
@@ -218,17 +214,32 @@
 
         </RelativeLayout>
 
+        <EditText
+            android:id="@+id/hostprofile_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:hint="Canten Name"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="25dp" />
+
     </RelativeLayout>
 
 
     <Button
         android:id="@+id/hostprofile_edit_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
         android:text="Save"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
+        android:background="@color/bg1"
         android:textSize="20dp" />
 
 

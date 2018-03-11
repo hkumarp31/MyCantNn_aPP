@@ -97,13 +97,6 @@ public class finalstatus extends AppCompatActivity {
 
     }
 
-    public String generateId() {
-        String id = UUID.randomUUID().toString();
-        String s = id.substring(0, 8);
-
-        return s;
-
-    }
 
 
     public void addtofirebase(ArrayList<statusinfo> selecteditems) {
@@ -119,6 +112,17 @@ public class finalstatus extends AppCompatActivity {
 
 
     }
+
+
+
+    public String generateId() {
+        String id = UUID.randomUUID().toString();
+        String s = id.substring(0, 8);
+
+        return s;
+
+    }
+
 
 
 }
