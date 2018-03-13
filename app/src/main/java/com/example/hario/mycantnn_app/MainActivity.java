@@ -8,17 +8,23 @@ import android.view.View;
 import com.example.hario.mycantnn_app.Modal.HostActivityMain;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
     public static int flag;
+    private int no;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
+    private DatabaseReference firebaseDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         flag = -1;
+
+
+        // firebaseDatabase = FirebaseDatabase.getInstance().getReference("flagField");
         mAuth = FirebaseAuth.getInstance();
 
         user = mAuth.getCurrentUser();
@@ -33,17 +39,27 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(new Intent(MainActivity.this, Host_login.class));
 
-        } else
+
+        } else {
             startActivity(new Intent(MainActivity.this, HostActivityMain.class));
+            finish();
+        }
     }
 
     public void main2(View view) {
         flag = 1;
-        if (user == null)
+
+        if (user == null) {
+
             startActivity(new Intent(MainActivity.this, Host_login.class));
 
-        else
+        }
+        else {
+
+
             startActivity(new Intent(this, client.class));
+            finish();
+        }
 
     }
 }
