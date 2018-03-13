@@ -1,12 +1,14 @@
 package com.example.hario.mycantnn_app.Modal;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.hario.mycantnn_app.R;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +31,8 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
     private ArrayList<getOrderItemClass> arrayList=new ArrayList<>();
     private GetOrderRecyclerAdapter getOrderRecyclerAdapter;
     private DatabaseReference databaseReference;
+    private TextView textView;
+    private Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +58,7 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
                     Log.e(TAG, "TotalCost: " + item.getTotalCost());
                     Log.e(TAG, "ImageURL: " + item.getImage());
                 }
-                getOrderRecyclerAdapter = new GetOrderRecyclerAdapter(arrayList);
+                getOrderRecyclerAdapter = new GetOrderRecyclerAdapter(arrayList,textView,context);
                 recyclerView.setAdapter(getOrderRecyclerAdapter);
 
             }

@@ -11,8 +11,17 @@ public class getOrderItemClass {
     private int count;
     private int price;
     private String id;
+    private String status;
 
     public getOrderItemClass() {
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getImage() {
@@ -63,7 +72,7 @@ public class getOrderItemClass {
         this.id = id;
     }
 
-    public getOrderItemClass(String image, String data, int totalCost, int count, int price, String id) {
+    public getOrderItemClass(String image, String data, int totalCost, int count, int price, String id, String Status) {
 
         this.image = image;
         this.data = data;
@@ -71,5 +80,6 @@ public class getOrderItemClass {
         this.count = count;
         this.price = price;
         this.id = id;
+        this.status=Status;
     }
 }

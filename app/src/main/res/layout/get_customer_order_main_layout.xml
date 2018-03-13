@@ -22,7 +22,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.7"
-
             android:textAlignment="viewStart"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -67,10 +66,10 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
+            android:layout_weight="0.6"
             android:gravity="center_vertical"
             android:text="OrderId Is : "
-            android:textAlignment="viewEnd"
+            android:textAlignment="viewStart"
             android:textSize="14sp"
             tools:ignore="RtlCompat" />
 
@@ -79,10 +78,20 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="viewEnd"
+            android:textAlignment="viewStart"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="RtlCompat" />
+        <TextView
+            android:id="@+id/getProductTAKEACTION_ID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textAlignment="viewEnd"
+            android:textSize="16sp"
+            tools:ignore="RtlCompat" />
+
     </LinearLayout>
 
 
