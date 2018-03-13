@@ -11,14 +11,24 @@ public class statusinfo {
     private int TotalCost;
     private int Count;
     private int Price;
+    private String status;
 
-    public statusinfo(String image, String data, String id, int totalcost, int count,int cost) {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public statusinfo(String image, String data, String id, int totalcost, int count, int cost, String status) {
         this.Image = image;
         this.Data = data;
         this.id = id;
        this.TotalCost = totalcost;
        this.Count = count;
        this.Price= cost;
+        this.status = status;
     }
 
     public int getPrice() {

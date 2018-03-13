@@ -17,6 +17,7 @@
     <color name="CTA_text">#FFFFFF</color>
     <color name="CTA_bg">#32C25E</color>
     <color name="bgBottomNavigation">#fe485a</color>
-    <color name="bg1">#FFCE00</color>
-    <color name="bg2">#133AAD</color>
+    <color name="bg1">#4195a4</color>
+    <color name="bg3">#FFCE00</color>
+    <color name="bg2">#50bbd2</color>
 </resources>

@@ -42,7 +42,8 @@ public class finalstatus extends AppCompatActivity {
             CartInfo h = ci.get(i);
 
             String s = generateId();
-            statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(), client.mailAddedItems.get(i).getCount(), h.getPrice());
+            String status="TAKE ACTION";
+            statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(), client.mailAddedItems.get(i).getCount(), h.getPrice(), status);
 
             aL.add(si);
 

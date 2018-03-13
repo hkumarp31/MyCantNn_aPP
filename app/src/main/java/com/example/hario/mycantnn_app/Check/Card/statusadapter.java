@@ -40,8 +40,8 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
         Glide.with(holder.itemimg.getContext()).load(arrayList.get(position).getImage()).into(holder.itemimg);
         holder.itemname.setText(arrayList.get(position).getData());
         holder.itemid.setText("Order Id : "+arrayList.get(position).getId());
-        holder.itemprice.setText("Tota Cost Rs. "+arrayList.get(position).getTotalCost());
-        holder.itemquantity.setText("Quantity : "+arrayList.get(position).getCount());
+        holder.itemprice.setText("Total Cost Rs. "+arrayList.get(position).getTotalCost());
+        holder.itemquantity.setText("Qty : "+arrayList.get(position).getCount());
         holder.itemCount.setText(""+arrayList.get(position).getPrice());
 
     }

@@ -4,28 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#133AAD"
+    android:background="@color/bg1"
     tools:context="com.example.hario.mycantnn_app.Login_Form">
-
-
-    <TextView
-        android:id="@+id/formTExt1"
-        android:layout_width="362dp"
-        android:layout_height="82dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Get Started"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082"
-        tools:fontFamily="sans-serif-smallcaps" />
 
 
     <EditText
@@ -73,16 +53,18 @@
         android:id="@+id/formTExt4"
         android:layout_width="248dp"
         android:layout_height="39dp"
-        android:allowUndo="true"
+        android:layout_marginTop="8dp"
 
+        android:allowUndo="true"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:hint="@string/EMail"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:textColorHint="#FFFFFF"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="199dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/formTExt2"
         tools:targetApi="m" />
 
 
@@ -116,7 +98,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#FFCE00"
+        android:background="@color/bg3"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -136,23 +118,20 @@
     <EditText
         android:id="@+id/formTExt2"
         android:layout_width="248dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="272dp"
         android:allowUndo="true"
-        android:ems="10"
         android:backgroundTint="#FFFFFF"
+        android:ems="10"
         android:hint="@string/name"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/formTExt1"
-        app:layout_constraintVertical_bias="0.051"
         tools:targetApi="m" />
 
 

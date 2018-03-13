@@ -28,44 +28,14 @@ public class OrderActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        confirm();
+
 
         //startActivity(new Intent(this,finalstatus.class));
 
     }
 
 
-    public void confirm() {
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
 
-        } else {
-
-            builder = new AlertDialog.Builder(this);
-
-
-        }
-        builder.setTitle("CONFORMATION")
-                .setMessage("Are you sure you want to place this order ?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent y = new Intent(getBaseContext(),payment.class);
-                        startActivity(y);
-
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-
-    }
 
     public void tofinalstatus(View view) {
         Intent j = new Intent(this, finalstatus.class);

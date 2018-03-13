@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.hario.mycantnn_app.Host_login"
-    android:background="#133AAD"
+    android:background="@color/bg2"
     >
 
 
@@ -121,7 +121,7 @@
         android:layout_alignLeft="@+id/HostSignup"
         android:layout_alignStart="@+id/HostSignup"
         android:layout_below="@+id/HostSignup"
-        android:background="#FFCE00"
+        android:background="@color/bg1"
         android:layout_marginTop="@dimen/margin_10"></com.google.android.gms.common.SignInButton>
 
 

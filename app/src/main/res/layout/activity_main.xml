@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#b6fdfc"
+    android:background="@color/bg2"
     tools:context="com.example.hario.mycantnn_app.MainActivity">
 
     <Button
@@ -17,6 +17,8 @@
         android:layout_marginTop="8dp"
         android:onClick="hostClick"
         android:text="@string/host"
+        android:textColor="#FFFFFF"
+        android:background="@color/bg1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -34,6 +36,8 @@
         android:layout_marginTop="8dp"
         android:onClick="main2"
         android:text="@string/client"
+        android:textColor="#FFFFFF"
+        android:background="@color/bg1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
