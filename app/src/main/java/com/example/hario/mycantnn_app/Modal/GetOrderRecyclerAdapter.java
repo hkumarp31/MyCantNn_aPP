@@ -14,10 +14,18 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecyclerAdapter.ViewHolder> {
+
+    private StorageReference storageReference;
+    private DatabaseReference databaseReference;
 
     ArrayList<getOrderItemClass> arrayList;
     TextView text;
@@ -43,6 +51,7 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Glide.with(holder.imageView.getContext()).load(arrayList.get(position).getImage()).into(holder.imageView);
+        holder.OrderImageURL.setText(arrayList.get(position).getImage());
         holder.OrderName.setText(arrayList.get(position).getData());
         holder.OrderQuantity.setText("" +arrayList.get(position).getCount());
         holder.OrderPrice.setText(""+arrayList.get(position).getPrice());
@@ -54,12 +63,16 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
+                databaseReference = FirebaseDatabase.getInstance().getReference();
+
+
                 builder.setTitle("Select Your Choice");
                 //builder.setCancelable(true);
 
                 builder.setSingleChoiceItems(values, -1, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int item) {
+                       String s=databaseReference.push().getKey();
 
                         switch(item)
                         {
@@ -68,19 +81,32 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 arrayList.get(position).setStatus(values[0]);
                                 notifyDataSetChanged();
                                 alertDialog1.dismiss();
+
+                                getOrderItemClass orderItemClass= new getOrderItemClass(arrayList.get(position).getImage(),
+                                        arrayList.get(position).getData(),
+                                        arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0]);
+                                databaseReference.child("Customer").child("New").child(s).setValue(orderItemClass);
+
                                 break;
                             case 1:
                                 holder.OrderTakeAction.setText("" + arrayList);
                                 arrayList.get(position).setStatus(values[1]);
                                 notifyDataSetChanged();
                                 alertDialog1.dismiss();
+
+                                getOrderItemClass orderItemClass1= new getOrderItemClass(arrayList.get(position).getImage(),
+                                        arrayList.get(position).getData(),
+                                        arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1]);
+                                databaseReference.child("Customer").child("New").child(s).setValue(orderItemClass1);
+
                                 break;
 
                         }
                         alertDialog1.dismiss();
                     }
                 });
-
                 alertDialog1 = builder.create();
                 alertDialog1.show();
 
@@ -95,7 +121,7 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID, OrderTakeAction;
+        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID, OrderTakeAction,OrderImageURL;
         ImageView imageView;
 
         public ViewHolder(View itemView) {
@@ -107,7 +133,14 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
             OrderID = itemView.findViewById(R.id.getProductOrderId_TV);
             imageView=itemView.findViewById(R.id.CustomerOrderProductimage);
             OrderTakeAction=itemView.findViewById(R.id.getProductTAKEACTION_ID);
+            OrderImageURL=itemView.findViewById(R.id.CutomerOrderProductImageURL);
 
         }
+    }
+    public void UploadData(String s){
+
+
+
+
     }
 }

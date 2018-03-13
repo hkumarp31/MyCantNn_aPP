@@ -8,14 +8,22 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
 import com.example.hario.mycantnn_app.profile;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Hemant Kumar on 2/13/2018.
@@ -25,19 +33,43 @@ public class ClientNotificationActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private ClientNotificationAdapter clientNotificationAdapter;
-    private ArrayList<ClientNotificationInfo> arrayList;
+    private ArrayList<getOrderItemClass> arrayList=new ArrayList<>();
+    private DatabaseReference databaseReference;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clientnotification_layout);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+
         recyclerView = findViewById(R.id.ClientNotification_RecyclerView);
-
-        arrayList = fillProjectDetail();
-        clientNotificationAdapter = new ClientNotificationAdapter(arrayList);
-
-        linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(clientNotificationAdapter);
+
+        databaseReference.child("New").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postsnap : dataSnapshot.getChildren()) {
+
+                    getOrderItemClass item = postsnap.getValue(getOrderItemClass.class);
+                    arrayList.add(item);
+                    Log.e(TAG, "Count: " + item.getCount());
+                    Log.e(TAG, "Title/DAta: " + item.getData());
+                    Log.e(TAG, "Cost/Price: " + item.getPrice());
+                    Log.e(TAG, "ID: " + item.getId());
+                    Log.e(TAG, "TotalCost: " + item.getTotalCost());
+                    Log.e(TAG, "ImageURL: " + item.getImage());
+                }
+                clientNotificationAdapter = new ClientNotificationAdapter(arrayList);
+                recyclerView.setAdapter(clientNotificationAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+       // recyclerView.setAdapter(clientNotificationAdapter);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         Menu menu = navigation.getMenu();
@@ -85,6 +117,7 @@ public class ClientNotificationActivity extends AppCompatActivity {
 
 
     }
+    /*
     private ArrayList<ClientNotificationInfo> fillProjectDetail(){
         ArrayList<ClientNotificationInfo> pappuinfoArrayList = new ArrayList<>();
         ClientNotificationInfo p=new ClientNotificationInfo(android.R.drawable.ic_menu_report_image,"Pappu","Clear");
@@ -93,4 +126,7 @@ public class ClientNotificationActivity extends AppCompatActivity {
 
         return pappuinfoArrayList;
     }
+    */
+
+
 }

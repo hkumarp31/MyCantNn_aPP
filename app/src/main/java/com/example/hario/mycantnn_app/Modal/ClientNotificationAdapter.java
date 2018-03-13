@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.R;
 
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
  */
 
 public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotificationAdapter.ViewHolder>{
-    ArrayList<ClientNotificationInfo> arrayList;
+    ArrayList<getOrderItemClass> arrayList;
 
-    public ClientNotificationAdapter(ArrayList<ClientNotificationInfo> arrayList) {
+    public ClientNotificationAdapter(ArrayList<getOrderItemClass> arrayList) {
         this.arrayList = arrayList;
     }
     @Override
@@ -30,9 +31,9 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.ClientNotiImg.setImageResource(arrayList.get(position).getClientNotiImage());
-        holder.ClientNotiTtl.setText(arrayList.get(position).getClientNotiTitle());
-        holder.ClientNotiStts.setText(arrayList.get(position).getClientNotiStatus());
+        Glide.with(holder.ClientNotiImg.getContext()).load(arrayList.get(position).getImage()).into(holder.ClientNotiImg);
+        holder.ClientNotiTtl.setText(arrayList.get(position).getData());
+        holder.ClientNotiStts.setText(arrayList.get(position).getStatus());
 
     }
 

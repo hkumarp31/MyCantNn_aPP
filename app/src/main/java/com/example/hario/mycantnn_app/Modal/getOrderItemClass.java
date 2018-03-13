@@ -12,8 +12,17 @@ public class getOrderItemClass {
     private int price;
     private String id;
     private String status;
+    private String ImageUrl;
 
     public getOrderItemClass() {
+    }
+
+    public String getImageUrl() {
+        return ImageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
     }
 
     public String getStatus() {
@@ -81,5 +90,19 @@ public class getOrderItemClass {
         this.price = price;
         this.id = id;
         this.status=Status;
+    }
+    public getOrderItemClass( String data, int totalCost, int count, int price, String id, String Status) {
+
+        this.data = data;
+        this.totalCost = totalCost;
+        this.count = count;
+        this.price = price;
+        this.id = id;
+        this.status=Status;
+    }
+    public getOrderItemClass(String image,String data,String status){
+        this.image=image;
+        this.data=data;
+        this.status=status;
     }
 }

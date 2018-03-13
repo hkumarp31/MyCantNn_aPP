@@ -20,23 +20,23 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
 
-            android:src="@mipmap/ic_add_a_photo_white_24dp" />
+            android:src="@mipmap/ic_person_add_white_24dp" />
 
         <EditText
             android:id="@+id/profile_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ProfileimageView"
+            android:layout_alignRight="@+id/ProfileimageView"
             android:layout_below="@+id/ProfileimageView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:backgroundTint="#FFFFFF"
             android:paddingLeft="10dp"
             android:paddingTop="2dp"
             android:text="UserName"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="25dp"
             android:textColorHint="#FFFFFF"
-            android:backgroundTint="#FFFFFF"/>
+            android:textSize="25dp" />
 
     </RelativeLayout>
 
@@ -238,7 +238,8 @@
 
     <Button
         android:id="@+id/profile_edit_button"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="7dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
