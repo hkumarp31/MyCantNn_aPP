@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg2">
 
     <Spinner
         android:id="@+id/CanteenItem_Spin"
@@ -11,6 +12,7 @@
         android:layout_height="40dp"
         android:entries="@array/CanteenItem_arrays"
         android:popupBackground="#4b3de1"
+
         android:textAlignment="center"
         android:textDirection="firstStrong" />
 
@@ -98,8 +100,9 @@
             android:id="@+id/AddItemToCategory"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-
-            android:text="Add Item To Category" />
+            android:background="@color/bg1"
+            android:text="Add Item To Category"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
 
 

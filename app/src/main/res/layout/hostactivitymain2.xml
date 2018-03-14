@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:entries="@array/CanteenItem_arrays"
-        android:popupBackground="@color/colorAccent"
+        android:popupBackground="@color/bg3"
         android:textAlignment="center"
         android:textDirection="firstStrong" />
 
