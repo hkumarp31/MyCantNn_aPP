@@ -8,6 +8,7 @@
         android:enabled="true"
         android:icon="@drawable/ic_shopping_cart_white_24dp"
 
+        android:orderInCategory="1"
         android:title="@string/title_cart"
         app:showAsAction="always" />
 
@@ -15,6 +16,7 @@
         android:id="@+id/navigation_shop"
         android:enabled="true"
         android:icon="@drawable/ic_store_white_24dp"
+        android:orderInCategory="0"
 
         android:title="@string/title_shop"
         app:showAsAction="always" />
@@ -22,6 +24,7 @@
         android:id="@+id/navigation_OrderStatus12"
         android:enabled="true"
         android:icon="@drawable/ic_card_giftcard_white_24dp"
+        android:orderInCategory="2"
         android:title="My Orders"
         app:showAsAction="always" />
 
@@ -31,14 +34,15 @@
         android:enabled="true"
         android:icon="@drawable/ic_person_white_24dp"
 
+        android:orderInCategory="3"
         android:title="@string/title_profile"
         app:showAsAction="always" />
     <item
         android:id="@+id/ClientNotificationBottomNavigation"
-        android:icon="@mipmap/ic_system_update_alt_white_24dp"
-        android:title="Notification"
-
         android:enabled="true"
+        android:icon="@mipmap/ic_system_update_alt_white_24dp"
+        android:orderInCategory="4"
+        android:title="Notification"
         app:showAsAction="always"/>
 
 </menu>

@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.Modal.CartActivity;
 import com.example.hario.mycantnn_app.Modal.ClientNotificationActivity;
 import com.example.hario.mycantnn_app.Modal.CustomerMyOrderActivity;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -186,6 +185,32 @@ public class profile extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.profile_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.LogoutProfile) {
+            mAuth.signOut();
+            startActivity(new Intent(profile.this, MainActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 

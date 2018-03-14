@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hario.mycantnn_app.profile"
-    android:background="@color/bg2">
+    android:background="@color/bg2"
+    tools:context="com.example.hario.mycantnn_app.profile">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
 
-            android:src="@mipmap/ic_person_add_white_24dp" />
+            />
 
         <EditText
             android:id="@+id/profile_textView"
@@ -86,8 +86,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:background="@color/bg2">
+                    android:background="@color/bg2"
+                    android:orientation="horizontal">
 
 
                     <TextView
@@ -116,9 +116,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:backgroundTint="#FFFFFF"
                         android:hint="Your Name"
-                        android:textColorHint="#FFFFFF"
-                        android:backgroundTint="#FFFFFF"/>
+                        android:textColorHint="#FFFFFF" />
 
                 </LinearLayout>
 
@@ -137,8 +137,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:background="@color/bg2">
+                    android:background="@color/bg2"
+                    android:orientation="horizontal">
 
 
                     <TextView
@@ -166,10 +166,10 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:backgroundTint="#FFFFFF"
                         android:hint="Email Id"
                         android:inputType="textEmailAddress"
-                        android:textColorHint="#FFFFFF"
-                        android:backgroundTint="#FFFFFF"/>
+                        android:textColorHint="#FFFFFF" />
 
 
                 </LinearLayout>
@@ -190,8 +190,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:background="@color/bg2">
+                    android:background="@color/bg2"
+                    android:orientation="horizontal">
 
 
                     <TextView
@@ -219,10 +219,10 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:backgroundTint="#FFFFFF"
                         android:hint="Contact No"
                         android:inputType="number"
-                        android:textColorHint="#FFFFFF"
-                        android:backgroundTint="#FFFFFF"/>
+                        android:textColorHint="#FFFFFF" />
 
 
                 </LinearLayout>
@@ -239,13 +239,13 @@
     <Button
         android:id="@+id/profile_edit_button"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="7dp"
         android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:text="Save"
+        android:layout_marginHorizontal="7dp"
         android:background="@color/bg1"
+        android:text="Save"
         android:textColor="#FFFFFF"
         android:textSize="20dp" />
 

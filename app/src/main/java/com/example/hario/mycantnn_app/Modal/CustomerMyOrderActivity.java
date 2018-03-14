@@ -1,6 +1,5 @@
 package com.example.hario.mycantnn_app.Modal;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -71,6 +70,53 @@ public class CustomerMyOrderActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_shop:
+                        Intent intent1 = new Intent(CustomerMyOrderActivity.this, client.class);
+                        startActivity(intent1);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        break;
+
+                    case R.id.navigation_OrderStatus12:
+
+
+                        break;
+
+                    case R.id.navigation_cart:
+
+                        Intent intent2 = new Intent(CustomerMyOrderActivity.this, CartActivity.class);
+                        startActivity(intent2);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        break;
+
+                    case R.id.navigation_profile:
+                        Intent intent4 = new Intent(CustomerMyOrderActivity.this, profile.class);
+                        startActivity(intent4);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        break;
+
+                    case R.id.ClientNotificationBottomNavigation:
+                        startActivity(new Intent(CustomerMyOrderActivity.this, ClientNotificationActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
+                        break;
+
+                }
+                return false;
             }
         });
 
