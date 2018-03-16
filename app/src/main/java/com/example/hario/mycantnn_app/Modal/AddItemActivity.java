@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.hario.mycantnn_app.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -50,7 +51,6 @@ public class AddItemActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
     private Uri ImageUrl;
-
     public AddItemActivity() {
     }
 
@@ -178,7 +178,8 @@ public class AddItemActivity extends AppCompatActivity {
                             String ImageUploadId = databaseReference.push().getKey();
 
                             // Adding image upload id s child element into databaseReference.
-                            databaseReference.child("Customer").child(Choice).child(ImageUploadId).setValue(imageUploadInfo);
+                            String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            databaseReference.child("HostUser").child("item").child(uuid).child(Choice).child(ImageUploadId).setValue(imageUploadInfo);
                             Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
 
                             startActivity(new Intent(AddItemActivity.this, HostActivityMain.class));

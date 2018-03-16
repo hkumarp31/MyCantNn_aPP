@@ -1,16 +1,14 @@
 package com.example.hario.mycantnn_app;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hario.mycantnn_app.Modal.HostActivityMain;
+import com.example.hario.mycantnn_app.Modal.UploadUserData;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -63,6 +62,7 @@ public class Host_login extends Activity {
     private TextView mDetailTextView;
     private ProgressDialog mProgressDialog;
     private DatabaseReference databaseReference;
+    private GoogleSignInAccount account;
     // private CallbackManager callbackManager;
 
     private RelativeLayout HostProfile;
@@ -248,6 +248,10 @@ public class Host_login extends Activity {
                                 } else {
                                     FirebaseUser name = mAuth.getCurrentUser();
                                     if (flag == 0) {
+
+                                        final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
+
+                                        mydata.setValue("0");
                                         if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
                                             startActivity(new Intent(Host_login.this, HostProfileEdit.class));
 
@@ -259,6 +263,9 @@ public class Host_login extends Activity {
 
 
                                     } else {
+                                        final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
+
+                                        mydata.setValue("1");
                                         if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
                                             startActivity(new Intent(Host_login.this, profile_edit_page.class));
 
@@ -308,7 +315,7 @@ public class Host_login extends Activity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
+                account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
@@ -419,6 +426,33 @@ public class Host_login extends Activity {
 
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
+
+
+            if (account != null) {
+                String personName = account.getDisplayName();
+                String personEmail = account.getEmail();
+                Uri personPhoto = account.getPhotoUrl();
+
+
+                UploadUserData imageUploadInfo = new UploadUserData(personName, personEmail, "", personPhoto.toString(), "");
+
+                // Getting image upload ID.
+                // String ImageUploadId = databaseReference.push().getKey();
+
+                // Adding image upload id s child element into databaseReference.
+
+                if (flag == 0) {
+                    databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                    databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
+                } else {
+                    databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
+                    databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                }
+
+            }
+
+
+
             mProgressDialog.hide();
             FirebaseUser name = mAuth.getCurrentUser();
             if (flag == 0) {

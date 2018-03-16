@@ -70,7 +70,7 @@ public class HostProfileDetails extends AppCompatActivity {
         Name = findViewById(R.id.hostProfileCardName2);
         progressBar = new ProgressDialog(this);
         img = findViewById(R.id.Host_imageView2);
-        currentuserDatabase = FirebaseDatabase.getInstance().getReference().child("HostUser").child("User");
+        currentuserDatabase = FirebaseDatabase.getInstance().getReference().child("HostUser").child("UserProfile");
         currentuserDatabase.keepSynced(true);
         if (currentuserDatabase.orderByChild("uuid").equalTo(UiidId) == null) {
 
