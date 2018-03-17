@@ -9,7 +9,6 @@ import com.example.hario.mycantnn_app.Modal.CartActivity;
 import com.example.hario.mycantnn_app.Modal.CartInfo;
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,7 +20,6 @@ public class finalstatus extends AppCompatActivity {
     private RecyclerView rv;
     private statusadapter myadapter;
     private ArrayList<statusinfo> aL;
-    private FirebaseAuth mauth;
 
 
     @Override
@@ -35,7 +33,7 @@ public class finalstatus extends AppCompatActivity {
         rv = findViewById(R.id.recyid);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        mauth = FirebaseAuth.getInstance();
+
         aL = new ArrayList<>();
 
         ArrayList<CartInfo> ci = CartActivity.selectedItem;
@@ -110,7 +108,7 @@ public class finalstatus extends AppCompatActivity {
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
-            mref.child("Orders").child(mauth.getCurrentUser().getUid()).setValue(c);
+            mref.child("Orders").push().setValue(c);
         }
 
 

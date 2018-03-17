@@ -53,14 +53,14 @@ public class Threefragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recyclermainlayout, container, false);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
         recyclerView = view.findViewById(R.id.recyclerID);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference.child("Snacks").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("item").child("Drinks").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postsnap : dataSnapshot.getChildren()) {
