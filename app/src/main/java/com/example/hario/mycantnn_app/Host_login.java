@@ -424,7 +424,6 @@ public class Host_login extends Activity {
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
 
-
             if (account != null) {
                 String personName = account.getDisplayName();
                 String personEmail = account.getEmail();
@@ -439,11 +438,16 @@ public class Host_login extends Activity {
                 // Adding image upload id s child element into databaseReference.
 
                 if (flag == 0) {
-                    databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                    final DatabaseReference myper = databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
+                    if (myper == null)
+                        databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
                     //   databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
                 } else {
+
                     // databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
-                    databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                    final DatabaseReference myper = databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
+                    if (myper == null)
+                        databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
                 }
 
             }
