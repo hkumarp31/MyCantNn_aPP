@@ -109,7 +109,7 @@ public class finalstatus extends AppCompatActivity {
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
-            mref.child("Orders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(c);
+            mref.child("Orders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(c);
         }
 
 

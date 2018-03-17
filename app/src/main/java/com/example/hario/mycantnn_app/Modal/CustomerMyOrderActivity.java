@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
 import com.example.hario.mycantnn_app.profile;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,20 +36,23 @@ public class CustomerMyOrderActivity extends AppCompatActivity {
     private ArrayList<getOrderItemClass> arrayList=new ArrayList<>();
     private CustomerMyOrderAdapter customerMyOrderAdapter;
     private DatabaseReference databaseReference;
+   // private FirebaseAuth firebaseAuth;
 
-    public CustomerMyOrderActivity(){}
-
-    @Override
+  @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_my_order);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+       // firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
+
 
         recyclerView = findViewById(R.id.customer_my_order_recyler);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+      // String x=firebaseAuth.getCurrentUser().getUid();
 
-        databaseReference.child("New").addValueEventListener(new ValueEventListener() {
+
+        databaseReference.child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postsnap : dataSnapshot.getChildren()) {

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
 import com.example.hario.mycantnn_app.profile;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,13 +40,13 @@ public class ClientNotificationActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clientnotification_layout);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
         recyclerView = findViewById(R.id.ClientNotification_RecyclerView);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        databaseReference.child("New").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postsnap : dataSnapshot.getChildren()) {

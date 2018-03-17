@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.hario.mycantnn_app.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,13 +39,13 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.getorder);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
         recyclerView = findViewById(R.id.getOrderRecyclerView);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        databaseReference.child("Orders").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Orders").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postsnap : dataSnapshot.getChildren()) {

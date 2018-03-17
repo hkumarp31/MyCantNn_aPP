@@ -87,11 +87,11 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 notifyDataSetChanged();
                                 alertDialog1.dismiss();
 
-                                getOrderItemClass orderItemClass= new getOrderItemClass(arrayList.get(position).getImage(),
+                                 getOrderItemClass orderItemClass = new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
                                         arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0]);
-                                databaseReference.child("Customer").child("New").child(s).setValue(orderItemClass);
+                                databaseReference.child("HostUser").child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).push().setValue(orderItemClass);
 
 
                                 break;
@@ -105,7 +105,8 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
                                         arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1]);
-                                databaseReference.child("Customer").child("New").child(s).setValue(orderItemClass1);
+                                databaseReference.child("HostUser").child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).push().setValue(orderItemClass1);
+
 
 
 
