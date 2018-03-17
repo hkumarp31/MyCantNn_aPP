@@ -104,7 +104,6 @@ public class Host_login extends Activity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 /*        callbackManager = CallbackManager.Factory.create();
-
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
@@ -114,12 +113,10 @@ public class Host_login extends Activity {
                     startActivity(new Intent(Host_login.this,host_profile_details.class));
                     finish();
                     }
-
                     @Override
                     public void onCancel() {
                         // App code
                     }
-
                     @Override
                     public void onError(FacebookException exception) {
                         Toast.makeText(Host_login.this,"Authification failed", Toast.LENGTH_LONG).show();
@@ -199,7 +196,7 @@ public class Host_login extends Activity {
 
         });
 
-         signup.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // Switching to Register screen
@@ -249,9 +246,9 @@ public class Host_login extends Activity {
                                     FirebaseUser name = mAuth.getCurrentUser();
                                     if (flag == 0) {
 
-                                        final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
+                                        //final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
 
-                                        mydata.setValue("0");
+                                        //mydata.setValue("0");
                                         if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
                                             startActivity(new Intent(Host_login.this, HostProfileEdit.class));
 
@@ -263,9 +260,9 @@ public class Host_login extends Activity {
 
 
                                     } else {
-                                        final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
+                                        //final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
 
-                                        mydata.setValue("1");
+                                        // mydata.setValue("1");
                                         if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
                                             startActivity(new Intent(Host_login.this, profile_edit_page.class));
 
@@ -443,9 +440,9 @@ public class Host_login extends Activity {
 
                 if (flag == 0) {
                     databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
-                    databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
+                    //   databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
                 } else {
-                    databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
+                    // databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
                     databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
                 }
 
@@ -456,7 +453,7 @@ public class Host_login extends Activity {
             mProgressDialog.hide();
             FirebaseUser name = mAuth.getCurrentUser();
             if (flag == 0) {
-                if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
+                if (databaseReference.child("HostUser").child("UserProfile").child(name.getUid()) == null)
                     startActivity(new Intent(Host_login.this, HostProfileEdit.class));
 
                 else {
@@ -485,8 +482,3 @@ public class Host_login extends Activity {
 
 
 }
-
-
-
-
-

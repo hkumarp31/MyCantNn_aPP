@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         flag = 1;
 
         if (user == null) {
-            findViewById(R.id.button1).setVisibility(View.GONE);
+//            findViewById(R.id.button1).setVisibility(View.GONE);
 
             startActivity(new Intent(MainActivity.this, Host_login.class));
             finish();

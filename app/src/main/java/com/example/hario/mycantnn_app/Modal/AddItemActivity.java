@@ -49,6 +49,7 @@ public class AddItemActivity extends AppCompatActivity {
     private Button AddItemToCategory;
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
+    //  private ProgressDialog progressDialog;
     private ProgressDialog progressDialog;
     private Uri ImageUrl;
     public AddItemActivity() {
@@ -61,7 +62,7 @@ public class AddItemActivity extends AppCompatActivity {
 
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
+        progressDialog = new ProgressDialog(this);
         AddItemSpinner = findViewById(R.id.CanteenItem_Spin);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.CanteenItem_arrays,
                 android.R.layout.simple_spinner_item);
@@ -101,10 +102,12 @@ public class AddItemActivity extends AppCompatActivity {
         AddItemToCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressDialog.setMessage("Uploading...");
+                progressDialog.show();
 
                 UploadImageFileToFirebaseStorage(Choice);
                // Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
-
+                progressDialog.hide();
 
             }
         });
