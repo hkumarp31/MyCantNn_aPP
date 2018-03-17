@@ -9,6 +9,7 @@ import com.example.hario.mycantnn_app.Modal.CartActivity;
 import com.example.hario.mycantnn_app.Modal.CartInfo;
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -108,7 +109,7 @@ public class finalstatus extends AppCompatActivity {
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
-            mref.child("Orders").push().setValue(c);
+            mref.child("Orders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(c);
         }
 
 
