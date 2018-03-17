@@ -53,7 +53,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
         spinner.setOnItemSelectedListener(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
         recyclerView = findViewById(R.id.recycler);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
@@ -102,7 +102,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
         //noinspection SimplifiableIfStatement
         if (id == R.id.profile) {
 
-            DatabaseReference base = FirebaseDatabase.getInstance().getReference().child("HostUser").child("User");
+            DatabaseReference base = FirebaseDatabase.getInstance().getReference().child("HostUser").child("UserProfile");
             if (base.child(firebaseAuth.getCurrentUser().getUid()) == null) {
                 startActivity(new Intent(this, profile_edit_page.class));
 
@@ -137,7 +137,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
     private void updateUI(String choice) {
 
         arrayList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser").child("item");
 
         Log.e(TAG, "updateUI: " + choice);
         databaseReference.child(choice).addValueEventListener(new ValueEventListener() {

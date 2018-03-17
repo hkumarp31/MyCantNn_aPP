@@ -106,7 +106,7 @@ public class finalstatus extends AppCompatActivity {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference mref = database.getReference().child("Customer");
+        DatabaseReference mref = database.getReference().child("HostUser");
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
