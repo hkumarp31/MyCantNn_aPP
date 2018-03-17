@@ -179,7 +179,7 @@ public class AddItemActivity extends AppCompatActivity {
 
                             // Adding image upload id s child element into databaseReference.
                             String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            databaseReference.child("HostUser").child("item").child(uuid).child(Choice).child(ImageUploadId).setValue(imageUploadInfo);
+                            databaseReference.child("HostUser").child("item").child(Choice).child(ImageUploadId).setValue(imageUploadInfo);
                             Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
 
                             startActivity(new Intent(AddItemActivity.this, HostActivityMain.class));

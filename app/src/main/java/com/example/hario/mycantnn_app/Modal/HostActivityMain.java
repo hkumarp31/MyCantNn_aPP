@@ -137,10 +137,10 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
     private void updateUI(String choice) {
 
         arrayList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
         Log.e(TAG, "updateUI: " + choice);
-        databaseReference.child(choice).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("item").child(choice).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postsnap : dataSnapshot.getChildren()) {
