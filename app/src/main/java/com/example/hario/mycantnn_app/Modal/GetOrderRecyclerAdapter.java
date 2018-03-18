@@ -63,9 +63,11 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
         holder.OrderTotal.setText(""+arrayList.get(position).getTotalCost());
         holder.OrderID.setText(arrayList.get(position).getId());
         holder.OrderTakeAction.setText(arrayList.get(position).getStatus());
+        holder.USERID.setText(arrayList.get(position).getUser());
         holder.OrderTakeAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
                 databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -79,19 +81,38 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                     public void onClick(DialogInterface dialog, int item) {
                        String s=databaseReference.push().getKey();
 
+
                         switch(item)
                         {
                             case 0:
                                 holder.OrderTakeAction.setText(""+arrayList);
                                 arrayList.get(position).setStatus(values[0]);
+
                                 notifyDataSetChanged();
                                 alertDialog1.dismiss();
 
-                                 getOrderItemClass orderItemClass = new getOrderItemClass(arrayList.get(position).getImage(),
+                                 final getOrderItemClass orderItemClass = new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0]);
-                                databaseReference.child("HostUser").child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).push().setValue(orderItemClass);
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0],arrayList.get(position).getUser());
+                                databaseReference.child("HostUser").child("OrderStatus").child(arrayList.get(position).getUser()).push().setValue(orderItemClass);
+
+                                databaseReference.child("HostUser").child("OrderStatus").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                            snapshot.getRef().child(arrayList.get(position).getId()).setValue("PROCESS");
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                               // databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getUser()).setValue("PROCESS");
+                               // if (flag[0]==1)
+
 
 
                                 break;
@@ -104,10 +125,8 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 getOrderItemClass orderItemClass1= new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1]);
-                                databaseReference.child("HostUser").child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).push().setValue(orderItemClass1);
-
-
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1],arrayList.get(position).getUser());
+                                databaseReference.child("HostUser").child("OrderStatus").child(arrayList.get(position).getUser()).push().setValue(orderItemClass1);
 
 
                                 break;
@@ -130,7 +149,7 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID, OrderTakeAction,OrderImageURL;
+        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID, OrderTakeAction,OrderImageURL,USERID;
         ImageView imageView;
 
         public ViewHolder(View itemView) {
@@ -143,6 +162,7 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
             imageView=itemView.findViewById(R.id.CustomerOrderProductimage);
             OrderTakeAction=itemView.findViewById(R.id.getProductTAKEACTION_ID);
             OrderImageURL=itemView.findViewById(R.id.CutomerOrderProductImageURL);
+            USERID=itemView.findViewById(R.id.CutomerOrderProductUSERID);
 
         }
     }

@@ -44,7 +44,7 @@ public class finalstatus extends AppCompatActivity {
 
             String s = generateId();
             String status="TAKE ACTION";
-            statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(), client.mailAddedItems.get(i).getCount(), h.getPrice(), status);
+            statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(), client.mailAddedItems.get(i).getCount(), h.getPrice(), status,FirebaseAuth.getInstance().getCurrentUser().getUid());
 
             aL.add(si);
 
@@ -53,45 +53,7 @@ public class finalstatus extends AppCompatActivity {
 
         addtofirebase(aL);
 
-        // new changes
 
-            /*      final DatabaseReference Mred = FirebaseDatabase.getInstance().getReference().child("hemantobjects");
-
-            aL = new ArrayList<>();
-
-            Mred.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    int i=0;
-                    for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
-
-                        CartInfo h = singleSnapshot.getValue(CartInfo.class);
-                        DatabaseReference Mredchild = FirebaseDatabase.getInstance().getReference().child("Orderids");
-                        String s = generateId();
-                        Mred.child(i+"").setValue(s);
-                        statusinfo si = new statusinfo(h.getImage(),h.getName(),s);
-                        aL.add(si) ;
-                        i++;
-
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                    Log.e("TAG", "onCancelled", databaseError.toException());
-
-
-                }
-            }); */
-
-
-
-        /*
-            data receiving end
-         */
 
         myadapter = new statusadapter(aL, this);
         rv.setAdapter(myadapter);
@@ -109,7 +71,7 @@ public class finalstatus extends AppCompatActivity {
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
-            mref.child("Orders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(c);
+            mref.child("Orders").push().setValue(c);
         }
 
 

@@ -45,7 +45,7 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        databaseReference.child("Orders").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Orders").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postsnap : dataSnapshot.getChildren()) {

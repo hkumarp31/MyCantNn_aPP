@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginVertical="15dp"
-    android:orientation="vertical"
-    android:background="@color/bg1">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginTop="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <ImageView
         android:id="@+id/CustomerOrderProductimage"
         android:layout_width="0dp"
@@ -13,6 +17,10 @@
         android:layout_weight="0"/>
     <TextView
         android:id="@+id/CutomerOrderProductImageURL"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+    <TextView
+        android:id="@+id/CutomerOrderProductUSERID"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
@@ -30,15 +38,13 @@
             android:textAlignment="viewStart"
             android:textSize="14sp"
             android:textStyle="bold"
-            tools:ignore="RtlCompat"
-            android:textColor="#FFFFFF"/>
+            tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/getProductQuantity_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -48,7 +54,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:textSize="14sp" />
 
@@ -57,7 +62,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.3"
-            android:textColor="#FFFFFF"
             android:textAlignment="viewEnd"
             android:textSize="14sp"
             android:gravity="end" />
@@ -77,7 +81,6 @@
             android:text="OrderId Is : "
             android:textAlignment="viewStart"
             android:textSize="14sp"
-            android:textColor="#FFFFFF"
             tools:ignore="RtlCompat" />
 
         <TextView
@@ -87,7 +90,6 @@
             android:layout_weight="1"
             android:textAlignment="viewStart"
             android:textSize="20sp"
-            android:textColor="#FFFFFF"
             android:textStyle="bold"
             tools:ignore="RtlCompat" />
         <TextView
@@ -96,7 +98,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:textColor="#FFFFFF"
             android:textAlignment="viewEnd"
             android:textSize="16sp"
             tools:ignore="RtlCompat" />
@@ -105,3 +106,4 @@
 
 
 </LinearLayout>
+</android.support.v7.widget.CardView>

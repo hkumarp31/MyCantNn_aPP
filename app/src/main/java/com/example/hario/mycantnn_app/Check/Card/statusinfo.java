@@ -12,6 +12,15 @@ public class statusinfo {
     private int Count;
     private int Price;
     private String status;
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getStatus() {
         return status;
@@ -21,7 +30,7 @@ public class statusinfo {
         this.status = status;
     }
 
-    public statusinfo(String image, String data, String id, int totalcost, int count, int cost, String status) {
+    public statusinfo(String image, String data, String id, int totalcost, int count, int cost, String status,String user) {
         this.Image = image;
         this.Data = data;
         this.id = id;
@@ -29,6 +38,7 @@ public class statusinfo {
        this.Count = count;
        this.Price= cost;
         this.status = status;
+        this.user=user;
     }
 
     public int getPrice() {

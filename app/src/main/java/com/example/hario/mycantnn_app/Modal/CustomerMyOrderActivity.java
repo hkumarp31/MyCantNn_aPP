@@ -36,20 +36,19 @@ public class CustomerMyOrderActivity extends AppCompatActivity {
     private ArrayList<getOrderItemClass> arrayList=new ArrayList<>();
     private CustomerMyOrderAdapter customerMyOrderAdapter;
     private DatabaseReference databaseReference;
-   // private FirebaseAuth firebaseAuth;
+
 
   @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_my_order);
-       // firebaseAuth = FirebaseAuth.getInstance();
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
 
         recyclerView = findViewById(R.id.customer_my_order_recyler);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-      // String x=firebaseAuth.getCurrentUser().getUid();
 
 
         databaseReference.child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrderAdapter.ViewHolder> {
 
     ArrayList<getOrderItemClass> arrayList;
+    public CustomerMyOrderAdapter(){}
 
     public CustomerMyOrderAdapter(ArrayList<getOrderItemClass> arrayList) {
         this.arrayList = arrayList;
@@ -38,6 +39,7 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
         holder.OrderTotal.setText(""+arrayList.get(position).getTotalCost());
         holder.OrderID.setText(arrayList.get(position).getId());
         holder.OrderStatus.setText(arrayList.get(position).getStatus());
+       // holder.USERID.setText(arrayList.get(position).getUser());
     }
 
     @Override
@@ -46,7 +48,7 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID,OrderStatus;
+        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID,OrderStatus,USERID;
         ImageView imageView;
 
         public ViewHolder(View itemView) {
@@ -58,6 +60,7 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
             OrderID = itemView.findViewById(R.id.customer_my_order_OrderID);
             imageView=itemView.findViewById(R.id.customer_my_order_Image);
             OrderStatus=itemView.findViewById(R.id.customer_my_order_Status);
+            USERID=itemView.findViewById(R.id.CutomerOrderProductUSERID);
 
         }
     }
