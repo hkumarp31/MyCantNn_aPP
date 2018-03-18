@@ -21,11 +21,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecyclerAdapter.ViewHolder> {
 
@@ -71,8 +74,6 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
                 databaseReference = FirebaseDatabase.getInstance().getReference();
-
-
                 builder.setTitle("Select Your Choice");
                 //builder.setCancelable(true);
 
@@ -80,7 +81,6 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
 
                     public void onClick(DialogInterface dialog, int item) {
                        String s=databaseReference.push().getKey();
-
 
                         switch(item)
                         {
@@ -94,26 +94,12 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                  final getOrderItemClass orderItemClass = new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0],arrayList.get(position).getUser());
-                                databaseReference.child("HostUser").child("OrderStatus").child(arrayList.get(position).getUser()).push().setValue(orderItemClass);
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0],arrayList.get(position).getUser(),arrayList.get(position).getKey());
+                                databaseReference.child("ClientUser").child("OrderStatus").child(arrayList.get(position).getUser()).child(arrayList.get(position).getKey()).setValue(orderItemClass);
+                                databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).push().setValue(orderItemClass);
 
-                                databaseReference.child("HostUser").child("OrderStatus").addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                                            snapshot.getRef().child(arrayList.get(position).getId()).setValue("PROCESS");
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });
-                               // databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getUser()).setValue("PROCESS");
+                                databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getKey()).setValue(orderItemClass);
                                // if (flag[0]==1)
-
-
 
                                 break;
                             case 1:
@@ -125,11 +111,12 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 getOrderItemClass orderItemClass1= new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1],arrayList.get(position).getUser());
-                                databaseReference.child("HostUser").child("OrderStatus").child(arrayList.get(position).getUser()).push().setValue(orderItemClass1);
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1],arrayList.get(position).getUser(),arrayList.get(position).getKey());
+                                databaseReference.child("ClientUser").child("OrderStatus").child(arrayList.get(position).getUser()).child(arrayList.get(position).getKey()).setValue(orderItemClass1);
+                                databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).push().setValue(orderItemClass1);
 
+                                databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getKey()).setValue(orderItemClass1);
 
-                                break;
 
                         }
                         alertDialog1.dismiss();

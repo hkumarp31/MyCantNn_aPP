@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class finalstatus extends AppCompatActivity {
@@ -35,43 +36,39 @@ public class finalstatus extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference mref = database.getReference().child("HostUser");
+
         aL = new ArrayList<>();
 
         ArrayList<CartInfo> ci = CartActivity.selectedItem;
-
+        List<String> key = new ArrayList<>();
         for (int i = 0; i < ci.size(); i++) {
             CartInfo h = ci.get(i);
-
+            key.add(mref.push().getKey());
             String s = generateId();
             String status="TAKE ACTION";
-            statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(), client.mailAddedItems.get(i).getCount(), h.getPrice(), status,FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+            statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(),
+                    client.mailAddedItems.get(i).getCount(), h.getPrice(),
+                    status,FirebaseAuth.getInstance().getCurrentUser().getUid(),key.get(i));
 
             aL.add(si);
-
-
         }
 
-        addtofirebase(aL);
-
-
-
+        addtofirebase(aL,key);
         myadapter = new statusadapter(aL, this);
         rv.setAdapter(myadapter);
 
-
     }
-
-
-
-    public void addtofirebase(ArrayList<statusinfo> selecteditems) {
-
+    public void addtofirebase(ArrayList<statusinfo> selecteditems, List<String> key) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mref = database.getReference().child("HostUser");
 
         for (int i = 0; i < selecteditems.size(); i++) {
             statusinfo c = selecteditems.get(i);
-            mref.child("Orders").push().setValue(c);
+            mref.child("Orders").child(key.get(i)).setValue(c);
         }
 
 

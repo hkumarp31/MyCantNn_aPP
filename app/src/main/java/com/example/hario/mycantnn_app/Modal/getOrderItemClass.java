@@ -14,8 +14,15 @@ public class getOrderItemClass {
     private String status;
     private String ImageUrl;
     private String user;
+    private String key;
 
+    public String getKey() {
+        return key;
+    }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public getOrderItemClass() {
 
@@ -112,6 +119,18 @@ public class getOrderItemClass {
         this.id = id;
         this.status=Status;
         this.user=user;
+    }
+    public getOrderItemClass(String image, String data, int totalCost, int count, int price, String id, String Status,String user,String key) {
+
+        this.image = image;
+        this.data = data;
+        this.totalCost = totalCost;
+        this.count = count;
+        this.price = price;
+        this.id = id;
+        this.status=Status;
+        this.user=user;
+        this.key=key;
     }
     public getOrderItemClass( String data, int totalCost, int count, int price, String id, String Status) {
 

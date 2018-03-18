@@ -40,13 +40,13 @@ public class ClientNotificationActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clientnotification_layout);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("ClientUser");
 
         recyclerView = findViewById(R.id.ClientNotification_RecyclerView);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        databaseReference.child("OrderStatus").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("OrderStatusNotify").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postsnap : dataSnapshot.getChildren()) {

@@ -43,7 +43,7 @@ public class CustomerMyOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_my_order);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("ClientUser");
 
 
         recyclerView = findViewById(R.id.customer_my_order_recyler);
