@@ -39,8 +39,8 @@ public class OrderActivity extends AppCompatActivity {
 
     public void tofinalstatus(View view) {
         Intent j = new Intent(this, finalstatus.class);
-
         startActivity(j);
+        finish();
 
 
     }

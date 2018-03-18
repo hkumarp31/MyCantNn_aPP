@@ -1,9 +1,12 @@
 package com.example.hario.mycantnn_app.Check.Card;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.hario.mycantnn_app.Modal.CartActivity;
 import com.example.hario.mycantnn_app.Modal.CartInfo;
@@ -22,6 +25,7 @@ public class finalstatus extends AppCompatActivity {
     private RecyclerView rv;
     private statusadapter myadapter;
     private ArrayList<statusinfo> aL;
+    private Button BACK;
 
 
     @Override
@@ -29,9 +33,14 @@ public class finalstatus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalstatus);
 
-        // if (!FirebaseApp.getApps(this).isEmpty()) {
-        //      FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        //  }
+        BACK=(Button)findViewById(R.id.BACKtoHOME);
+        BACK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(finalstatus.this,client.class));
+                finish();
+            }
+        });
         rv = findViewById(R.id.recyid);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -71,10 +80,7 @@ public class finalstatus extends AppCompatActivity {
             mref.child("Orders").child(key.get(i)).setValue(c);
         }
 
-
     }
-
-
 
     public String generateId() {
         String id = UUID.randomUUID().toString();

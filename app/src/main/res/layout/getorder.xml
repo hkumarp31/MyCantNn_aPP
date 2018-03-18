@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    android:background="@color/bg2">
+    android:background="#E3E8F0">
 
     <LinearLayout
         android:id="@+id/getOrderPageLinearLayout"

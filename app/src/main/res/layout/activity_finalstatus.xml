@@ -3,15 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.hario.mycantnn_app.Check.Card.finalstatus"
-    android:background="@color/bg1">
+    android:background="#e7e7ff">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/BACKtoHOME"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/Green"
+        android:textSize="20dp"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:text="BACK TO HOME"/>
 
 
 </android.support.constraint.ConstraintLayout>

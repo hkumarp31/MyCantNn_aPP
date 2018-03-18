@@ -53,9 +53,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".profile"
+            android:label="My Profile"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.CustomerMyOrderActivity"
+            android:label="My Order Status / History"
             android:screenOrientation="portrait" />
         <activity
             android:name=".BottomnaviActivity"
@@ -76,6 +78,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.ClientNotificationActivity"
+            android:label="Notification"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.HostActivityMain"
@@ -86,9 +89,12 @@
             android:label="Order Received"
             android:screenOrientation="portrait" />
         <activity android:name=".gitCheck" />
-        <activity android:name=".HostProfileDetails" />
-        <activity android:name=".HostProfileEdit" />
-        <activity android:name=".client_login"></activity>
+        <activity android:name=".HostProfileDetails"
+            android:label="Profile"/>
+        <activity android:name=".HostProfileEdit"
+            android:label="Edit Profile Details"/>
+        <activity android:name=".client_login"
+            android:label="Customer Login"></activity>
     </application>
 
 </manifest>

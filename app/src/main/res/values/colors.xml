@@ -9,6 +9,7 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
+    <color name="White">#FFFFFF</color>
 
 
     <color name="card_text_color">#FFFFFF</color>
@@ -20,4 +21,7 @@
     <color name="bg1">#4195a4</color>
     <color name="bg3">#FFCE00</color>
     <color name="bg2">#50bbd2</color>
+    <color name="BLUE">#0000ff</color>
+    <color name="Green">#00b800</color>
+    <color name="borderGRAYColor">#c1cdc1</color>
 </resources>

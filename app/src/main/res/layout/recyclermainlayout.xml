@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -103,6 +104,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="ADD CART"
+            android:background="#1919ff"
+            android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -115,7 +118,8 @@
             android:text="GO TO CART"
             android:textAlignment="center"
             android:textSize="20dp"
-
+            android:background="#00b800"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
     </LinearLayout>
 
