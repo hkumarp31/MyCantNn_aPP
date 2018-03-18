@@ -87,36 +87,33 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                             case 0:
                                 holder.OrderTakeAction.setText(""+arrayList);
                                 arrayList.get(position).setStatus(values[0]);
-
-                                notifyDataSetChanged();
-                                alertDialog1.dismiss();
+                                String x=databaseReference.push().getKey();
 
                                  final getOrderItemClass orderItemClass = new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0],arrayList.get(position).getUser(),arrayList.get(position).getKey());
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0],arrayList.get(position).getUser(),arrayList.get(position).getKey(),x);
                                 databaseReference.child("ClientUser").child("OrderStatus").child(arrayList.get(position).getUser()).child(arrayList.get(position).getKey()).setValue(orderItemClass);
-                                databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).push().setValue(orderItemClass);
-
+                                databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).child(x).setValue(orderItemClass);
                                 databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getKey()).setValue(orderItemClass);
-                               // if (flag[0]==1)
-
+                                notifyDataSetChanged();
+                                alertDialog1.dismiss();
                                 break;
                             case 1:
                                 holder.OrderTakeAction.setText("" + arrayList);
                                 arrayList.get(position).setStatus(values[1]);
-                                notifyDataSetChanged();
-                                alertDialog1.dismiss();
+                                String x1=databaseReference.push().getKey();
 
                                 getOrderItemClass orderItemClass1= new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1],arrayList.get(position).getUser(),arrayList.get(position).getKey());
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1],arrayList.get(position).getUser(),arrayList.get(position).getKey(),x1);
                                 databaseReference.child("ClientUser").child("OrderStatus").child(arrayList.get(position).getUser()).child(arrayList.get(position).getKey()).setValue(orderItemClass1);
-                                databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).push().setValue(orderItemClass1);
+                                databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).child(x1).setValue(orderItemClass1);
 
                                 databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getKey()).setValue(orderItemClass1);
-
+                                notifyDataSetChanged();
+                                alertDialog1.dismiss();
 
                         }
                         alertDialog1.dismiss();

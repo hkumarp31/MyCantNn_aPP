@@ -15,6 +15,15 @@ public class getOrderItemClass {
     private String ImageUrl;
     private String user;
     private String key;
+    private String notifykey;
+
+    public String getNotifykey() {
+        return notifykey;
+    }
+
+    public void setNotifykey(String notifykey) {
+        this.notifykey = notifykey;
+    }
 
     public String getKey() {
         return key;
@@ -131,6 +140,19 @@ public class getOrderItemClass {
         this.status=Status;
         this.user=user;
         this.key=key;
+    }
+    public getOrderItemClass(String image, String data, int totalCost, int count, int price, String id, String Status,String user,String key,String notifykey) {
+
+        this.image = image;
+        this.data = data;
+        this.totalCost = totalCost;
+        this.count = count;
+        this.price = price;
+        this.id = id;
+        this.status=Status;
+        this.user=user;
+        this.key=key;
+        this.notifykey=notifykey;
     }
     public getOrderItemClass( String data, int totalCost, int count, int price, String id, String Status) {
 

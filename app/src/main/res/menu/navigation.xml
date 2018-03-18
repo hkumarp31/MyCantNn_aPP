@@ -40,7 +40,7 @@
     <item
         android:id="@+id/ClientNotificationBottomNavigation"
         android:enabled="true"
-        android:icon="@mipmap/ic_system_update_alt_white_24dp"
+        android:icon="@mipmap/ic_notifications_white_24dp"
         android:orderInCategory="4"
         android:title="Notification"
         app:showAsAction="always"/>
