@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+
     android:orientation="vertical"
     android:background="#dfedff">
 
     <Spinner
         android:id="@+id/CanteenItem_Spin"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_alignParentTop="true"
         android:entries="@array/CanteenItem_arrays"
         android:popupBackground="#4b3de1"
         android:background="@drawable/outlinedark"
@@ -21,19 +23,22 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="10dp"
+        android:layout_below="@id/CanteenItem_Spin"
 
         android:src="@mipmap/ic_add_a_photo_white_24dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -59,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -103,13 +109,13 @@
         <Button
             android:id="@+id/AddItemToCategory"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:backgroundTint="@drawable/cornerlight"
-            android:background="#91A2B9"
+            android:layout_height="70dp"
+            android:background="@color/BLUE"
             android:textStyle="bold"
+            android:textSize="20dp"
             android:text="Add Item To Category"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
