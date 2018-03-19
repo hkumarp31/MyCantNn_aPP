@@ -5,17 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/ClientNotify_text_TV"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:text="Your Notifications From Canteen"
-        />
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/ClientNotify_text_TV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Your Order's Notification From Canteen. After Deleting Click Refresh Button"
+            android:textAlignment="center" />
+        <Button
+            android:id="@+id/ClientNotiRefreshButton"
+            android:background="@drawable/refresh_buttons"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:text="REFRESH"
+            android:textColor="@color/White"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ClientNotification_RecyclerView"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.hario.mycantnn_app.Modal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
@@ -36,6 +39,8 @@ public class ClientNotificationActivity extends AppCompatActivity {
     private ClientNotificationAdapter clientNotificationAdapter;
     private ArrayList<getOrderItemClass> arrayList=new ArrayList<>();
     private DatabaseReference databaseReference;
+    private Button Refresh;
+    private Context context;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +73,14 @@ public class ClientNotificationActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+        Refresh= (Button)findViewById(R.id.ClientNotiRefreshButton);
+        Refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ClientNotificationActivity.class));
+                finish();
             }
         });
        // recyclerView.setAdapter(clientNotificationAdapter);

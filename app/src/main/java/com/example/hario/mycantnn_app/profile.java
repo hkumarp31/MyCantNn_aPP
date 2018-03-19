@@ -174,7 +174,7 @@ public class profile extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(getApplicationContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Database Error : OnCancelled", Toast.LENGTH_SHORT).show();
                     mAuth.signOut();
 
                 }

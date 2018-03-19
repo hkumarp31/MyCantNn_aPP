@@ -97,6 +97,7 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).child(x).setValue(orderItemClass);
                                 databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getKey()).setValue(orderItemClass);
                                 notifyDataSetChanged();
+                                notifyItemChanged(position);
                                 alertDialog1.dismiss();
                                 break;
                             case 1:

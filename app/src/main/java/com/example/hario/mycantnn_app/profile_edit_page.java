@@ -73,8 +73,9 @@ public class profile_edit_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
                 UploadImageFileToFirebaseStorage();
+               // Toast.makeText(getApplicationContext(), "Your details have been Uploaded Successfully", Toast.LENGTH_LONG).show();
+
             }
         });
     }
@@ -126,7 +127,6 @@ public class profile_edit_page extends AppCompatActivity {
 
                             //progressDialog.dismiss();
 
-                            Toast.makeText(getApplicationContext(), "Item Uploaded Successfully To Your Category ", Toast.LENGTH_LONG).show();
 
                             @SuppressWarnings("VisibleForTests")
                             UploadUserData imageUploadInfo = new UploadUserData(Name, Email, Contact, taskSnapshot.getDownloadUrl().toString(), UserName);
@@ -139,6 +139,8 @@ public class profile_edit_page extends AppCompatActivity {
 
 
                             startActivity(new Intent(profile_edit_page.this, profile.class));
+                            Toast.makeText(getApplicationContext(), "Profile Details Uploaded Successfully", Toast.LENGTH_LONG).show();
+
                         }
                     })
                     // If something goes wrong .
@@ -150,7 +152,7 @@ public class profile_edit_page extends AppCompatActivity {
                             //  progressDialog.dismiss();
 
                             // Showing exception erro message.
-                            Toast.makeText(profile_edit_page.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(profile_edit_page.this, "Error In Uploading Details. Try Again Later!", Toast.LENGTH_LONG).show();
                         }
                     })
 

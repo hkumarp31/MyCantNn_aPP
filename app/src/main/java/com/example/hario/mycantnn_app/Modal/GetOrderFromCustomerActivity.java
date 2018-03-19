@@ -2,12 +2,15 @@ package com.example.hario.mycantnn_app.Modal;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.hario.mycantnn_app.R;
@@ -34,11 +37,20 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private TextView textView;
     private Context context;
+    private Button Refresh;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.getorder);
+        Refresh = (Button)findViewById(R.id.getOrderRefreshButton);
+        Refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),GetOrderFromCustomerActivity.class));
+                finish();
+            }
+        });
         databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
         recyclerView = findViewById(R.id.getOrderRecyclerView);

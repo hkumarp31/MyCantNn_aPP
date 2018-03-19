@@ -98,7 +98,7 @@
                         android:id="@+id/hostProfileEdittext"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:backgroundTint="#FFFFFF"
                         android:hint="Your Name"
                         android:textColorHint="#FFFFFF" />
@@ -148,7 +148,7 @@
                         android:id="@+id/hostProfileEdittext1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:backgroundTint="#FFFFFF"
                         android:hint="Email Id"
                         android:textColorHint="#FFFFFF" />
@@ -200,7 +200,7 @@
                         android:id="@+id/hostProfileEdittext2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:backgroundTint="#FFFFFF"
                         android:hint="Contact No"
                         android:textColorHint="#FFFFFF" />

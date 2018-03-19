@@ -1,11 +1,14 @@
 package com.example.hario.mycantnn_app.Modal;
 
+import android.content.Context;
+import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.R;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotificationAdapter.ViewHolder>{
     private DatabaseReference databaseReference;
     ArrayList<getOrderItemClass> arrayList;
+    private Context context;
 
     public ClientNotificationAdapter(ArrayList<getOrderItemClass> arrayList) {
         this.arrayList = arrayList;
@@ -43,6 +47,7 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
             public void onClick(View view) {
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("ClientUser");
                 databaseReference.child("OrderStatusNotify").child(FirebaseAuth.getInstance().getUid()).child(arrayList.get(position).getNotifykey()).removeValue();
+               // Toast.makeText(ClientNotificationAdapter.this.context, "Click on REFRESH Button", Toast.LENGTH_SHORT).show();
             }
         });
 
