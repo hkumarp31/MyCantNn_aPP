@@ -61,7 +61,7 @@
         android:layout_marginTop="@dimen/margin_10"
         android:text="@string/login"
         android:textColor="#FFFFFF"
-        android:background="#FFCE00"
+        android:background="@color/bg3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
@@ -121,7 +121,7 @@
         android:layout_alignLeft="@+id/HostSignup"
         android:layout_alignStart="@+id/HostSignup"
         android:layout_below="@+id/HostSignup"
-        android:background="@color/bg1"
+
         android:layout_marginTop="@dimen/margin_10"></com.google.android.gms.common.SignInButton>
 
 

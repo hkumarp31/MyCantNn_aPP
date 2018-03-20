@@ -104,7 +104,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="ADD CART"
-            android:background="#1919ff"
+            android:background="@color/colorPrimary"
             android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:textSize="20dp"
@@ -118,7 +118,7 @@
             android:text="GO TO CART"
             android:textAlignment="center"
             android:textSize="20dp"
-            android:background="#00b800"
+            android:background="@color/primaryLightColor"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
     </LinearLayout>
