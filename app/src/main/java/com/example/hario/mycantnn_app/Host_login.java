@@ -400,10 +400,7 @@ public class Host_login extends Activity {
             //  startActivity(new Intent(Host_login.this, host_profile_details.class));
             //findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
-            //mStatusTextView.setText(R.string.signed_out);
-            //mDetailTextView.setText(null);
-
-            findViewById(R.id.HostGoggleSign).setVisibility(View.VISIBLE);
+                       findViewById(R.id.HostGoggleSign).setVisibility(View.VISIBLE);
             // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
