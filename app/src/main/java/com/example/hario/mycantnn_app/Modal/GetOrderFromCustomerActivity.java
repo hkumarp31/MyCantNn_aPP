@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,14 +45,7 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.getorder);
-        Refresh = (Button)findViewById(R.id.getOrderRefreshButton);
-        Refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),GetOrderFromCustomerActivity.class));
-                finish();
-            }
-        });
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
 
         recyclerView = findViewById(R.id.getOrderRecyclerView);
@@ -82,14 +77,25 @@ public class GetOrderFromCustomerActivity extends AppCompatActivity {
             }
         });
     }
-/*
-    private ArrayList<getOrderItemClass> fillProjectDetail2() {
-        ArrayList<getOrderItemClass> projectinfoArrayList = new ArrayList<>();
-        getOrderItemClass p = new getOrderItemClass("Hemant", 5, 10, 50, "123456789");
-        projectinfoArrayList.add(p);
-        projectinfoArrayList.add(new getOrderItemClass("PIZZa", 6, 10, 600, "2345654"));
-        projectinfoArrayList.add(new getOrderItemClass("DAbba Dabba", 5, 6, 30, "987654321"));
-        return projectinfoArrayList;
+    @Override
+    public boolean onCreateOptionsMenu(Menu manu) {
+        getMenuInflater().inflate(R.menu.refresh_button, manu);
+        return true;
     }
-    */
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.refreshButton) {
+            startActivity(new Intent(getApplicationContext(),GetOrderFromCustomerActivity.class));
+            finish();
+            overridePendingTransition(0, 0);
+
+            return true;
+        }
+        else
+            return false;
+
+    }
+
 }

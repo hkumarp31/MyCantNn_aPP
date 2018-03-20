@@ -15,8 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.hario.mycantnn_app.MainActivity;
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.client;
+import com.example.hario.mycantnn_app.forgetpwd;
 import com.example.hario.mycantnn_app.profile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -39,8 +41,8 @@ public class ClientNotificationActivity extends AppCompatActivity {
     private ClientNotificationAdapter clientNotificationAdapter;
     private ArrayList<getOrderItemClass> arrayList=new ArrayList<>();
     private DatabaseReference databaseReference;
-    private Button Refresh;
     private Context context;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +75,6 @@ public class ClientNotificationActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-        Refresh= (Button)findViewById(R.id.ClientNotiRefreshButton);
-        Refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ClientNotificationActivity.class));
-                finish();
             }
         });
        // recyclerView.setAdapter(clientNotificationAdapter);
@@ -131,16 +125,25 @@ public class ClientNotificationActivity extends AppCompatActivity {
 
 
     }
-    /*
-    private ArrayList<ClientNotificationInfo> fillProjectDetail(){
-        ArrayList<ClientNotificationInfo> pappuinfoArrayList = new ArrayList<>();
-        ClientNotificationInfo p=new ClientNotificationInfo(android.R.drawable.ic_menu_report_image,"Pappu","Clear");
-        pappuinfoArrayList.add(p);
-        pappuinfoArrayList.add(new ClientNotificationInfo(android.R.drawable.arrow_down_float,"ghonchu","Not Clear"));
-
-        return pappuinfoArrayList;
+    @Override
+    public boolean onCreateOptionsMenu(Menu manu) {
+        getMenuInflater().inflate(R.menu.refresh_button, manu);
+        return true;
     }
-    */
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.refreshButton) {
+            startActivity(new Intent(getApplicationContext(),ClientNotificationActivity.class));
+            finish();
+            overridePendingTransition(0, 0);
+
+            return true;
+        }
+        else
+            return false;
+
+    }
 
 }

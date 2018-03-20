@@ -47,7 +47,7 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
             public void onClick(View view) {
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("ClientUser");
                 databaseReference.child("OrderStatusNotify").child(FirebaseAuth.getInstance().getUid()).child(arrayList.get(position).getNotifykey()).removeValue();
-               // Toast.makeText(ClientNotificationAdapter.this.context, "Click on REFRESH Button", Toast.LENGTH_SHORT).show();
+
             }
         });
 

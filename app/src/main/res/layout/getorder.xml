@@ -18,18 +18,9 @@
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Your Order's List From Customer. After Changing Status Click Refresh Button"
+            android:text="Your Order's List From Customer. After Changing Status Click Refresh Button From Menu"
             android:textAlignment="center" />
-        <Button
-            android:id="@+id/getOrderRefreshButton"
-            android:text="REFRESH"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:textColor="@color/White"
-            android:background="@drawable/refresh_buttons"
-            android:layout_weight="0.3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <LinearLayout
