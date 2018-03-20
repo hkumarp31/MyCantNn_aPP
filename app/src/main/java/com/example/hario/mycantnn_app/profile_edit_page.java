@@ -75,7 +75,7 @@ public class profile_edit_page extends AppCompatActivity {
 
                 UploadImageFileToFirebaseStorage();
                // Toast.makeText(getApplicationContext(), "Your details have been Uploaded Successfully", Toast.LENGTH_LONG).show();
-
+                finish();
             }
         });
 

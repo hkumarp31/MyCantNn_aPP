@@ -81,7 +81,7 @@ public class HostProfileEdit extends AppCompatActivity {
             public void onClick(View v) {
                 ProfileUploding();
                 Toast.makeText(getApplicationContext(), "Your Details Updated Successfully", Toast.LENGTH_LONG).show();
-
+                finish();
             }
         });
 

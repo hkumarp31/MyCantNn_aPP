@@ -102,8 +102,6 @@ public class AddItemActivity extends AppCompatActivity {
         AddItemToCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog.setMessage("Uploading...");
-                progressDialog.show();
 
                 UploadImageFileToFirebaseStorage(Choice);
                // Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
@@ -154,6 +152,8 @@ public class AddItemActivity extends AppCompatActivity {
         final int count = Integer.parseInt(Count);
 
         if (ImageUrl != null && !TextUtils.isEmpty(Cost) && !TextUtils.isEmpty(Data) && !TextUtils.isEmpty(Choice)) {
+            progressDialog.setMessage("Uploading...");
+            progressDialog.show();
 
             // Setting progressDialog Title.
             // progressDialog.setTitle("Image is Uploading...");
@@ -183,7 +183,7 @@ public class AddItemActivity extends AppCompatActivity {
                             // Adding image upload id s child element into databaseReference.
                             String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             databaseReference.child("HostUser").child("item").child(Choice).child(ImageUploadId).setValue(imageUploadInfo);
-                            Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
+                            // Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
                             progressDialog.hide();
                             startActivity(new Intent(AddItemActivity.this, AddItemActivity.class));
                             finish();

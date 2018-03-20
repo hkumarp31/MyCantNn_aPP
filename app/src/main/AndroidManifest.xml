@@ -26,10 +26,8 @@
         </activity>
         <activity
             android:name=".Host_login"
-            android:label="Canteen_App"
+            android:label="HBH"
             android:launchMode="singleTop"
-
-
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -41,16 +39,14 @@
             android:name=".Login_Form"
             android:label="Welcome to the Login Page"
             android:parentActivityName=".Host_login"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".client"
-
             android:label="Select From Menu"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".Check.CheckOutActivity"
+            android:label="CheckOut"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.CartActivity"
@@ -70,13 +66,19 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".profile_edit_page"
-            android:label="Edit Your Details" />
-        <activity android:name=".Check.Card.OrderActivity" />
+            android:label="Edit Your Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Check.Card.OrderActivity"
+            android:label="Order"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Check.Card.finalstatus"
             android:label="Your Order Status"
             android:screenOrientation="portrait" />
-        <activity android:name=".Check.Card.payment" />
+        <activity
+            android:name=".Check.Card.payment"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Modal.AddItemActivity"
             android:label="Add Items To Category"
@@ -93,13 +95,18 @@
             android:name=".Modal.GetOrderFromCustomerActivity"
             android:label="Order Received"
             android:screenOrientation="portrait" />
-        <activity android:name=".gitCheck" />
+        <activity
+            android:name=".gitCheck"
+            android:screenOrientation="portrait" />
         <activity android:name=".HostProfileDetails"
-            android:label="Profile"/>
+            android:label="Profile"
+            android:screenOrientation="portrait" />
         <activity android:name=".HostProfileEdit"
-            android:label="Edit Profile Details"/>
+            android:label="Edit Profile Details"
+            android:screenOrientation="portrait" />
         <activity android:name=".client_login"
-            android:label="Customer Login"></activity>
+            android:label="Customer Login"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
