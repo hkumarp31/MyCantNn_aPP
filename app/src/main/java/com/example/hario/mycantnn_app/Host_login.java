@@ -66,7 +66,7 @@ public class Host_login extends Activity {
     // private CallbackManager callbackManager;
 
     private RelativeLayout HostProfile;
-
+    private DatabaseReference myper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +103,9 @@ public class Host_login extends Activity {
         forgetPw = findViewById(R.id.HostForget);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+
+
+
 /*        callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -438,16 +441,15 @@ public class Host_login extends Activity {
                 // Adding image upload id s child element into databaseReference.
 
                 if (flag == 0) {
-                    final DatabaseReference myper = databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
+                    myper = databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
+
                     if (myper == null)
                         databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
                     //   databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
                 } else {
 
                     // databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
-                    final DatabaseReference myper = databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
-                    if (myper == null)
-                        databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                    databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
                 }
 
             }

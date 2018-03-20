@@ -43,6 +43,7 @@ public class payment extends AppCompatActivity {
 
                confirm();
 
+
             }
 
         }
@@ -68,6 +69,8 @@ public class payment extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         startActivity(new Intent(payment.this,OrderActivity.class));
+
+                        finish();
 
                     }
                 })

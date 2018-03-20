@@ -78,6 +78,8 @@ public class profile_edit_page extends AppCompatActivity {
 
             }
         });
+
+        username.setText(auth.getCurrentUser().getUid());
     }
 
     @Override

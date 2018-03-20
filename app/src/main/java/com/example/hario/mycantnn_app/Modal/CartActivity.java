@@ -132,6 +132,7 @@ public class CartActivity extends AppCompatActivity {
         Intent k = new Intent(this, payment.class);
 
         startActivity(k);
+        finish();
 
     }
 
