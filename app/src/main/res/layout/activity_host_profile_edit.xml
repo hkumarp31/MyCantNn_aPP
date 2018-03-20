@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hario.mycantnn_app.profile"
-    android:background="@color/bg2">
+    android:background="@color/bg2"
+    tools:context="com.example.hario.mycantnn_app.profile">
 
     <RelativeLayout
         android:id="@+id/hostprofilerelativeLayout"
@@ -202,7 +202,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
                         android:backgroundTint="#FFFFFF"
-                        android:hint="Contact No"
+                        android:hint="10 Digits"
+                        android:inputType="number"
                         android:textColorHint="#FFFFFF" />
 
 
@@ -237,9 +238,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="11dp"
+        android:background="@color/bg1"
         android:text="Save"
         android:textColor="#FFFFFF"
-        android:background="@color/bg1"
         android:textSize="20dp" />
 
 
