@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg2"
-
     tools:context="com.example.hario.mycantnn_app.MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        app:srcCompat="@drawable/hbh_logo"
+        android:layout_above="@id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+
+        />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="179dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="hostClick"
         android:text="@string/host"
         android:textColor="#FFFFFF"
         android:background="@color/bg1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+         />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="179dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="main2"
         android:text="@string/client"
         android:textColor="#FFFFFF"
         android:background="@color/bg1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
-        app:layout_constraintVertical_bias="0.134" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginBottom="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+         />
+
+</RelativeLayout>

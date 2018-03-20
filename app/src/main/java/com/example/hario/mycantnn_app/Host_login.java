@@ -63,7 +63,6 @@ public class Host_login extends Activity {
     private ProgressDialog mProgressDialog;
     private DatabaseReference databaseReference;
     private GoogleSignInAccount account;
-    // private CallbackManager callbackManager;
 
     private RelativeLayout HostProfile;
     private DatabaseReference myper;
@@ -88,8 +87,6 @@ public class Host_login extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
         }
-
-
         // mAuth = FirebaseAuth.getInstance();
 
         button = findViewById(R.id.HostButton);
@@ -103,8 +100,6 @@ public class Host_login extends Activity {
         forgetPw = findViewById(R.id.HostForget);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-
-
 
 /*        callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
