@@ -206,6 +206,7 @@ public class profile extends AppCompatActivity {
         if (id == R.id.LogoutProfile) {
             mAuth.signOut();
             startActivity(new Intent(profile.this, MainActivity.class));
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

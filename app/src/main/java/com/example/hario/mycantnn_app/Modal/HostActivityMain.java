@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.hario.mycantnn_app.HostProfileDetails;
 import com.example.hario.mycantnn_app.MainActivity;
@@ -161,7 +160,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(HostActivityMain.this, "LogOut Successful", Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(HostActivityMain.this, "LogOut Successful", Toast.LENGTH_SHORT).show();
 
             }
         });

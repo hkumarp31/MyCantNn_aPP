@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             startActivity(new Intent(MainActivity.this, HostActivityMain.class));
-            // finish();
+            finish();
         }
     }
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             startActivity(new Intent(this, client.class));
-            //  finish();
+            finish();
         }
 
     }
