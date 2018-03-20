@@ -107,7 +107,7 @@ public class AddItemActivity extends AppCompatActivity {
 
                 UploadImageFileToFirebaseStorage(Choice);
                // Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
-                progressDialog.hide();
+
 
             }
         });
@@ -184,8 +184,9 @@ public class AddItemActivity extends AppCompatActivity {
                             String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             databaseReference.child("HostUser").child("item").child(Choice).child(ImageUploadId).setValue(imageUploadInfo);
                             Toast.makeText(getApplicationContext(), "Items Will Be Uploaded Shortly", Toast.LENGTH_LONG).show();
-
-                            startActivity(new Intent(AddItemActivity.this, HostActivityMain.class));
+                            progressDialog.hide();
+                            startActivity(new Intent(AddItemActivity.this, AddItemActivity.class));
+                            finish();
                         }
                     })
                     // If something goes wrong .

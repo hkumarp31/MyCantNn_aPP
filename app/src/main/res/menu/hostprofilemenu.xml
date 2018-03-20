@@ -5,7 +5,7 @@
     tools:context="com.example.hario.mycantnn_app.Modal.HostActivityMain">
     <item
         android:id="@+id/ProfileLogout"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_power_settings_new_white_24dp"
         android:orderInCategory="101"
         android:title="Logout"
         app:showAsAction="always" />

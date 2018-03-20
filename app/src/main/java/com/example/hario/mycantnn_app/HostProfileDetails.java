@@ -116,6 +116,7 @@ public class HostProfileDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HostProfileDetails.this, HostProfileEdit.class));
+                finish();
             }
         });
 
@@ -131,12 +132,9 @@ public class HostProfileDetails extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.profile) {
-            startActivity(new Intent(this, forgetpwd.class));
-
-            return true;
-        } else if (id == R.id.ProfileLogout) {
+        if (id == R.id.ProfileLogout) {
             signOut();
+            finish();
 
             // Toast.makeText(HostProfileDetails.this, "LOGOUT Succefully", Toast.LENGTH_SHORT).show();
 
@@ -151,21 +149,9 @@ public class HostProfileDetails extends AppCompatActivity {
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
-        //  findViewById(R.id.HostGoggleSign).setVisibility(View.VISIBLE);
-        // Google sign out
-      /*  mGoogleSignInClient.signOut().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        updateUI(null);
-                    }
-                });*/
-    }
-
-    private void AddDetails() {
-
 
     }
+
 
 }
 

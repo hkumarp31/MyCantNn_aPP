@@ -35,7 +35,7 @@ public class profile extends AppCompatActivity {
     private Button button1;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
-    private TextView username;
+    // private TextView username;
     private TextView Email;
     private TextView Contact;
     private TextView Name;
@@ -132,7 +132,7 @@ public class profile extends AppCompatActivity {
             UiidId = user.getUid();
         }
 
-        username = findViewById(R.id.profile_textView);
+        //  username = findViewById(R.id.profile_textView);
         Email = findViewById(R.id.ProfileCardName4);
         Contact = findViewById(R.id.ProfileCardName6);
         Name = findViewById(R.id.ProfileCardName2);
@@ -162,7 +162,7 @@ public class profile extends AppCompatActivity {
                     String url = (String) dataSnapshot.child("image").getValue();
                     Glide.with(getApplicationContext()).load(url).into(img);
 
-                    username.setText(CANTTEN);
+                    //   username.setText(CANTTEN);
                     Email.setText(EMAIL);
                     Contact.setText(CONTACT);
                     Name.setText(NAME);

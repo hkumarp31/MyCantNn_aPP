@@ -14,10 +14,8 @@ import com.example.hario.mycantnn_app.Check.CheckOutActivity;
 import com.example.hario.mycantnn_app.R;
 
 public class payment extends AppCompatActivity {
-    RadioGroup rg;
+    private RadioGroup rg;
 
-    public payment() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +37,7 @@ public class payment extends AppCompatActivity {
 
                 Intent host = new Intent(this, CheckOutActivity.class);
                 startActivity(host);
+                finish();
 
             } else if (rg.getCheckedRadioButtonId() == R.id.radioButton6) {
 
