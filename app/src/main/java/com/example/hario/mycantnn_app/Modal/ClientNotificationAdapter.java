@@ -1,14 +1,12 @@
 package com.example.hario.mycantnn_app.Modal;
 
 import android.content.Context;
-import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.R;
@@ -23,8 +21,8 @@ import java.util.ArrayList;
  */
 
 public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotificationAdapter.ViewHolder>{
-    private DatabaseReference databaseReference;
     ArrayList<getOrderItemClass> arrayList;
+    private DatabaseReference databaseReference;
     private Context context;
 
     public ClientNotificationAdapter(ArrayList<getOrderItemClass> arrayList) {
@@ -39,9 +37,11 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+
         Glide.with(holder.ClientNotiImg.getContext()).load(arrayList.get(position).getImage()).into(holder.ClientNotiImg);
         holder.ClientNotiTtl.setText(arrayList.get(position).getData());
         holder.ClientNotiStts.setText(arrayList.get(position).getStatus());
+
         holder.ClientNotiRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

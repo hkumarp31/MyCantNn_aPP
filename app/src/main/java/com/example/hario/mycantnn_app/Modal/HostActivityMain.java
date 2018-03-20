@@ -122,6 +122,8 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
         {
             firebaseAuth.signOut();
             startActivity(new Intent(this, MainActivity.class));
+
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
