@@ -17,6 +17,9 @@ import com.example.hario.mycantnn_app.HostProfileDetails;
 import com.example.hario.mycantnn_app.MainActivity;
 import com.example.hario.mycantnn_app.R;
 import com.example.hario.mycantnn_app.profile_edit_page;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +40,7 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
     private ArrayList<RecyclerItemInfo> arrayList = new ArrayList<>();
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
+    private GoogleSignInClient mGoogleSignInClient;
 
 
     @Override
@@ -53,6 +57,16 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("HostUser");
+
+        // [START config_signin]
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        // [END config_signin]
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         recyclerView = findViewById(R.id.recycler);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
@@ -120,6 +134,8 @@ public class HostActivityMain extends AppCompatActivity implements AdapterView.O
         if(id==R.id.logout)
         {
             firebaseAuth.signOut();
+            mGoogleSignInClient.signOut();
+
             startActivity(new Intent(this, MainActivity.class));
 
             finish();

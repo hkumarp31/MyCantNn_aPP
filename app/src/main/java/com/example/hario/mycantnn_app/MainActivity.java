@@ -1,5 +1,6 @@
 package com.example.hario.mycantnn_app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,39 +18,30 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference firebaseDatabase;
+    private DatabaseReference mydata;
     private String value;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
-        flag = -1;
-
+//progressDialog = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
 
         user = mAuth.getCurrentUser();
-    /*    Log.e("my name","hariom");
-
-        if(user==null)
-        { findViewById(R.id.button2).setVisibility(View.VISIBLE);
-            findViewById(R.id.button1).setVisibility(View.VISIBLE);
-        }
-
-        else
-        {
-            Log.e("my data","what my name");
-            final DatabaseReference myDatabase = firebaseDatabase.child("FlagFile");
-
-            myDatabase.addValueEventListener(new ValueEventListener() {
+    /*    if (user != null) {
+            progressDialog.setMessage("Please Wait..");
+            progressDialog.show();
+            mydata = FirebaseDatabase.getInstance().getReference().child("FlagFile");
+            mydata.addValueEventListener(new ValueEventListener() {
                 @Override
-
-
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Log.e("my data","what r y uy");
-                  value=(String)dataSnapshot.child(user.getUid()).getValue();
+                   Log.e("Array LIst",dataSnapshot+"");
+                    value = (String) dataSnapshot.child(user.getUid()).getValue();
 
-                    Log.e("my data","what my name 123" );
+                    Log.e("value user", value);
                 }
 
                 @Override
@@ -59,23 +51,21 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
+            if (value.equals("0")) {
+                findViewById(R.id.button1).setVisibility(View.VISIBLE);
+                findViewById(R.id.button2).setVisibility(View.GONE);
 
-            if(value.equals("0"))
-            {  findViewById(R.id.button2).setVisibility(View.GONE);
-            }
-            else {
+            } else {
+                findViewById(R.id.button2).setVisibility(View.VISIBLE);
                 findViewById(R.id.button1).setVisibility(View.GONE);
 
             }
-        }*/
 
+            progressDialog.hide();
+        }*/
     }
 
     public void hostClick(View view) {
-        //Intent host = new Intent(this,Host_login.class);
-        // startActivity(host);
-
-
         flag = 0;
         if (user == null) {
             startActivity(new Intent(MainActivity.this, Host_login.class));
@@ -91,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         flag = 1;
 
         if (user == null) {
-//            findViewById(R.id.button1).setVisibility(View.GONE);
 
             startActivity(new Intent(MainActivity.this, Host_login.class));
             finish();

@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.Modal.CartActivity;
@@ -174,7 +173,7 @@ public class profile extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(getApplicationContext(), "Database Error : OnCancelled", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(getApplicationContext(), "Database Error : OnCancelled", Toast.LENGTH_SHORT).show();
                     mAuth.signOut();
 
                 }
@@ -205,14 +204,15 @@ public class profile extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.LogoutProfile) {
             mAuth.signOut();
+            // Firebase sign out
+            // Google sign out
+            mGoogleSignInClient.signOut();
             startActivity(new Intent(profile.this, MainActivity.class));
             finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 
