@@ -4,17 +4,13 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -70,12 +66,8 @@ public class Host_login extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //    FacebookSdk.sdkInitialize(getApplicationContext());
-        //  AppEventsLogger.activateApp(this);
-        // This MUST be placed after the above two lines.
         setContentView(R.layout.host_login);
-        Window window = this.getWindow();
+     /*   Window window = this.getWindow();
 
 // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -86,7 +78,7 @@ public class Host_login extends Activity {
 // finally change the color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.statusbar));
-        }
+        }*/
         // mAuth = FirebaseAuth.getInstance();
 
         button = findViewById(R.id.HostButton);
@@ -100,27 +92,6 @@ public class Host_login extends Activity {
         forgetPw = findViewById(R.id.HostForget);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-
-/*        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        // App code
-                       // boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
-                    startActivity(new Intent(Host_login.this,host_profile_details.class));
-                    finish();
-                    }
-                    @Override
-                    public void onCancel() {
-                        // App code
-                    }
-                    @Override
-                    public void onError(FacebookException exception) {
-                        Toast.makeText(Host_login.this,"Authification failed", Toast.LENGTH_LONG).show();
-                        // App code
-                    }
-                });*/
 
 
         if (mAuth.getCurrentUser() != null) {
