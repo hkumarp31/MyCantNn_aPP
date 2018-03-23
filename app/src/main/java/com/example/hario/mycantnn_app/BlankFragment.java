@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
+ * CHECKING BLANK FRAGMENT ---- CHANGES BY HEMANT KUMAR
+
+ *
  */
 public class BlankFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
