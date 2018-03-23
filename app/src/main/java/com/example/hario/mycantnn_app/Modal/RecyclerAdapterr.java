@@ -1,20 +1,30 @@
 package com.example.hario.mycantnn_app.Modal;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.nfc.Tag;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.R;
+import com.example.hario.mycantnn_app.imageEnlargeView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.ViewHolder> {
+    Context context;
 
     ArrayList<RecyclerInfo> arrayList;
     TextView tv;
@@ -65,11 +75,18 @@ public class RecyclerAdapterr extends RecyclerView.Adapter<RecyclerAdapterr.View
                 arrayList.get(position).setCount(Count);
                 holder.ItemTotalPrice.setText("" + arrayList);
                 arrayList.get(position).setTotalCost(Count * arrayList.get(position).getCost());
-
                 notifyDataSetChanged();
             }
         });
-
+        holder.ItemImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               String ImageUrl = arrayList.get(position).getImage();
+                Intent intent = new Intent(view.getContext(), imageEnlargeView.class);
+                intent.putExtra("imageurl", ImageUrl);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

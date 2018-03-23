@@ -96,7 +96,8 @@
             android:label="Order Received"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".gitCheck"
+            android:name=".imageEnlargeView"
+            android:label="Maximum Zoomed Image"
             android:screenOrientation="portrait" />
         <activity android:name=".HostProfileDetails"
             android:label="Profile"

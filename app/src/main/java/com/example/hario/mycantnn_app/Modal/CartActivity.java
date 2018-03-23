@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hario.mycantnn_app.Check.Card.payment;
 import com.example.hario.mycantnn_app.R;
@@ -70,6 +71,24 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(cartRecyclerAdapter);
 
+        final int finalItemTotalPrice = itemTotalPrice;
+        SubmitOrdr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(finalItemTotalPrice ==0)
+                {
+                    Toast.makeText(CartActivity.this,"Add Item to Your Cart First",Toast.LENGTH_SHORT).show();
+                }
+                else
+                    {
+                        Intent k = new Intent(CartActivity.this, payment.class);
+
+                        startActivity(k);
+                        finish();
+                    }
+            }
+        });
+
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         Menu menu = navigation.getMenu();
@@ -126,15 +145,5 @@ public class CartActivity extends AppCompatActivity {
 
        }
        */
-    public void MYbutton(View view) {
-
-
-        Intent k = new Intent(this, payment.class);
-
-        startActivity(k);
-        finish();
-
-    }
-
 
 }

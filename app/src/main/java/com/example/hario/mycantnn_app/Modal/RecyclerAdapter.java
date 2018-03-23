@@ -1,5 +1,6 @@
 package com.example.hario.mycantnn_app.Modal;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hario.mycantnn_app.R;
+import com.example.hario.mycantnn_app.imageEnlargeView;
 
 import java.util.ArrayList;
 
@@ -29,15 +31,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
-
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Glide.with(holder.Pimage.getContext()).load(arrayList.get(position).getImage()).into(holder.Pimage);
-        // holder.Pimage.setImageResource(arrayList.get(position).getImage());
         holder.Ptitle.setText(arrayList.get(position).getData());
         holder.Pprice.setText("" + arrayList.get(position).getCost());
         holder.PCount.setText("" + arrayList.get(position).getCount());
         holder.Ptotal.setText("" + arrayList.get(position).getTotal());
+        holder.Pimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String ImageUrl = arrayList.get(position).getImage();
+                Intent intent = new Intent(view.getContext(), imageEnlargeView.class);
+                intent.putExtra("imageurl", ImageUrl);
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
 
