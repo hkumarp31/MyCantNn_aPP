@@ -85,7 +85,7 @@ public class Host_login extends Activity {
 
 // finally change the color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(ContextCompat.getColor(this,R.color.statusbar));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.statusbar));
         }
         // mAuth = FirebaseAuth.getInstance();
 
@@ -127,25 +127,25 @@ public class Host_login extends Activity {
 
             FirebaseUser name = mAuth.getCurrentUser();
             if (flag == 0) {
-                if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
+                if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null) {
                     startActivity(new Intent(Host_login.this, HostProfileEdit.class));
-
-                else {
+                    finish();
+                } else {
                     startActivity(new Intent(Host_login.this, HostActivityMain.class));
+                    finish();
 
                 }
-                finish();
 
 
             } else {
-                if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
+                if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null) {
                     startActivity(new Intent(Host_login.this, profile_edit_page.class));
-
-                else {
+                    finish();
+                } else {
                     startActivity(new Intent(Host_login.this, client.class));
-
+                    finish();
                 }
-                finish();
+
             }
         }
 
@@ -247,28 +247,30 @@ public class Host_login extends Activity {
                                         //final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
 
                                         //mydata.setValue("0");
-                                        if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null)
+                                        if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null) {
                                             startActivity(new Intent(Host_login.this, HostProfileEdit.class));
-
-                                        else {
+                                            finish();
+                                        } else {
                                             startActivity(new Intent(Host_login.this, HostActivityMain.class));
+                                            finish();
 
                                         }
-                                        finish();
 
 
                                     } else {
                                         //final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
 
                                         // mydata.setValue("1");
-                                        if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
+                                        if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null) {
                                             startActivity(new Intent(Host_login.this, profile_edit_page.class));
 
-                                        else {
+                                            finish();
+                                        } else {
                                             startActivity(new Intent(Host_login.this, client.class));
+                                            finish();
 
                                         }
-                                        finish();
+
                                     }
 
                                 }
@@ -281,13 +283,12 @@ public class Host_login extends Activity {
             @Override
             public void onClick(View v) {
                 signIn();
+
             }
         });
 
 
     }
-
-
 
 
     // [START on_start_check_user]
@@ -362,33 +363,6 @@ public class Host_login extends Activity {
     }
     // [END signin]
 
-    private void signOut() {
-        // Firebase sign out
-        mAuth.signOut();
-
-        // Google sign out
-        mGoogleSignInClient.signOut().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        updateUI(null);
-                    }
-                });
-    }
-
-    private void revokeAccess() {
-        // Firebase sign out
-        mAuth.signOut();
-
-        // Google revoke access
-        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        updateUI(null);
-                    }
-                });
-    }
 
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
@@ -400,7 +374,7 @@ public class Host_login extends Activity {
             //  startActivity(new Intent(Host_login.this, host_profile_details.class));
             //findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
-                       findViewById(R.id.HostGoggleSign).setVisibility(View.VISIBLE);
+            findViewById(R.id.HostGoggleSign).setVisibility(View.VISIBLE);
             // findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
@@ -435,48 +409,52 @@ public class Host_login extends Activity {
                 if (flag == 0) {
                     myper = databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
 
-                    if (myper == null)
+                    if (myper == null) {
                         databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
-                    //   databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
+                        //   databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
+                        finish();
+                    } else {
+
+                        // databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
+                        databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                        finish();
+                    }
+                    finish();
+
+                }
+
+
+                mProgressDialog.hide();
+                FirebaseUser name = mAuth.getCurrentUser();
+                if (flag == 0) {
+                    if (databaseReference.child("HostUser").child("UserProfile").child(name.getUid()) == null) {
+                        startActivity(new Intent(Host_login.this, HostProfileEdit.class));
+
+                        finish();
+                    } else {
+                        startActivity(new Intent(Host_login.this, HostActivityMain.class));
+
+                        finish();
+                    }
+                    finish();
+
+
                 } else {
+                    if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null) {
+                        startActivity(new Intent(Host_login.this, profile_edit_page.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(Host_login.this, client.class));
+                        finish();
+                    }
 
-                    // databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
-                    databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                    finish();
                 }
+
 
             }
-
-
-
-            mProgressDialog.hide();
-            FirebaseUser name = mAuth.getCurrentUser();
-            if (flag == 0) {
-                if (databaseReference.child("HostUser").child("UserProfile").child(name.getUid()) == null)
-                    startActivity(new Intent(Host_login.this, HostProfileEdit.class));
-
-                else {
-                    startActivity(new Intent(Host_login.this, HostActivityMain.class));
-
-                }
-                finish();
-
-
-            } else {
-                if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null)
-                    startActivity(new Intent(Host_login.this, profile_edit_page.class));
-
-                else {
-                    startActivity(new Intent(Host_login.this, client.class));
-
-                }
-                finish();
-            }
-
-
-
-
         }
+
+
     }
-
-
 }

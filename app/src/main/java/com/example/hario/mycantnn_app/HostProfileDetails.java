@@ -134,6 +134,7 @@ public class HostProfileDetails extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.ProfileLogout) {
             signOut();
+
             finish();
 
             // Toast.makeText(HostProfileDetails.this, "LOGOUT Succefully", Toast.LENGTH_SHORT).show();
@@ -149,6 +150,7 @@ public class HostProfileDetails extends AppCompatActivity {
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
+        mGoogleSignInClient.signOut();
 
     }
 
