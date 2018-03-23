@@ -29,7 +29,7 @@ public class payment extends AppCompatActivity {
     public void onclick(View view) {
         if (rg.getCheckedRadioButtonId() == -1) {
             // no radio buttons are checked
-            Toast.makeText(getBaseContext(), "Select one option", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Select 'Cash' Option Only", Toast.LENGTH_LONG).show();
         } else {
             // one of the radio buttons is checked
             if (rg.getCheckedRadioButtonId() == R.id.radioButton1 || rg.getCheckedRadioButtonId() == R.id.radioButton2) {
