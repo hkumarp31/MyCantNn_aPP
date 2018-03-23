@@ -244,9 +244,9 @@ public class Host_login extends Activity {
                                     FirebaseUser name = mAuth.getCurrentUser();
                                     if (flag == 0) {
 
-                                        //final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
+                                        final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("flagfile").child(mAuth.getCurrentUser().getUid()).child("flag");
 
-                                        //mydata.setValue("0");
+                                        mydata.setValue("0");
                                         if (databaseReference.child("HostUser").child("User").child(name.getUid()) == null) {
                                             startActivity(new Intent(Host_login.this, HostProfileEdit.class));
                                             finish();
@@ -258,9 +258,9 @@ public class Host_login extends Activity {
 
 
                                     } else {
-                                        //final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("FlagFile").child(mAuth.getCurrentUser().getUid());
+                                        final DatabaseReference mydata = FirebaseDatabase.getInstance().getReference("flagfile").child(mAuth.getCurrentUser().getUid()).child("flag");
 
-                                        // mydata.setValue("1");
+                                        mydata.setValue("1");
                                         if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null) {
                                             startActivity(new Intent(Host_login.this, profile_edit_page.class));
 
@@ -411,18 +411,19 @@ public class Host_login extends Activity {
 
                     if (myper == null) {
                         databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
-                        //   databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("0");
                         finish();
                     } else {
 
-                        // databaseReference.child("FlagFile").child(mAuth.getCurrentUser().getUid()).setValue("1");
+                    }
+                } else {
+                    myper = databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
+                    if (myper == null) {
                         databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
                         finish();
                     }
-                    finish();
-
                 }
 
+            }
 
                 mProgressDialog.hide();
                 FirebaseUser name = mAuth.getCurrentUser();
@@ -433,6 +434,7 @@ public class Host_login extends Activity {
                         finish();
                     } else {
                         startActivity(new Intent(Host_login.this, HostActivityMain.class));
+                        databaseReference.child("flagfile").child(mAuth.getCurrentUser().getUid()).child("flag").setValue("0");
 
                         finish();
                     }
@@ -440,11 +442,17 @@ public class Host_login extends Activity {
 
 
                 } else {
+
+
                     if (databaseReference.child("ClientUser").child("UserProfile").child(name.getUid()) == null) {
                         startActivity(new Intent(Host_login.this, profile_edit_page.class));
+
+
                         finish();
                     } else {
                         startActivity(new Intent(Host_login.this, client.class));
+                        databaseReference.child("flagfile").child(mAuth.getCurrentUser().getUid()).child("flag").setValue("1");
+
                         finish();
                     }
 
@@ -457,4 +465,4 @@ public class Host_login extends Activity {
 
 
     }
-}
+

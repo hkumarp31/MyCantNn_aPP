@@ -11,10 +11,12 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="230dp"
-        app:srcCompat="@drawable/hbh_logo"
         android:layout_above="@id/button1"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="40dp"
+        app:srcCompat="@drawable/hbh_logo"
 
         />
 
@@ -22,26 +24,26 @@
         android:id="@+id/button1"
         android:layout_width="179dp"
         android:layout_height="59dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="160dp"
+        android:background="@color/bg1"
         android:onClick="hostClick"
         android:text="@string/host"
         android:textColor="#FFFFFF"
-        android:background="@color/bg1"
-        android:layout_above="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
          />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="179dp"
         android:layout_height="59dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@color/bg1"
         android:onClick="main2"
         android:text="@string/client"
         android:textColor="#FFFFFF"
-        android:background="@color/bg1"
-        android:layout_marginBottom="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
          />
 
 </RelativeLayout>
