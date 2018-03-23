@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
                                 });
                 AlertDialog alert = builder.create();
                 alert.show();
+            } else {
+
+                startActivity(new Intent(this, client.class));
+                finish();
             }
-
-            startActivity(new Intent(this, client.class));
-            finish();
         }
-
     }
 }
