@@ -9,8 +9,8 @@ import android.view.KeyEvent;
 public class CreditCardEditText extends android.support.v7.widget.AppCompatEditText {
 
     public static String value = "";
+    public static int flag = -1;
     public Context context;
-
     BackButtonListener backButtonListener;
 
     public CreditCardEditText(Context context) {

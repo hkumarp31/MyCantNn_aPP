@@ -1,5 +1,6 @@
 package com.example.hario.mycantnn_app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hario.mycantnn_app.Modal.UploadUserData;
@@ -33,7 +35,7 @@ public class profile_edit_page extends AppCompatActivity {
 
 
     private EditText name;
-    private EditText email;
+    private TextView email;
     private EditText contact;
     private Button save;
     private ImageView img;
@@ -41,7 +43,9 @@ public class profile_edit_page extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private FirebaseAuth auth;
-    private EditText username;
+    private TextView username;
+    private String UserName;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,7 @@ public class profile_edit_page extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference().child("ClientUser");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("ClientUser");
 
-
+        progressDialog = new ProgressDialog(this);
         name = findViewById(R.id.ProfileEdittext);
         email = findViewById(R.id.ProfileEdittext1);
         contact = findViewById(R.id.ProfileEdittext2);
@@ -59,7 +63,7 @@ public class profile_edit_page extends AppCompatActivity {
         img = findViewById(R.id.ProfileimageView);
         auth = FirebaseAuth.getInstance();
         username = findViewById(R.id.profile_textView);
-
+        email.setText(auth.getCurrentUser().getEmail());
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +83,7 @@ public class profile_edit_page extends AppCompatActivity {
             }
         });
 
-        username.setText(auth.getCurrentUser().getUid());
+        username.setText(auth.getCurrentUser().getUid().substring(0, 8));
     }
 
     @Override
@@ -100,9 +104,9 @@ public class profile_edit_page extends AppCompatActivity {
 
 
         final String Name = name.getText().toString().trim();
-        final String Email = email.getText().toString();
+        final String Email = auth.getCurrentUser().getEmail();
         final String Contact = contact.getText().toString();
-        final String UserName = username.getText().toString().trim();
+        UserName = username.getText().toString();
 
 /*
         String TotalCost = itemTotalPrice.getText().toString();
@@ -113,10 +117,10 @@ public class profile_edit_page extends AppCompatActivity {
         if (imageUrl != null && !TextUtils.isEmpty(Email) && !TextUtils.isEmpty(Contact)) {
 
             // Setting progressDialog Title.
-            // progressDialog.setTitle("Image is Uploading...");
+            progressDialog.setTitle("Data Uploading...");
 
             // Showing progressDialog.
-            //progressDialog.show();
+            progressDialog.show();
 
             // Creating second StorageReference.
             StorageReference storageReference2nd = storageReference.child("Image").child(imageUrl.getLastPathSegment());
@@ -127,7 +131,7 @@ public class profile_edit_page extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            //progressDialog.dismiss();
+
 
 
                             @SuppressWarnings("VisibleForTests")
@@ -138,8 +142,7 @@ public class profile_edit_page extends AppCompatActivity {
 
                             // Adding image upload id s child element into databaseReference.
                             databaseReference.child("UserProfile").child(auth.getCurrentUser().getUid()).setValue(imageUploadInfo);
-
-
+                            progressDialog.hide();
                             startActivity(new Intent(profile_edit_page.this, profile.class));
                             Toast.makeText(getApplicationContext(), "Profile Details Uploaded Successfully", Toast.LENGTH_LONG).show();
 

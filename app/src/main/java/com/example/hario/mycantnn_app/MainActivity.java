@@ -13,10 +13,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static com.example.hario.mycantnn_app.Check.Utils.CreditCardEditText.flag;
 import static com.example.hario.mycantnn_app.Check.Utils.CreditCardEditText.value;
 
 public class MainActivity extends AppCompatActivity {
-    public static int flag;
+    ;
     private int no;
     private FirebaseAuth mAuth;
     private FirebaseUser user;

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hario.mycantnn_app.Modal.UploadUserData;
@@ -33,7 +34,7 @@ import java.io.InputStream;
 
 public class HostProfileEdit extends AppCompatActivity {
     private EditText name;
-    private EditText email;
+    private TextView email;
     private EditText contact;
     private Button save;
     private ImageView img;
@@ -44,7 +45,7 @@ public class HostProfileEdit extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressDialog progressBar;
     private FirebaseUser user;
-
+    private String canteen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class HostProfileEdit extends AppCompatActivity {
         progressBar = new ProgressDialog(this);
         user = auth.getCurrentUser();
 
-
+        email.setText(auth.getCurrentUser().getEmail());
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,9 +109,10 @@ public class HostProfileEdit extends AppCompatActivity {
         if (user != null) {
 
             final String Name = name.getText().toString().trim();
-            final String Email = email.getText().toString();
+            final String Email = auth.getCurrentUser().getEmail();
             final String Contact = contact.getText().toString();
-            final String canteen = canteenName.getText().toString();
+            canteen = canteenName.getText().toString();
+            //  canteen = canteen.substring(0,10);
             final String uid = user.getUid();
 
 
@@ -142,7 +144,7 @@ public class HostProfileEdit extends AppCompatActivity {
                                 // Adding image upload id s child element into databaseReference.
                                 databaseReference.child("UserProfile").child(auth.getCurrentUser().getUid()).setValue(imageUploadInfo);
 
-
+                                progressBar.hide();
                                 startActivity(new Intent(HostProfileEdit.this, HostProfileDetails.class));
                             }
                         })

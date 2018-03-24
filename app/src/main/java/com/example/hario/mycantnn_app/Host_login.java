@@ -35,10 +35,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import static com.example.hario.mycantnn_app.MainActivity.flag;
+import static com.example.hario.mycantnn_app.Check.Utils.CreditCardEditText.flag;
 
 public class Host_login extends Activity {
     private static final String TAG = "GoogleActivity";
@@ -62,7 +65,7 @@ public class Host_login extends Activity {
 
     private RelativeLayout HostProfile;
     private DatabaseReference myper;
-
+    private String mystr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -353,7 +356,7 @@ public class Host_login extends Activity {
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage("Loding");
+            mProgressDialog.setMessage("Please Wait...");
             mProgressDialog.setIndeterminate(true);
         }
 
@@ -370,7 +373,7 @@ public class Host_login extends Activity {
                 Uri personPhoto = account.getPhotoUrl();
 
 
-                UploadUserData imageUploadInfo = new UploadUserData(personName, personEmail, "", personPhoto.toString(), "");
+                final UploadUserData imageUploadInfo = new UploadUserData(personName, personEmail, "", personPhoto.toString(), "");
 
                 // Getting image upload ID.
                 // String ImageUploadId = databaseReference.push().getKey();
@@ -380,18 +383,47 @@ public class Host_login extends Activity {
                 if (flag == 0) {
                     myper = databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
 
-                    if (myper == null) {
-                        databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
-                        finish();
-                    } else {
+                    myper.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.child("email").getValue() == null) {
+                                databaseReference.child("HostUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                                finish();
+                            }
 
-                    }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 } else {
-                    myper = databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid());
-                    if (myper == null) {
-                        databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
-                        finish();
-                    }
+                    String user = mAuth.getCurrentUser().getUid();
+                    //Firebase firebase = new Firebase(SyncStateContract.Constants.FIREBASE_URL_USER_TASKS).child(Utils.encodeEmail(unProcessedEmail));
+
+                    // Query queryRef = databaseReference.orderByChild(user);
+
+
+                    myper = databaseReference.child("ClientUser").child("UserProfile").child(user);
+                    //   final Query queryRef = myper.orderByChild(user).equalTo(user);
+                    myper.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.child("email").getValue() == null) {
+                                databaseReference.child("ClientUser").child("UserProfile").child(mAuth.getCurrentUser().getUid()).setValue(imageUploadInfo);
+                                finish();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
                 }
 
             }
