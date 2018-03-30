@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.hario.mycantnn_app.Modal.CartActivity;
@@ -71,6 +72,7 @@ public class client extends AppCompatActivity {
                         break;
 
                     case R.id.navigation_cart:
+                        Toast.makeText(getApplicationContext(),"Your Cart Is Empty. Go To Shop :)",Toast.LENGTH_SHORT).show();
 
                         Intent intent2 = new Intent(client.this, CartActivity.class);
                         startActivity(intent2);

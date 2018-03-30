@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.hario.mycantnn_app.Modal.CartActivity;
 import com.example.hario.mycantnn_app.Modal.RecyclerAdapterr;
 import com.example.hario.mycantnn_app.Modal.RecyclerInfo;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -131,6 +132,7 @@ public class RecyclerActivity extends Fragment {
                             client.mailAddedItems.add(arrayList.get(i));
                     }
                 }
+
                 Toast.makeText(getContext(), "Items Added to Cart Successfully", Toast.LENGTH_SHORT).show();
 
             }

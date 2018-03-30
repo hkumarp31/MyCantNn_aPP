@@ -100,6 +100,8 @@ public class CartActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_shop:
 
+                        Toast.makeText(getApplicationContext(),"Please Do Shopping Again! Your Cart has been EMPTY now",Toast.LENGTH_LONG).show();
+
                         Intent intent2 = new Intent(CartActivity.this, client.class);
                         startActivity(intent2);
                         overridePendingTransition(0, 0);
