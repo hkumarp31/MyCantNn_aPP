@@ -1,6 +1,7 @@
 package com.example.hario.mycantnn_app.Modal;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,10 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
         holder.OrderID.setText(arrayList.get(position).getId());
         holder.OrderStatus.setText(arrayList.get(position).getStatus());
         holder.OrderDate.setText(arrayList.get(position).getDateandtime());
+        if(arrayList.get(position).getStatus().equals(" PROCESS "))
+            holder.OrderStatus.setTextColor(Color.RED);
+        else
+            holder.OrderStatus.setTextColor(Color.GREEN);
     }
 
     @Override
