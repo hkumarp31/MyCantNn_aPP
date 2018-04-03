@@ -16,6 +16,24 @@ public class getOrderItemClass {
     private String user;
     private String key;
     private String notifykey;
+    private String dateandtime;
+    private String datetime;
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public String getDateandtime() {
+        return dateandtime;
+    }
+
+    public void setDateandtime(String dateandtime) {
+        this.dateandtime = dateandtime;
+    }
 
     public String getNotifykey() {
         return notifykey;
@@ -154,6 +172,35 @@ public class getOrderItemClass {
         this.key=key;
         this.notifykey=notifykey;
     }
+    public getOrderItemClass(String image, String data, int totalCost, int count, int price, String id, String Status,String user,String key,String notifykey,String dateandtime) {
+
+        this.image = image;
+        this.data = data;
+        this.totalCost = totalCost;
+        this.count = count;
+        this.price = price;
+        this.id = id;
+        this.status=Status;
+        this.user=user;
+        this.key=key;
+        this.notifykey=notifykey;
+        this.dateandtime=dateandtime;
+    }
+    public getOrderItemClass(String image, String data, int totalCost, int count, int price, String id, String Status,String user,String key,String notifykey,String dateandtime,String datetime) {
+
+        this.image = image;
+        this.data = data;
+        this.totalCost = totalCost;
+        this.count = count;
+        this.price = price;
+        this.id = id;
+        this.status=Status;
+        this.user=user;
+        this.key=key;
+        this.notifykey=notifykey;
+        this.dateandtime=dateandtime;
+        this.datetime=datetime;
+    }
     public getOrderItemClass( String data, int totalCost, int count, int price, String id, String Status) {
 
         this.data = data;
@@ -163,9 +210,10 @@ public class getOrderItemClass {
         this.id = id;
         this.status=Status;
     }
-    public getOrderItemClass(String image,String data,String status){
+    public getOrderItemClass(String image,String data,String status,String datetime){
         this.image=image;
         this.data=data;
         this.status=status;
+        this.datetime=datetime;
     }
 }

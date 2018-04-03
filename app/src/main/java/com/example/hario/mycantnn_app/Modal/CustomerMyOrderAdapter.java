@@ -39,7 +39,7 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
         holder.OrderTotal.setText(""+arrayList.get(position).getTotalCost());
         holder.OrderID.setText(arrayList.get(position).getId());
         holder.OrderStatus.setText(arrayList.get(position).getStatus());
-       // holder.USERID.setText(arrayList.get(position).getUser());
+        holder.OrderDate.setText(arrayList.get(position).getDateandtime());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID,OrderStatus,USERID;
+        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID,OrderStatus,USERID,OrderDate;
         ImageView imageView;
 
         public ViewHolder(View itemView) {
@@ -61,6 +61,7 @@ public class CustomerMyOrderAdapter extends RecyclerView.Adapter<CustomerMyOrder
             imageView=itemView.findViewById(R.id.customer_my_order_Image);
             OrderStatus=itemView.findViewById(R.id.customer_my_order_Status);
             USERID=itemView.findViewById(R.id.CutomerOrderProductUSERID);
+            OrderDate = itemView.findViewById(R.id.customer_my_orderDate);
 
         }
     }

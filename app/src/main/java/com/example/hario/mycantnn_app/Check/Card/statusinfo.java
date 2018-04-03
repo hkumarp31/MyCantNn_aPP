@@ -14,6 +14,19 @@ public class statusinfo {
     private String status;
     private String user;
     private String key;
+    private String dateandtime;
+
+    public statusinfo(String dateandtime) {
+        this.dateandtime = dateandtime;
+    }
+
+    public String getDateandtime() {
+        return dateandtime;
+    }
+
+    public void setDateandtime(String dateandtime) {
+        this.dateandtime = dateandtime;
+    }
 
     public String getKey() {
         return key;
@@ -49,6 +62,18 @@ public class statusinfo {
         this.status = status;
         this.user=user;
         this.key=key;
+    }
+    public statusinfo(String image, String data, String id, int totalcost, int count, int cost, String status,String user, String key,String dateandtime) {
+        this.Image = image;
+        this.Data = data;
+        this.id = id;
+        this.TotalCost = totalcost;
+        this.Count = count;
+        this.Price= cost;
+        this.status = status;
+        this.user=user;
+        this.key=key;
+        this.dateandtime=dateandtime;
     }
 
     public int getPrice() {

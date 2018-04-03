@@ -16,7 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +34,8 @@ public class finalstatus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalstatus);
+        Calendar cd = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         BACK=(Button)findViewById(R.id.BACKtoHOME);
         BACK.setOnClickListener(new View.OnClickListener() {
@@ -57,10 +61,11 @@ public class finalstatus extends AppCompatActivity {
             key.add(mref.push().getKey());
             String s = generateId();
             String status="TAKE ACTION";
+            String formattedDate = df.format(cd.getTime());
 
             statusinfo si = new statusinfo("" + h.getImage(), "" + h.getName(), "" + s, h.getTotal(),
                     client.mailAddedItems.get(i).getCount(), h.getPrice(),
-                    status,FirebaseAuth.getInstance().getCurrentUser().getUid(),key.get(i));
+                    status,FirebaseAuth.getInstance().getCurrentUser().getUid(),key.get(i),formattedDate);
 
             aL.add(si);
         }

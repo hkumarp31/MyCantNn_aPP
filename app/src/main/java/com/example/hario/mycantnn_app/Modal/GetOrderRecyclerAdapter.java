@@ -3,6 +3,7 @@ package com.example.hario.mycantnn_app.Modal;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,7 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static android.content.ContentValues.TAG;
 
@@ -52,7 +55,6 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.get_customer_order_main_layout, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -67,11 +69,15 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
         holder.OrderID.setText(arrayList.get(position).getId());
         holder.OrderTakeAction.setText(arrayList.get(position).getStatus());
         holder.USERID.setText(arrayList.get(position).getUser());
+        holder.OrderDate.setText(arrayList.get(position).getDateandtime());
         holder.OrderTakeAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                final Calendar cd = Calendar.getInstance();
+                final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
                 databaseReference = FirebaseDatabase.getInstance().getReference();
                 builder.setTitle("Select Your Choice");
@@ -88,11 +94,13 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 holder.OrderTakeAction.setText(""+arrayList);
                                 arrayList.get(position).setStatus(values[0]);
                                 String x=databaseReference.push().getKey();
+                                String formattedDate = df.format(cd.getTime());
+                                holder.OrderTakeAction.setTextColor(Color.RED);
 
                                  final getOrderItemClass orderItemClass = new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0],arrayList.get(position).getUser(),arrayList.get(position).getKey(),x);
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[0],arrayList.get(position).getUser(),arrayList.get(position).getKey(),x,arrayList.get(position).getDateandtime(),formattedDate);
                                 databaseReference.child("ClientUser").child("OrderStatus").child(arrayList.get(position).getUser()).child(arrayList.get(position).getKey()).setValue(orderItemClass);
                                 databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).child(x).setValue(orderItemClass);
                                 databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getKey()).setValue(orderItemClass);
@@ -104,11 +112,13 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 holder.OrderTakeAction.setText("" + arrayList);
                                 arrayList.get(position).setStatus(values[1]);
                                 String x1=databaseReference.push().getKey();
+                                String formattedDate2 = df.format(cd.getTime());
+                                holder.OrderTakeAction.setTextColor(Color.GREEN);
 
                                 getOrderItemClass orderItemClass1= new getOrderItemClass(arrayList.get(position).getImage(),
                                         arrayList.get(position).getData(),
                                         arrayList.get(position).getTotalCost(),arrayList.get(position).getCount(),
-                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1],arrayList.get(position).getUser(),arrayList.get(position).getKey(),x1);
+                                        arrayList.get(position).getPrice(),arrayList.get(position).getId(),values[1],arrayList.get(position).getUser(),arrayList.get(position).getKey(),x1,arrayList.get(position).getDateandtime(),formattedDate2);
                                 databaseReference.child("ClientUser").child("OrderStatus").child(arrayList.get(position).getUser()).child(arrayList.get(position).getKey()).setValue(orderItemClass1);
                                 databaseReference.child("ClientUser").child("OrderStatusNotify").child(arrayList.get(position).getUser()).child(x1).setValue(orderItemClass1);
 
@@ -125,6 +135,11 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
 
             }
         });
+        if(arrayList.get(position).getStatus().equals("TAKE ACTION"))
+            holder.OrderTakeAction.setTextColor(Color.BLUE);
+       else if(arrayList.get(position).getStatus().equals(" PROCESS "))
+            holder.OrderTakeAction.setTextColor(Color.RED);
+       else  holder.OrderTakeAction.setTextColor(Color.GREEN);
 
     }
 
@@ -134,7 +149,7 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID, OrderTakeAction,OrderImageURL,USERID;
+        TextView OrderName, OrderQuantity, OrderPrice, OrderTotal, OrderID, OrderTakeAction,OrderImageURL,USERID,OrderDate;
         ImageView imageView;
 
         public ViewHolder(View itemView) {
@@ -148,6 +163,7 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
             OrderTakeAction=itemView.findViewById(R.id.getProductTAKEACTION_ID);
             OrderImageURL=itemView.findViewById(R.id.CutomerOrderProductImageURL);
             USERID=itemView.findViewById(R.id.CutomerOrderProductUSERID);
+            OrderDate=itemView.findViewById(R.id.CustomerOrderDateAndTime);
 
         }
     }

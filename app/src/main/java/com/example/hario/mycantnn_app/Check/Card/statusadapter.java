@@ -43,7 +43,7 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
         holder.itemprice.setText("Total Cost Rs. "+arrayList.get(position).getTotalCost());
         holder.itemquantity.setText("Qty : "+arrayList.get(position).getCount());
         holder.itemCount.setText(""+arrayList.get(position).getPrice());
-
+        holder.itemDateAndTime.setText(arrayList.get(position).getDateandtime());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView itemimg;
-        TextView itemname,itemid,itemprice, itemquantity,itemCount;
+        TextView itemname,itemid,itemprice, itemquantity,itemCount,itemDateAndTime;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -63,6 +63,7 @@ public class statusadapter extends RecyclerView.Adapter<statusadapter.ViewHolder
             itemprice = itemView.findViewById(R.id.btxtr);
             itemquantity = itemView.findViewById(R.id.btxtl);
             itemCount = itemView.findViewById(R.id.Count);
+            itemDateAndTime=itemView.findViewById(R.id.orderDate);
 
         }
     }

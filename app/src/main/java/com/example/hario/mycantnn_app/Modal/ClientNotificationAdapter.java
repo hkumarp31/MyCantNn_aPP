@@ -1,6 +1,7 @@
 package com.example.hario.mycantnn_app.Modal;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,11 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
         Glide.with(holder.ClientNotiImg.getContext()).load(arrayList.get(position).getImage()).into(holder.ClientNotiImg);
         holder.ClientNotiTtl.setText(arrayList.get(position).getData());
         holder.ClientNotiStts.setText(arrayList.get(position).getStatus());
+        holder.ClientDateAndTime.setText(arrayList.get(position).getDatetime());
+        if(arrayList.get(position).getStatus().equals(" PROCESS "))
+            holder.ClientNotiStts.setTextColor(Color.RED);
+        else
+            holder.ClientNotiStts.setTextColor(Color.GREEN);
 
         holder.ClientNotiRemove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +57,6 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
             }
         });
 
-
     }
 
     @Override
@@ -61,7 +66,7 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ClientNotiImg,ClientNotiRemove;
-        TextView ClientNotiTtl,ClientNotiStts;
+        TextView ClientNotiTtl,ClientNotiStts,ClientDateAndTime;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -69,6 +74,7 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
             ClientNotiImg=itemView.findViewById(R.id.ClientNotification_Image);
             ClientNotiTtl = itemView.findViewById(R.id.ClientNotification_Title);
             ClientNotiStts = itemView.findViewById(R.id.ClientNotification_StatusReport);
+            ClientDateAndTime=itemView.findViewById(R.id.ClientNotification_DateAndTime);
 
         }
     }
