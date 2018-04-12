@@ -2,6 +2,7 @@ package com.example.hario.mycantnn_app.Check.Card;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,7 +37,6 @@ public class finalstatus extends AppCompatActivity {
         setContentView(R.layout.activity_finalstatus);
         Calendar cd = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
         BACK=(Button)findViewById(R.id.BACKtoHOME);
         BACK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +94,4 @@ public class finalstatus extends AppCompatActivity {
         return s;
 
     }
-
-
-
 }

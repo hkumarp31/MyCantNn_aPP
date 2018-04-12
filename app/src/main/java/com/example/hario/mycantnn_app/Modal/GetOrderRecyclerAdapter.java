@@ -3,6 +3,7 @@ package com.example.hario.mycantnn_app.Modal;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -107,7 +108,6 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 notifyDataSetChanged();
                                 notifyItemChanged(position);
                                 alertDialog1.dismiss();
-                                break;
                             case 1:
                                 holder.OrderTakeAction.setText("" + arrayList);
                                 arrayList.get(position).setStatus(values[1]);
@@ -125,6 +125,8 @@ public class GetOrderRecyclerAdapter extends RecyclerView.Adapter<GetOrderRecycl
                                 databaseReference.child("HostUser").child("Orders").child(arrayList.get(position).getKey()).setValue(orderItemClass1);
                                 notifyDataSetChanged();
                                 alertDialog1.dismiss();
+                                view.getContext().startActivity(new Intent(view.getContext(),GetOrderFromCustomerActivity.class));
+
 
                         }
                         alertDialog1.dismiss();

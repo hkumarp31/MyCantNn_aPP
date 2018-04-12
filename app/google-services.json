@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "874950135474-quadi871f9222h8upval620kuphkrm26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hario.mycantnn_app",
+            "certificate_hash": "748d87d6ec8066355fe30998dd207aca9b68ef9e"
+          }
+        },
+        {
+          "client_id": "874950135474-ifarq8eccumk7c7jpk1jlo0cgnm1ohri.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hario.mycantnn_app",
+            "certificate_hash": "8bfe56ead4545d0689a7c25369a38eb39ef33f1b"
+          }
+        },
+        {
           "client_id": "874950135474-h7m47tm15o85tko584pir88bvfdi8d8a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

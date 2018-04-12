@@ -37,7 +37,7 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         Glide.with(holder.ClientNotiImg.getContext()).load(arrayList.get(position).getImage()).into(holder.ClientNotiImg);
         holder.ClientNotiTtl.setText(arrayList.get(position).getData());
@@ -53,7 +53,6 @@ public class ClientNotificationAdapter extends RecyclerView.Adapter<ClientNotifi
             public void onClick(View view) {
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("ClientUser");
                 databaseReference.child("OrderStatusNotify").child(FirebaseAuth.getInstance().getUid()).child(arrayList.get(position).getNotifykey()).removeValue();
-
             }
         });
 

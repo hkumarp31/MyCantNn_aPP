@@ -77,7 +77,7 @@ public class ClientNotificationActivity extends AppCompatActivity {
 
             }
         });
-       // recyclerView.setAdapter(clientNotificationAdapter);
+        // recyclerView.setAdapter(clientNotificationAdapter);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         Menu menu = navigation.getMenu();
